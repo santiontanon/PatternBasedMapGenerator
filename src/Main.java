@@ -2,7 +2,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import static mapgenerator.PatternBasedLocationGenerator.DEBUG;
 import mapgenerator.TilePattern;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -28,6 +27,9 @@ public class Main {
         
         List<String> patternFileNames = new ArrayList<>();
         patternFileNames.add("data/patternsForest.xml");
+        patternFileNames.add("data/patternsCastle.xml");
+        patternFileNames.add("data/patternsHouse.xml");
+        patternFileNames.add("data/patternsVillage.xml");
         
         for(String fn:patternFileNames) {
             List<TilePattern> l = loadTilePatterns(fn, type2Symbol, symbol2Type);
