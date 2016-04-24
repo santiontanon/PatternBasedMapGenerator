@@ -346,7 +346,7 @@ public class TilePattern {
     }
 
     
-    boolean satisfiesAtLeastOneConstraint(int direction, List<Label> constraints) {
+    public boolean satisfiesAtLeastOneConstraint(int direction, List<Label> constraints) {
         for(Label c:constraints) {
             if (satisfiesConstraint(direction, c)) return true;
         }
@@ -354,7 +354,7 @@ public class TilePattern {
     }
 
     
-    boolean satisfiesConstraint(int direction, Label constraint) {
+    public boolean satisfiesConstraint(int direction, Label constraint) {
         switch(direction) {
             case NORTH: if (north.contains(constraint)) return true;
                         break;
@@ -372,7 +372,7 @@ public class TilePattern {
         return false;
     }
 
-    boolean uniquelySatisfiesConstraint(int direction, Label constraint) {
+    public boolean uniquelySatisfiesConstraint(int direction, Label constraint) {
         switch(direction) {
             case NORTH: if (north.contains(constraint) && north.size()==1) return true;
                         break;

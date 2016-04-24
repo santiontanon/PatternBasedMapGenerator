@@ -8,6 +8,10 @@ import java.util.List;
 import mapgenerator.ContentLocationRecord;
 import mapgenerator.PatternBasedLocationGenerator;
 import mapgenerator.TilePattern;
+import mapgenerator.constraints.BorderConstraint;
+import mapgenerator.constraints.Constraint;
+import mapgenerator.constraints.NotBorderConstraint;
+import mapgenerator.constraints.RegularConstraint;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import util.Label;
@@ -26,43 +30,96 @@ import util.XMLWriter;
  */
 public class Main {
     
-    public static int DEBUG = 1;
+    public static int DEBUG = 0;
     
+    static List<String> patternFileNames = new ArrayList<>();
+    static List<String> symbolFileNames = new ArrayList<>();
+    static List<Constraint> constraints = new ArrayList<>();
+    static int widthInPatterns = 8;
+    static int heightInPatterns = 6;
+    static int patternWidth = 5;
+    static int patternHeight = 5;
+    static HashMap<Label,Double> multipliers = new HashMap<>();
+
     public static void main(String args[]) throws Exception {
         List<TilePattern> patterns = new ArrayList<>();
         HashMap<Label,Character> type2Symbol = new HashMap<>();
         HashMap<Character,Label> symbol2Type = new HashMap<>();
+                
+        if (args.length==0 || args.length>2) {
+            printInstructions();
+            System.exit(0);
+        }
         
-        List<String> patternFileNames = new ArrayList<>();
+        String inputFileName = null;
+        String outputFileName = null;
+        
+        inputFileName = args[0];
+        if (args.length>1) outputFileName = args[1];
+        
+        loadInputConfiguration(inputFileName);
+        
+        symbol2Type.put(TilePattern.EMPTY_TILE,new Label("empty"));
+        type2Symbol.put(new Label("empty"), TilePattern.EMPTY_TILE);
+        for(String fn:symbolFileNames) {
+            loadSymbols(fn, type2Symbol, symbol2Type);
+        }
+        for(String fn:patternFileNames) {
+            List<TilePattern> l = loadTilePatterns(fn);
+            for(TilePattern tp:l) {
+                if (!tp.checkForUndefinedSymbols(type2Symbol, symbol2Type)) {
+                    System.out.println("Error loading pattern file: " + fn);
+                    System.exit(1);
+                }
+                patterns.add(tp);
+            }
+        }
+                                                
+        PatternBasedLocationGenerator generator = new PatternBasedLocationGenerator(patterns, type2Symbol, symbol2Type);
+        
+        PatternBasedLocationGenerator.DEBUG = 1;
+        TilePattern result = generator.generate(widthInPatterns, heightInPatterns, patternWidth, patternHeight, constraints, multipliers);
+        
+        if (outputFileName==null) {
+            XMLWriter w = new XMLWriter(new OutputStreamWriter(System.out));
+            if (result!=null) result.writeToXML(w);
+            w.close();
+        } else {
+            XMLWriter w = new XMLWriter(new FileWriter(outputFileName));
+            if (result!=null) result.writeToXML(w);
+            w.close();
+        }
+    }
+    
+    
+    public static void printInstructions() {
+        System.out.println("Pattern-Based Map Generator (PBMG) v1.0 by Santiago Ontañón (2016)");
+        System.out.println("");
+        System.out.println("This tool uses a pattern-based approach to generate two-dimensional maps. ");
+        System.out.println("");
+        System.out.println("Example usage: java -classpath PBMG.jar Main examples/sampleInput.xml examples/output.xml");
+        System.out.println("");
+        System.out.println("The output file name is optional, and if not specified, the generated map will be just printed to standard output.");
+        System.out.println("");
+    }
+    
+    
+    public static void loadInputConfiguration(String fileName) throws Exception {
+        symbolFileNames.add("data/symbols.xml");
         patternFileNames.add("data/patternsForest.xml");
         patternFileNames.add("data/patternsCastle.xml");
         patternFileNames.add("data/patternsHouse.xml");
         patternFileNames.add("data/patternsVillage.xml");
         
-        loadSymbols("data/symbols.xml", type2Symbol, symbol2Type);
-        for(String fn:patternFileNames) {
-            List<TilePattern> l = loadTilePatterns(fn);
-            patterns.addAll(l);
-        }
+        // width, height, ...
         
-        symbol2Type.put(TilePattern.EMPTY_TILE,new Label("empty"));
-        type2Symbol.put(new Label("empty"), TilePattern.EMPTY_TILE);
-        for(TilePattern tp:patterns) tp.checkForUndefinedSymbols(type2Symbol, symbol2Type);
-                
-        List<Label> typeTags = new ArrayList<>();
-        typeTags.add(new Label("forest"));
-        HashMap<Label,Double> multipliers = new HashMap<>();
-        
-        PatternBasedLocationGenerator generator = new PatternBasedLocationGenerator(patterns, type2Symbol, symbol2Type);
-        
-//        PatternBasedLocationGenerator.DEBUG = 1;
-        TilePattern result = generator.generate(5, 4, 5, 5, typeTags, multipliers);
-        
-        XMLWriter w = new XMLWriter(new OutputStreamWriter(System.out));
-        if (result!=null) result.writeToXML(w);
-        w.close();
+        constraints.add(new RegularConstraint(TilePattern.TYPE, new Label("forest")));
+        constraints.add(new BorderConstraint(new Label("outer-wall")));
+        constraints.add(new NotBorderConstraint(new Label("outer-wall"), false));
+
+        // multipliers ...
     }
-    
+            
     
     public static void loadSymbols(String fileName,
                                    HashMap<Label,Character> type2Symbol,

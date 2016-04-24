@@ -12,6 +12,10 @@ import util.Pair;
 import util.Sampler;
 
 import java.util.*;
+import mapgenerator.constraints.BorderConstraint;
+import mapgenerator.constraints.Constraint;
+import mapgenerator.constraints.NotBorderConstraint;
+import mapgenerator.constraints.RegularConstraint;
 import util.Label;
 
 /**
@@ -51,7 +55,7 @@ public class PatternBasedLocationGenerator {
     
     public TilePattern generate(int widthInPatterns, int heightInPatterns,
                                 int patternWidth, int patternHeight,
-                                List<Label> locationTypeTags,
+                                List<Constraint> constraints,
                                 HashMap<Label,Double> multipliers) throws Exception {
         List<ContentLocationRecord> coarseContentLocations = new LinkedList<>();
         List<ContentLocationRecord> passageLocations = new LinkedList<>();
@@ -73,183 +77,38 @@ public class PatternBasedLocationGenerator {
         
         if (DEBUG>=1) System.out.println(this.getClass().getSimpleName() + ".generate: map is " + width + " * " + height + " tiles in size.");
 
-        // initialize generator:
+        // initialize generator and apply type and border constraints:
         List<TilePattern> [][]possibilities = new List[widthInPatterns][heightInPatterns];
         TilePattern[][]selected = new TilePattern[widthInPatterns][heightInPatterns];
         for(int i = 0;i<heightInPatterns;i++) {
             for(int j = 0;j<widthInPatterns;j++) {
                 possibilities[j][i] = new ArrayList<>();
                 for(TilePattern p:patterns) {
-                    if (p.getDx()==patternWidth &&
-                        p.getDy()==patternHeight &&
-                        p.satisfiesAtLeastOneConstraint(TilePattern.TYPE, locationTypeTags)) {
-                            possibilities[j][i].add(p);
+                    boolean filtered = false;
+                    if (p.getDx()!=patternWidth ||
+                        p.getDy()!=patternHeight) filtered = true;
+                    if (!filtered) {
+                        for(Constraint c:constraints) {
+                            if (c instanceof BorderConstraint) {
+                                if (!((BorderConstraint)c).checkConstraint(p, j, i, widthInPatterns, heightInPatterns)) 
+                                    filtered = true;
+                            } else if (c instanceof NotBorderConstraint) {
+                                if (!((NotBorderConstraint)c).checkConstraint(p, j, i, widthInPatterns, heightInPatterns)) 
+                                    filtered = true;
+                            } else if (c instanceof RegularConstraint) {
+                                if (!((RegularConstraint)c).checkConstraint(p)) 
+                                    filtered = true;
+                            }
+                            if (filtered) break;
+                        }
                     }
+                    if (!filtered) possibilities[j][i].add(p);
                 }
                 selected[j][i] = null;
             }
         }
-        // Add initial constraints (outer-walls, walls, doors):
+                
         /*
-        for(int ri = 0;ri<height;ri++) {
-            for(int rj = 0;rj<width;rj++) {
-                LocationInformationForOrthographicLayout li = areaLayout[rj][ri];
-                int ii = ri*locationHeightInPatterns;
-                int jj = rj*locationWidthInPatterns;
-                if (li!=null) {
-                    // if li!=null:
-                    if (ri==0) {    // top wall
-                        for(int j = 0;j<locationWidthInPatterns;j++) {
-                            addConstraint(jj+j,ii, TilePattern.NORTH,"outer-wall",possibilities);
-                        }                    
-                    }
-                    if (rj==0) {    // left wall
-                        for(int i = 0;i<locationHeightInPatterns;i++) {
-                            addConstraint(jj,ii+i, TilePattern.WEST,"outer-wall",possibilities);
-                        }                    
-                    }
-                    int doori = -1;
-                    String doorConnectionConstraint = "wall-passage";
-                    String doorConstraint1 = null;
-                    String doorConstraint2 = null;
-                    if (li.doors[LocationInformationForOrthographicLayout.RIGHT]) {
-                        doori = 1+r.nextInt(locationHeightInPatterns-2);
-                        List<LGraphNode> locks = areaLayout[rj][ri].locks[LocationInformationForOrthographicLayout.RIGHT];
-                        if (locks!=null) {
-                            if (locks.size()==1) {
-                                doorConnectionConstraint = "wall-door";
-                                doorConstraint1 = "door";
-                                doorConstraint2 = "door";
-                                areaLayout[rj][ri].content.add(locks.get(0));
-                                coarseContentLocations.add(new ContentLocationRecord(locks.get(0), jj+(locationWidthInPatterns-1),ii+doori, "door"));
-                            } else if (locks.size()==2) {
-                                if (r.nextInt(2)==0) {
-                                    doorConnectionConstraint = "wall-door";
-                                    doorConstraint1 = "2-doors";
-                                    doorConstraint2 = "door";
-                                    areaLayout[rj][ri].content.add(locks.get(0));
-                                    areaLayout[rj][ri].content.add(locks.get(1));
-                                    coarseContentLocations.add(new ContentLocationRecord(locks.get(0), jj+(locationWidthInPatterns-1),ii+doori, "door"));
-                                    coarseContentLocations.add(new ContentLocationRecord(locks.get(1), jj+(locationWidthInPatterns-1),ii+doori, "door"));
-                                } else {
-                                    doorConnectionConstraint = "wall-door";
-                                    doorConstraint1 = "door";
-                                    doorConstraint2 = "2-doors";
-                                    areaLayout[rj+1][ri].content.add(locks.get(0));
-                                    areaLayout[rj+1][ri].content.add(locks.get(1));
-                                    coarseContentLocations.add(new ContentLocationRecord(locks.get(0), jj+(locationWidthInPatterns),ii+doori, "door"));
-                                    coarseContentLocations.add(new ContentLocationRecord(locks.get(1), jj+(locationWidthInPatterns),ii+doori, "door"));
-                                }                                    
-                            }
-                            if (locks.size()>2) {
-                                throw new Exception("More than 2 locks between locations!");
-                            }
-                        }
-                        if (DEBUG>=1) System.out.println("Locks east of " + rj + "," + ri + ": " + locks);                        
-                    }
-                    for(int i = 0;i<locationHeightInPatterns;i++) {
-                        if (i==doori) {
-//                            if (doorConnectionConstraint.equals("wall-passage")) {
-                                // remember where the passage is going to be:
-                                passageLocations.add(new ContentLocationRecord(null, jj+(locationWidthInPatterns-1),ii+doori, "passage"));
-                                passageLocations.add(new ContentLocationRecord(null, jj+(locationWidthInPatterns),ii+doori, "passage"));
-//                            }
-                            addConstraint(jj+(locationWidthInPatterns-1),ii+i, TilePattern.EAST,doorConnectionConstraint,possibilities);
-                            if (doorConstraint1!=null) 
-                                addConstraint(jj+(locationWidthInPatterns-1),ii+i, TilePattern.TAG,doorConstraint1,possibilities);
-                            if (rj<width-1) {
-                                addConstraint(jj+locationWidthInPatterns,ii+i, TilePattern.WEST,doorConnectionConstraint,possibilities);
-                                if (doorConstraint2!=null)
-                                    addConstraint(jj+locationWidthInPatterns,ii+i, TilePattern.TAG,doorConstraint2,possibilities);
-                            }
-                        } else {                            
-                            if (rj<width-1 && possibilities[jj+locationWidthInPatterns][ii+i]!=null) {
-                                addConstraint(jj+(locationWidthInPatterns-1),ii+i, TilePattern.EAST,"wall",possibilities);
-                                addConstraint(jj+locationWidthInPatterns,ii+i, TilePattern.WEST,"wall",possibilities);
-                            } else {
-                                addConstraint(jj+(locationWidthInPatterns-1),ii+i, TilePattern.EAST,"outer-wall",possibilities);
-                            }
-                        }
-                    }                    
-                    int doorj = -1;
-                    doorConnectionConstraint = "wall-passage";
-                    doorConstraint1 = null;
-                    doorConstraint2 = null;
-                    if (li.doors[LocationInformationForOrthographicLayout.DOWN]) {
-                        doorj = 1+r.nextInt(locationWidthInPatterns-2);
-                        List<LGraphNode> locks = areaLayout[rj][ri].locks[LocationInformationForOrthographicLayout.DOWN];
-                        if (locks!=null) {
-                            if (locks.size()==1) {
-                                doorConnectionConstraint = "wall-door";
-                                doorConstraint1 = "door";
-                                doorConstraint2 = "door";
-                                areaLayout[rj][ri].content.add(locks.get(0));
-                                coarseContentLocations.add(new ContentLocationRecord(locks.get(0), jj+doorj,ii+(locationHeightInPatterns-1), "door"));
-                            }
-                            if (locks.size()==2) {
-                                if (r.nextInt(2)==0) {
-                                    doorConnectionConstraint = "wall-door";
-                                    doorConstraint1 = "2-doors";
-                                    doorConstraint2 = "door";
-                                    areaLayout[rj][ri].content.add(locks.get(0));
-                                    areaLayout[rj][ri].content.add(locks.get(1));
-                                    coarseContentLocations.add(new ContentLocationRecord(locks.get(0), jj+doorj,ii+(locationHeightInPatterns-1), "door"));
-                                    coarseContentLocations.add(new ContentLocationRecord(locks.get(1), jj+doorj,ii+(locationHeightInPatterns-1), "door"));
-                                } else {
-                                    doorConnectionConstraint = "wall-door";
-                                    doorConstraint1 = "door";
-                                    doorConstraint2 = "2-doors";
-                                    areaLayout[rj][ri+1].content.add(locks.get(0));
-                                    areaLayout[rj][ri+1].content.add(locks.get(1));
-                                    coarseContentLocations.add(new ContentLocationRecord(locks.get(0), jj+doorj,ii+(locationHeightInPatterns), "door"));
-                                    coarseContentLocations.add(new ContentLocationRecord(locks.get(1), jj+doorj,ii+(locationHeightInPatterns), "door"));
-                                }                                    
-                            }
-                            if (locks.size()>2) {
-                                throw new Exception("More than 2 locks between locations!");
-                            }
-                        }
-                        if (DEBUG>=1) System.out.println("Locks south of " + rj + "," + ri + ": " + locks);                        
-                    }
-                    for(int j = 0;j<locationWidthInPatterns;j++) {
-                        if (j==doorj) {
-//                            if (doorConnectionConstraint.equals("wall-passage")) {
-                                // remember where the passage is going to be:
-                                passageLocations.add(new ContentLocationRecord(null, jj+doorj,ii+(locationHeightInPatterns-1), "passage"));
-                                passageLocations.add(new ContentLocationRecord(null, jj+doorj,ii+(locationHeightInPatterns), "passage"));
-//                            }
-                            addConstraint(jj+j,ii+(locationHeightInPatterns-1), TilePattern.SOUTH,doorConnectionConstraint,possibilities);
-                            if (doorConstraint1!=null)
-                                addConstraint(jj+j,ii+(locationHeightInPatterns-1), TilePattern.TAG,doorConstraint1,possibilities);
-                            if (ri<height-1) {
-                                addConstraint(jj+j,ii+locationHeightInPatterns, TilePattern.NORTH,doorConnectionConstraint,possibilities);
-                                if (doorConstraint2!=null)
-                                    addConstraint(jj+j,ii+locationHeightInPatterns, TilePattern.TAG,doorConstraint2,possibilities);
-                            }
-                        } else {
-                            if (ri<height-1 && possibilities[jj+j][ii+locationHeightInPatterns]!=null) {
-                                addConstraint(jj+j,ii+(locationHeightInPatterns-1), TilePattern.SOUTH,"wall",possibilities);
-                                addConstraint(jj+j,ii+locationHeightInPatterns, TilePattern.NORTH,"wall",possibilities);
-                            } else {
-                                addConstraint(jj+j,ii+(locationHeightInPatterns-1), TilePattern.SOUTH,"outer-wall",possibilities);
-                            }
-                        }
-                    }    
-                } else {
-                    // if li == null:
-                    if (rj<width-1 && areaLayout[rj+1][ri]!=null) {
-                        for(int i = 0;i<locationHeightInPatterns;i++) {
-                            addConstraint(jj+locationWidthInPatterns,ii+i, TilePattern.WEST,"outer-wall",possibilities);
-                        }                    
-                    }
-                    if (ri<height-1 && areaLayout[rj][ri+1]!=null) {
-                        for(int j = 0;j<locationWidthInPatterns;j++) {
-                            addConstraint(jj+j,ii+locationHeightInPatterns, TilePattern.NORTH,"outer-wall",possibilities);
-                        }                        
-                    }
-                }
-            }
-        }
         // Forbid 'outer-walls' inside:
         for(int ri = 0;ri<height;ri++) {
             for(int rj = 0;rj<width;rj++) {                
