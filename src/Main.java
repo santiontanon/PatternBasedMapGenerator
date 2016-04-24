@@ -50,19 +50,16 @@ public class Main {
         for(TilePattern tp:patterns) tp.checkForUndefinedSymbols(type2Symbol, symbol2Type);
                 
         List<Label> typeTags = new ArrayList<>();
-        typeTags.add(new Label("castle"));
+        typeTags.add(new Label("forest"));
         HashMap<Label,Double> multipliers = new HashMap<>();
         
-//        PatternBasedLocationGenerator generator = new PatternBasedLocationGenerator(patterns, type2Symbol, symbol2Type);
+        PatternBasedLocationGenerator generator = new PatternBasedLocationGenerator(patterns, type2Symbol, symbol2Type);
         
 //        PatternBasedLocationGenerator.DEBUG = 1;
-//        Pair<char [][][],List<ContentLocationRecord>> result = generator.generate(5, 4, 5, 5, typeTags, multipliers);
+        TilePattern result = generator.generate(5, 4, 5, 5, typeTags, multipliers);
         
-//        TilePattern resultPattern = translateOutput(result);
-
         XMLWriter w = new XMLWriter(new OutputStreamWriter(System.out));
-//        if (resultPattern!=null) resultPattern.writeToXML(w);
-        
+        if (result!=null) result.writeToXML(w);
         w.close();
     }
     
@@ -106,9 +103,6 @@ public class Main {
             }
         }
         if (DEBUG>=1) System.out.println("" + patterns.size() + " loaded.");
-//        for(TilePattern p:patterns) {
-//            p.precomputePathTags();
-//        }
     
         return patterns;
     }

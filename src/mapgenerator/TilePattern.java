@@ -320,6 +320,10 @@ public class TilePattern {
     public char[][][] getPattern() {
         return pattern;
     }
+    
+    public List<ContentLocationRecord> getObjects() {
+        return objects;
+    }
 
     boolean matchesWestWith(TilePattern p) {
         for(Label tag:west) if (p.getEast().contains(tag)) return true;
@@ -403,7 +407,7 @@ public class TilePattern {
         }
     }
 
-
+/*
     public void precomputePathTags() throws Exception {
         char buffer[][] = new char[dx][dy];
         if (DEBUG>=1) System.out.println("TilePattern.precomputePathTags:");
@@ -520,4 +524,5 @@ public class TilePattern {
         }
         return true;
     }
+    */
 }

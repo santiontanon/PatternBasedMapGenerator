@@ -23,37 +23,36 @@ public class PatternBasedLocationGenerator {
 
     public static boolean patternOverlap = false;
     
-    HashMap<String,Character> typeToSymbol_table = new HashMap<>();
-    HashMap<Character,String> symboltoType_table = new HashMap<>();
+    HashMap<Label,Character> typeToSymbol_table = new HashMap<>();
+    HashMap<Character,Label> symboltoType_table = new HashMap<>();
     List<TilePattern> patterns = new ArrayList<>();
     Random r = new Random();
     
 
     public PatternBasedLocationGenerator(List<TilePattern> a_patterns, 
-                                         HashMap<String, Character> a_typeToSymbol,
-                                         HashMap<Character, String> a_symbolTotype) {
+                                         HashMap<Label, Character> a_typeToSymbol,
+                                         HashMap<Character, Label> a_symbolTotype) {
         patterns = a_patterns;
         typeToSymbol_table = a_typeToSymbol;
         symboltoType_table = a_symbolTotype;
     }
     
     
-    public char typeToSymbol(String type) throws Exception {
+    public char typeToSymbol(Label type) throws Exception {
         Character symbol = typeToSymbol_table.get(type);
         if (symbol==null) throw new Exception("No symbol for type '"+type+"'");
         return symbol;
     }
     
-    public String symbolToType(char symbol) {
+    public Label symbolToType(char symbol) {
         return symboltoType_table.get(symbol);
     }
 
     
-    public Pair<char [][][], List<ContentLocationRecord>>
-                       generate(int widthInPatterns, int heightInPatterns,
-                                    int patternWidth, int patternHeight,
-                                    List<Label> locationTypeTags,
-                                    HashMap<Label,Double> multipliers) throws Exception {
+    public TilePattern generate(int widthInPatterns, int heightInPatterns,
+                                int patternWidth, int patternHeight,
+                                List<Label> locationTypeTags,
+                                HashMap<Label,Double> multipliers) throws Exception {
         List<ContentLocationRecord> coarseContentLocations = new LinkedList<>();
         List<ContentLocationRecord> passageLocations = new LinkedList<>();
 
@@ -600,7 +599,18 @@ public class PatternBasedLocationGenerator {
             }
         }
         
-        return new Pair<>(tiles, contentLocations);
+        TilePattern resultPattern = new TilePattern(width, height, tiles.length);
+        
+        for(int l = 0;l<tiles.length;l++) {
+            for(int i = 0;i<height;i++) {
+                for(int j = 0;j<width;j++) {
+                    resultPattern.getPattern()[l][j][i] = tiles[l][j][i];
+                }
+            }
+        }
+        resultPattern.getObjects().addAll(contentLocations);
+        
+        return resultPattern;
     }
 
 
