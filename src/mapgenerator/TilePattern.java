@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.StringTokenizer;
 import util.Label;
+import util.XMLWriter;
 
 /**
  *
@@ -20,9 +21,8 @@ import util.Label;
  */
 public class TilePattern {
     public static int DEBUG = 0;
+    public static char directions[]={'w','n','e','s'};
 
-    public static int NLAYERS = 2;
-    
     public static char EMPTY_TILE = ' ';
     
     public static final int NORTH = 0;
@@ -34,6 +34,7 @@ public class TilePattern {
     
     int dx;
     int dy;
+    boolean canRotate = false;
     int priority;
     double weight;
     char [][][]pattern;
@@ -49,10 +50,10 @@ public class TilePattern {
     List<Label> contentTags = new ArrayList<>();
     
     
-    public TilePattern(int a_dx, int a_dy) {
+    public TilePattern(int a_dx, int a_dy, int a_layers) {
         dx = a_dx;
         dy = a_dy;
-        pattern = new char[NLAYERS][a_dx][a_dy];
+        pattern = new char[a_layers][a_dx][a_dy];
         objects = new ArrayList<>();
     }
 
@@ -60,31 +61,44 @@ public class TilePattern {
     public TilePattern(TilePattern p) {
         dx = p.dx;
         dy = p.dy;
+        canRotate = p.canRotate;
         priority = p.priority;
         weight = p.weight;
         pattern = p.pattern;
         objects = new ArrayList<>();
         objects.addAll(p.objects);
 
-        north = new ArrayList<>();;
+        north = new ArrayList<>();
         north.addAll(p.north);
 
-        east = new ArrayList<>();;
+        east = new ArrayList<>();
         east.addAll(p.east);
 
-        south = new ArrayList<>();;
+        south = new ArrayList<>();
         south.addAll(p.south);
 
-        west = new ArrayList<>();;
+        west = new ArrayList<>();
         west.addAll(p.west);
 
-        contentTags = new ArrayList<>();;
+        contentTags = new ArrayList<>();
         contentTags.addAll(p.contentTags);
     }
+    
 
     public static TilePattern fromXML(Element e) throws Exception {
-        TilePattern t = new TilePattern(Integer.parseInt(e.getAttributeValue("dx")),
-                                        Integer.parseInt(e.getAttributeValue("dy")));
+        int nlayers = 0;
+        List l = e.getChildren("layer");
+        for(Object o:l) {
+            Element le = (Element)o;
+            int layer = Integer.parseInt(le.getAttributeValue("layer"));
+            if (nlayers<layer+1) nlayers = layer+1;
+        }
+        
+        TilePattern t = new TilePattern(Integer.parseInt(e.getAttributeValue("width")),
+                                        Integer.parseInt(e.getAttributeValue("height")),
+                                        nlayers);
+        if (e.getAttributeValue("canrotate")!=null &&
+            e.getAttributeValue("canrotate").equals("true")) t.canRotate = true;
         t.priority = Integer.parseInt(e.getAttributeValue("priority"));
         t.weight = Double.parseDouble(e.getAttributeValue("weight"));
         StringTokenizer st = new StringTokenizer(e.getAttributeValue("type"),", ");
@@ -103,24 +117,19 @@ public class TilePattern {
             while(st.hasMoreTokens()) t.contentTags.add(new Label(st.nextToken()));
         }
         
-        String data = e.getChildText("data");        
-        String []lines = data.split("\n");
-//        for(int i = 0;i<lines.length;i++) lines[i] = lines[i].trim();        
-        for(int i = 0,ii=0;i<lines.length;i++) {
-            st = new StringTokenizer(lines[i],"\t");
-            int layer = 0;
-            while(st.hasMoreTokens()) {
-                String line = st.nextToken();
-                for(int j = 0;j<line.length();j++) {
-                    t.pattern[layer][j][ii] = line.charAt(j);
-//                    System.out.print((int)t.pattern[layer][j][ii] + " ");
-                }
-//                System.out.println("");
-                layer++;
+        for(Object o:l) {
+            Element le = (Element)o;
+            int layer = Integer.parseInt(le.getAttributeValue("layer"));
+            List lr = le.getChildren("row");
+            int row_idx = 0;
+            for(Object o2:lr) {
+                Element rw = (Element)o2;
+                String row = rw.getText();
+                for(int i = 0;i<t.dx;i++) t.pattern[layer][i][row_idx] = row.charAt(i);
+                row_idx ++;
             }
-            if (layer!=0) ii++;
         }
-
+        
         for(Object o:e.getChildren("object")) {
             Element e2 = (Element)o;
             t.objects.add(ContentLocationRecord.fromXML(e2));
@@ -129,13 +138,83 @@ public class TilePattern {
         return t;
     }    
     
-    public TilePattern rotateClockWise() {
-        TilePattern p = new TilePattern(dy, dx);
+    
+    public void writeToXML(XMLWriter w) {
+        String attributeString = "width=\""+dx+"\" height=\""+dy+"\" " + 
+                                 labelListToXMLAttribute("type", typeTags) + " " +
+                                 labelListToXMLAttribute("tag", contentTags) + " " +
+                                 labelListToXMLAttribute("north", north) + " " +
+                                 labelListToXMLAttribute("east", east) + " " +
+                                 labelListToXMLAttribute("south", south) + " " +
+                                 labelListToXMLAttribute("west", west) + " " + 
+                                 (canRotate ? "canrotate=\"true\" ":"") + 
+                                 "priority=\""+priority+"\" weight=\""+weight+"\"";
+        
+        w.tagWithAttributes("pattern", attributeString);
+        for(int k = 0;k<pattern.length;k++) {
+            w.tagWithAttributes("layer","layer=\""+k+"\"");
+            for(int i=0;i<dy;i++) {
+                String row = "";
+                for(int j = 0;j<dx;j++) row += pattern[k][j][i];
+                w.rawXMLRespectingTabs("<row>"+row+"</row>");
+            }
+            w.tag("/layer");
+        }
+        for(ContentLocationRecord clr:objects) {
+            w.rawXMLRespectingTabs("<object x=\""+clr.x+"\" y=\""+clr.y+"\" "+
+                                            (clr.width>1 ? "width=\""+clr.width+"\" ":"") + 
+                                            (clr.height>1 ? "height=\""+clr.height+"\" ":"") + 
+                                            "type=\""+clr.type+"\"/>");   
+        }
+        w.tag("/pattern");
+    }
+    
+    
+    String labelListToXMLAttribute(String attributeName, List<Label> ll) {
+        String out = attributeName + "=\"";
+        boolean first = true;
+        for(Label l:ll) {
+            if (first) {
+                out+=l;
+            } else {
+                out+="," + l;
+            }
+            first = false;
+        }
+        return out + "\"";
+    }
+    
+    
+    public boolean checkForUndefinedSymbols(HashMap<Label,Character> type2Symbol,
+                                            HashMap<Character,Label> symbol2Type) {
+        for(int l = 0;l<pattern.length;l++) {
+            for(int i = 0;i<dy;i++) {
+                for(int j = 0;j<dx;j++) {
+                    Label type = symbol2Type.get(pattern[l][j][i]);
+                    if (type==null) {
+                        System.out.println("Undefined symbol '" + pattern[l][j][i] + "'");
+                        return false;
+                    }
+                }
+            }
+        }
+        for(ContentLocationRecord clr:objects) {
+            if (type2Symbol.get(clr.type)==null) {
+                System.out.println("Undefined symbol '" + clr.type + "'");
+                return false;                
+            }
+        }
+        return true;
+    }
+    
+    
+    public TilePattern rotateClockWise() throws Exception {
+        TilePattern p = new TilePattern(dy, dx, pattern.length);
         p.typeTags = new ArrayList<Label>();
         p.typeTags.addAll(typeTags);
         p.priority = priority;
         p.weight = weight;
-        for(int l = 0;l<NLAYERS;l++) {
+        for(int l = 0;l<pattern.length;l++) {
 //            System.out.println("l = " + l);
             for(int i = 0;i<dx;i++) {
                 for(int j = 0;j<dy;j++) {
@@ -150,14 +229,37 @@ public class TilePattern {
         p.east = north;
         p.south = east;
         p.west = south;
-        p.contentTags = contentTags;
-
+        p.contentTags = new ArrayList<>();
+        // rotate the path tags:
+        for(Label tag:contentTags) {
+            boolean found = false;
+            int dl = directions.length;
+            for(int d1 = 0;d1<dl;d1++) {
+                for(int d2 = d1+1;d2<dl;d2++) {
+                    Label oldTag = new Label("path-"+directions[d1] + "-" + directions[d2]);
+                    if (tag.equals(oldTag)) {
+                        int newd1 = (d1+1)%dl;
+                        int newd2 = (d2+1)%dl;
+                        if (newd1>newd2) {
+                            newd1 = (d2+1)%dl;
+                            newd2 = (d1+1)%dl;
+                        }
+                        Label newTag = new Label("path-"+directions[newd1] + "-" + directions[newd2]);
+                        found = true;
+                        p.contentTags.add(newTag);
+                    }
+                }
+            }
+            if (!found) p.contentTags.add(tag);
+        }
+ 
         for(ContentLocationRecord po:objects) {
             ContentLocationRecord po2 = new ContentLocationRecord(po);
             po2.x = (dx-1) - po.y;
             po2.y = po.x;
             p.objects.add(po2);
         }
+        
         
         return p;
     }
@@ -168,6 +270,18 @@ public class TilePattern {
     
     public int getDy() {
         return dy;
+    }
+    
+    public int getNLayers() {
+        return pattern.length;
+    }
+    
+    public boolean getCanRotate() {
+        return canRotate;
+    }
+    
+    public void setCanRotate(boolean cr) {
+        canRotate = cr;
     }
     
     public int getPriority() {
@@ -304,19 +418,17 @@ public class TilePattern {
 
         // mark the left/up/right/down entrances:
         for(int i = 1;i<dy-1;i++) {
-            if (buffer[0][i]==' ') buffer[0][i]='l';
-            if (buffer[dx-1][i]==' ') buffer[dx-1][i]='r';
+            if (buffer[0][i]==' ') buffer[0][i]='w';
+            if (buffer[dx-1][i]==' ') buffer[dx-1][i]='e';
         }
         for(int i = 1;i<dx-1;i++) {
-            if (buffer[i][0]==' ') buffer[i][0]='u';
-            if (buffer[i][dx-1]==' ') buffer[i][dx-1]='d';
+            if (buffer[i][0]==' ') buffer[i][0]='n';
+            if (buffer[i][dx-1]==' ') buffer[i][dx-1]='s';
         }
 
         // find if there is path between them:
-        char directions[]={'l','u','r','d'};
         for(int d1 = 0;d1<directions.length;d1++) {
             for(int d2 = d1+1;d2<directions.length;d2++) {
-//                if (pathBetween(buffer, directions[d1], directions[d2])) {
                 if (pathBetweenEach(buffer, directions[d1], directions[d2])) {
                     if (DEBUG>=1) System.out.println("  path-"+directions[d1]+'-'+directions[d2]);
                     contentTags.add(new Label("path-"+directions[d1]+'-'+directions[d2]));
@@ -391,7 +503,7 @@ public class TilePattern {
     // TODO: this is right now hardcoded, I should come up with a list of things that are
     //       not walkable from the ontology and processing the character to concept mappings
     public boolean walkable(int x, int y) {
-        for(int layer = 0;layer<NLAYERS;layer++) {
+        for(int layer = 0;layer<pattern.length;layer++) {
             if (pattern[layer][x][y]=='~') return false;
             if (pattern[layer][x][y]=='#') return false;
             if (pattern[layer][x][y]=='@') return false;

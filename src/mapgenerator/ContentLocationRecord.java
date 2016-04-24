@@ -6,6 +6,7 @@
 package mapgenerator;
 
 import org.jdom.Element;
+import util.Label;
 
 /**
  *
@@ -14,13 +15,13 @@ import org.jdom.Element;
 public class ContentLocationRecord {
 //    public Object n = null;
     public int x=-1, y=-1, width=1,height=1;
-    public String type = null;
+    public Label type = null;
 
     public ContentLocationRecord() {
 
     }
 
-    public ContentLocationRecord(/*Object a_n, */int a_x, int a_y, String a_type) {
+    public ContentLocationRecord(/*Object a_n, */int a_x, int a_y, Label a_type) {
 //        n = a_n;
         x = a_x;
         y = a_y;
@@ -52,7 +53,7 @@ public class ContentLocationRecord {
         } else {
             p.height = Integer.parseInt(e.getAttributeValue("height"));
         }
-        p.type = e.getAttributeValue("type");
+        p.type = new Label(e.getAttributeValue("type"));
         if (p.type==null) {
             throw new Exception("null type when initializing ContentLocationRecord from xml!");
         }

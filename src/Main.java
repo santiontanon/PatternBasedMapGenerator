@@ -1,4 +1,6 @@
 
+import java.io.FileWriter;
+import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,6 +12,7 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import util.Label;
 import util.Pair;
+import util.XMLWriter;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -27,8 +30,8 @@ public class Main {
     
     public static void main(String args[]) throws Exception {
         List<TilePattern> patterns = new ArrayList<>();
-        HashMap<String,Character> type2Symbol = new HashMap<>();
-        HashMap<Character,String> symbol2Type = new HashMap<>();
+        HashMap<Label,Character> type2Symbol = new HashMap<>();
+        HashMap<Character,Label> symbol2Type = new HashMap<>();
         
         List<String> patternFileNames = new ArrayList<>();
         patternFileNames.add("data/patternsForest.xml");
@@ -36,60 +39,81 @@ public class Main {
         patternFileNames.add("data/patternsHouse.xml");
         patternFileNames.add("data/patternsVillage.xml");
         
+        loadSymbols("data/symbols.xml", type2Symbol, symbol2Type);
         for(String fn:patternFileNames) {
-            List<TilePattern> l = loadTilePatterns(fn, type2Symbol, symbol2Type);
+            List<TilePattern> l = loadTilePatterns(fn);
             patterns.addAll(l);
         }
         
+        symbol2Type.put(TilePattern.EMPTY_TILE,new Label("empty"));
+        type2Symbol.put(new Label("empty"), TilePattern.EMPTY_TILE);
+        for(TilePattern tp:patterns) tp.checkForUndefinedSymbols(type2Symbol, symbol2Type);
+                
         List<Label> typeTags = new ArrayList<>();
         typeTags.add(new Label("castle"));
         HashMap<Label,Double> multipliers = new HashMap<>();
         
-        PatternBasedLocationGenerator generator = new PatternBasedLocationGenerator(patterns, type2Symbol, symbol2Type);
+//        PatternBasedLocationGenerator generator = new PatternBasedLocationGenerator(patterns, type2Symbol, symbol2Type);
         
-        PatternBasedLocationGenerator.DEBUG = 1;
-        Pair<char [][][],List<ContentLocationRecord>> result = generator.generate(5, 4, 5, 5, typeTags, multipliers);
+//        PatternBasedLocationGenerator.DEBUG = 1;
+//        Pair<char [][][],List<ContentLocationRecord>> result = generator.generate(5, 4, 5, 5, typeTags, multipliers);
         
-        TilePattern resultPattern = translateOutput(result);
+//        TilePattern resultPattern = translateOutput(result);
+
+        XMLWriter w = new XMLWriter(new OutputStreamWriter(System.out));
+//        if (resultPattern!=null) resultPattern.writeToXML(w);
         
-        System.out.println(resultPattern);
+        w.close();
     }
     
     
-    public static List<TilePattern> loadTilePatterns(String fileName,
-                                                     HashMap<String,Character> type2Symbol,
-                                                     HashMap<Character,String> symbol2Type) throws Exception
+    public static void loadSymbols(String fileName,
+                                   HashMap<Label,Character> type2Symbol,
+                                   HashMap<Character,Label> symbol2Type) throws Exception
     {
-        List<TilePattern> patterns = new ArrayList<>();
         SAXBuilder builder = new SAXBuilder();
         Element root = builder.build(fileName).getRootElement();
         if (DEBUG>=1) System.out.println("Loading file '" + fileName + "'...");
 
         for(Object o:root.getChildren("tile")) {
             Element e = (Element)o;
-            symbol2Type.put(e.getAttributeValue("symbol").charAt(0), e.getAttributeValue("type"));
-            type2Symbol.put(e.getAttributeValue("type"), e.getAttributeValue("symbol").charAt(0));
-        }
+            symbol2Type.put(e.getAttributeValue("symbol").charAt(0), new Label(e.getAttributeValue("type")));
+            type2Symbol.put(new Label(e.getAttributeValue("type")), e.getAttributeValue("symbol").charAt(0));
+        }        
+    }
+    
+    
+    public static List<TilePattern> loadTilePatterns(String fileName) throws Exception
+    {
+        List<TilePattern> patterns = new ArrayList<>();
+        SAXBuilder builder = new SAXBuilder();
+        Element root = builder.build(fileName).getRootElement();
+        if (DEBUG>=1) System.out.println("Loading file '" + fileName + "'...");
+
         for(Object o:root.getChildren("pattern")) {
             Element e = (Element)o;
             TilePattern p = TilePattern.fromXML(e);
-            patterns.add(p);
-            if (e.getAttributeValue("canrotate").equals("true")) {
+            if (p.getCanRotate()) {
                 // generate rotations:
+                p.setCanRotate(false);
+                patterns.add(p);
                 for(int i = 0;i<3;i++) {
                     p = p.rotateClockWise();
                     patterns.add(p);
                 }
+            } else {
+                patterns.add(p);            
             }
         }
         if (DEBUG>=1) System.out.println("" + patterns.size() + " loaded.");
-        for(TilePattern p:patterns) {
-            p.precomputePathTags();
-        }
+//        for(TilePattern p:patterns) {
+//            p.precomputePathTags();
+//        }
     
         return patterns;
     }
-
+    
+    
     static TilePattern translateOutput(Pair<char[][][], List<ContentLocationRecord>> result) {
         return null;
     }

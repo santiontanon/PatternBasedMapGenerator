@@ -59,8 +59,12 @@ public class PatternBasedLocationGenerator {
 
         int width = patternOverlap ? widthInPatterns*(patternWidth-1)+1 : widthInPatterns*patternWidth;
         int height = patternOverlap ? heightInPatterns*(patternHeight-1)+1 : heightInPatterns*patternHeight;
-        char [][][]tiles = new char[TilePattern.NLAYERS][width][height];
-        for(int l = 0;l < TilePattern.NLAYERS;l++) {
+        int nlayers = 0;
+        for(TilePattern tp:patterns) {
+            if (tp.getNLayers()>nlayers) nlayers = tp.getNLayers();
+        }
+        char [][][]tiles = new char[nlayers][width][height];
+        for(int l = 0;l < nlayers;l++) {
             for(int i = 0;i < height;i++) {
                 for(int j = 0;j < width;j++) {
                     tiles[l][j][i] = TilePattern.EMPTY_TILE;
@@ -495,7 +499,7 @@ public class PatternBasedLocationGenerator {
             for(int i = 0;i<heightInPatterns;i++) {
                 for(int j = 0;j<widthInPatterns;j++) {
                     if (selected[j][i]!=null) {
-                        for(int l = 0;l< TilePattern.NLAYERS;l++) {
+                        for(int l = 0;l< tiles.length;l++) {
                             for(int ii = 0;ii<patternHeight;ii++) {
                                 for(int jj = 0;jj<patternWidth;jj++) {
                                     if (patternOverlap) {
@@ -515,7 +519,7 @@ public class PatternBasedLocationGenerator {
         if (DEBUG>=1) {
             for(int i = 0;i<height;i++) {
                 for(int j = 0;j<width;j++) {
-                    for(int l = TilePattern.NLAYERS-1;l>=0;l--) {
+                    for(int l = tiles.length-1;l>=0;l--) {
                         if (tiles[l][j][i]!= TilePattern.EMPTY_TILE || l==0) {
                             System.out.print(tiles[l][j][i]);
                             break;
@@ -716,12 +720,12 @@ public class PatternBasedLocationGenerator {
         for(int i = y0;i<y1;i++) {
             for (int j = x0; j < x1; j++) {
                 if (paths[j][i]==-1) continue;
-                if ((paths[j][i]&1) != 0) addConstraint(j, i, TilePattern.TAG, new Label("path-l-r"), possibilities);
-                if ((paths[j][i]&2) != 0) addConstraint(j, i, TilePattern.TAG, new Label("path-l-u"), possibilities);
-                if ((paths[j][i]&4) != 0) addConstraint(j, i, TilePattern.TAG, new Label("path-l-d"), possibilities);
-                if ((paths[j][i]&8) != 0) addConstraint(j, i, TilePattern.TAG, new Label("path-u-r"), possibilities);
-                if ((paths[j][i]&16) != 0) addConstraint(j, i, TilePattern.TAG, new Label("path-u-d"), possibilities);
-                if ((paths[j][i]&32) != 0) addConstraint(j, i, TilePattern.TAG, new Label("path-r-d"), possibilities);
+                if ((paths[j][i]&1) != 0) addConstraint(j, i, TilePattern.TAG, new Label("path-w-e"), possibilities);
+                if ((paths[j][i]&2) != 0) addConstraint(j, i, TilePattern.TAG, new Label("path-w-n"), possibilities);
+                if ((paths[j][i]&4) != 0) addConstraint(j, i, TilePattern.TAG, new Label("path-w-s"), possibilities);
+                if ((paths[j][i]&8) != 0) addConstraint(j, i, TilePattern.TAG, new Label("path-n-e"), possibilities);
+                if ((paths[j][i]&16) != 0) addConstraint(j, i, TilePattern.TAG, new Label("path-n-s"), possibilities);
+                if ((paths[j][i]&32) != 0) addConstraint(j, i, TilePattern.TAG, new Label("path-e-s"), possibilities);
             }
         }
     }

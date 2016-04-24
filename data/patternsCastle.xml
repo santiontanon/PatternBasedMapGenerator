@@ -1,487 +1,775 @@
-<PatternBase>
-	<tile symbol="." type="floor"/>
-	<tile symbol="," type="grass"/>
-	<tile symbol="~" type="water"/>
-	<tile symbol="#" type="fence"/>
-	<tile symbol="@" type="house"/>
-	<tile symbol="0" type="rock"/>
-
-	<tile symbol="a" type="castle-locked"/>
-	<tile symbol="b" type="bookshelves"/>
-	<tile symbol="c" type="carpet"/>
-	<tile symbol="d" type="door"/>
-	<tile symbol="h" type="throne"/>
-	<tile symbol="k" type="darktower-locked"/>
-	<tile symbol="o" type="wood"/>
-	<tile symbol="p" type="pillar"/>
-	<tile symbol="r" type="tree"/>
-	<tile symbol="t" type="table"/>
-	<tile symbol="v" type="cave"/>
-	<tile symbol="w" type="wall"/>
-
-	<tile symbol="A" type="castle"/>
-	<tile symbol="C" type="inter-area-bridge-castle"/>
-	<tile symbol="E" type="enemy"/>
-	<tile symbol="F" type="inter-area-bridge-forest"/>
-	<tile symbol="G" type="goal"/>
-	<tile symbol="H" type="inter-area-bridge-house"/>
-	<tile symbol="K" type="darktower"/>
-	<tile symbol="N" type="npc"/>
-	<tile symbol="R" type="choppable-tree"/>
-	<tile symbol="S" type="start"/>
-	<tile symbol="V" type="inter-area-bridge-village"/>
-	<tile symbol="W" type="wood-wall"/>
-
-	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="1.0" canrotate="true">
-		<data>
-			.....	wwwww
-			.....	w    
-			.....	w    
-			.....	w    
-			.....	w    
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="0.2" canrotate="true">
-		<data>
-			.....	wwwww
-			.....	www  
-			.....	www  
-			.....	w    
-			.....	w    
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="0.2" canrotate="true">
-		<data>
-			.....	wwwww
-			.....	w    
-			.....	w p  
-			.....	w    
-			.....	w    
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.25" canrotate="true">
-		<data>
-			.....	wwwww
-			.....	     
-			.....	  p  
-			.....	     
-			.....	     
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.5" canrotate="true" tag="bookshelves">
-		<data>
-			.....	wwwww
-			.....	bbbbb
-			.....	     
-			.....	     
-			.....	     
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
-		<data>
-			.....	wwwww
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			.....	wwwww
-			.....	  w  
-			.....	  w  
-			.....	     
-			.....	     
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="wall-passage" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
-		<data>
-			.....	ww ww
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			.....	wwwww
-			.....	  w  
-			.....	  w  
-			.....	  w  
-			.....	  w  
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="middle-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			.....	  w  
-			.....	  w  
-			.....	  w  
-			.....	  w  
-			.....	  w  
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="middle-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			.....	  w  
-			.....	  w  
-			.....	     
-			.....	  w  
-			.....	  w  
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="middle-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			.....	  w  
-			.....	     
-			.....	     
-			.....	     
-			.....	  w  
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="middle-wall" east="middle-wall" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			.....	  w  
-			.....	  w  
-			.....	  www
-			.....	  w  
-			.....	  w  
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="middle-wall" east="middle-wall" south="middle-wall" west="middle-wall" priority="1" weight="0.1" canrotate="false">
-		<data>
-			.....	  w  
-			.....	  w  
-			.....	wwwww
-			.....	  w  
-			.....	  w  
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="middle-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			.....	  w  
-			.....	  w  
-			.....	     
-			.....	     
-			.....	     
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true" tag="door">
-		<data>
-			.....	ww ww
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-		</data>
-		<object x="2" y="0" type="door"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="0" weight="1.0" canrotate="true" tag="2-doors">
-		<data>
-			.....	ww ww
-			.....	 w w 
-			.....	 w w 
-			.....	     
-			.....	     
-		</data>
-		<object x="2" y="0" type="door"/>
-		<object x="2" y="2" type="door"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="false" tag="carpet">
-		<data>
-			.....	wwwww
-			.....	  c  
-			.....	  c  
-			.....	  c  
-			.....	     
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1" canrotate="false" tag="carpet">
-		<data>
-			.....	wwwww
-			.....	  h  
-			.....	  c  
-			.....	  c  
-			.....	  c  
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1" canrotate="false" tag="carpet">
-		<data>
-			.....	wwwww
-			.....	  c  
-			.....	  c  
-			.....	  c  
-			.....	  c  
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="carpet" east="none" south="carpet" west="none" priority="0" weight="1.0" canrotate="false" tag="carpet">
-		<data>
-			.....	  c  
-			.....	  c  
-			.....	  c  
-			.....	  c  
-			.....	  c  
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="carpet" east="none" south="none" west="none" priority="0" weight="1.0" canrotate="false" tag="carpet">
-		<data>
-			.....	  c  
-			.....	  c  
-			.....	  c  
-			.....	     
-			.....	     
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="1.0" canrotate="false">
-		<data>
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.1" canrotate="false" tag="wood">
-		<data>
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false" tag="table">
-		<data>
-			.....	     
-			.....	     
-			.....	 ttt 
-			.....	     
-			.....	     
-		</data>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false" tag="npc">
-		<data>
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-		</data>
-		<object x="2" y="2" type="npc"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false" tag="enemy">
-		<data>
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-		</data>
-		<object x="2" y="2" type="enemy"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false" tag="enemy">
-		<data>
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-		</data>
-		<object x="1" y="1" type="enemy"/>
-		<object x="3" y="3" type="enemy"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false" tag="item">
-		<data>
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-		</data>
-		<object x="2" y="2" type="item"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false" tag="start">
-		<data>
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-		</data>
-		<object x="2" y="2" type="start"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false" tag="goal">
-		<data>
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-		</data>
-		<object x="2" y="2" type="goal"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-house">
-		<data>
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-		</data>
-		<object x="2" y="2" type="inter-area-bridge-house"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.25" canrotate="true" tag="inter-area-bridge-house">
-		<data>
-			.....	     
-			.....	 www 
-			.....	 w   
-			.....	 www 
-			.....	     
-		</data>
-		<object x="2" y="2" type="inter-area-bridge-house"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-castle">
-		<data>
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-		</data>
-		<object x="2" y="2" type="inter-area-bridge-castle"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-castle">
-		<data>
-			.....	     
-			.....	 www 
-			.....	 w   
-			.....	 www 
-			.....	     
-		</data>
-		<object x="2" y="2" type="inter-area-bridge-castle"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-forest">
-		<data>
-			.....	ww ww
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-		</data>
-		<object x="2" y="0" type="inter-area-bridge-forest"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
-		<tag name="inter-area-bridge-village"/>
-		<data>
-			.....	ww ww
-			.....	     
-			.....	     
-			.....	     
-			.....	     
-		</data>
-		<object x="2" y="0" type="inter-area-bridge-village"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-castle-lock">
-		<data>
-			.....	     
-			.....	 wwww
-			.....	 w   
-			.....	 wwww
-			.....	     
-		</data>
-		<object x="2" y="2" type="inter-area-bridge-castle"/>
-		<object x="4" y="2" type="door"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.25" canrotate="true" tag="inter-area-bridge-house-lock">
-		<data>
-			.....	     
-			.....	 wwww
-			.....	 w   
-			.....	 wwww
-			.....	     
-		</data>
-		<object x="2" y="2" type="inter-area-bridge-house"/>
-		<object x="4" y="2" type="door"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-forest-lock">
-		<data>
-			.....	ww ww
-			.....	 w w 
-			.....	 w w 
-			.....	     
-			.....	     
-		</data>
-		<object x="2" y="0" type="inter-area-bridge-forest"/>
-		<object x="2" y="2" type="door"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-village-lock">
-		<data>
-			.....	ww ww
-			.....	 w w 
-			.....	 w w 
-			.....	     
-			.....	     
-		</data>
-		<object x="2" y="0" type="inter-area-bridge-village"/>
-		<object x="2" y="2" type="door"/>
-	</pattern>	
-	<pattern type="castle" dx="5" dy="5" north="none" east="wall-door" south="none" west="none" priority="0" weight="0.25" canrotate="true" tag="inter-area-bridge-house-lock">
-		<data>
-			.....	    p
-			.....	 wwww
-			.....	 w   
-			.....	 wwww
-			.....	    p
-		</data>
-		<object x="2" y="2" type="inter-area-bridge-house"/>
-		<object x="4" y="2" type="door"/>
-	</pattern>
-	<pattern type="castle" dx="5" dy="5" north="none" east="wall-door" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-castle-lock">
-		<data>
-			.....	    p
-			.....	 wwww
-			.....	 w   
-			.....	 wwww
-			.....	    p
-		</data>
-		<object x="2" y="2" type="inter-area-bridge-castle"/>
-		<object x="4" y="2" type="door"/>
-	</pattern>	
-	<pattern type="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-castle-2-locks">
-		<data>
-			.....	ww ww
-			.....	 w w 
-			.....	 w w 
-			.....	 w w 
-			.....	     
-		</data>
-		<object x="2" y="0" type="inter-area-bridge-castle"/>
-		<object x="2" y="2" type="door"/>
-		<object x="2" y="3" type="door"/>
-	</pattern>	
-	<pattern type="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-village-2-locks">
-		<data>
-			.....	ww ww
-			.....	 w w 
-			.....	 w w 
-			.....	 w w 
-			.....	     
-		</data>
-		<object x="2" y="0" type="inter-area-bridge-village"/>
-		<object x="2" y="2" type="door"/>
-		<object x="2" y="3" type="door"/>
-	</pattern>	
-	<pattern type="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-forest-2-locks">
-		<data>
-			.....	ww ww
-			.....	 w w 
-			.....	 w w 
-			.....	 w w 
-			.....	     
-		</data>
-		<object x="2" y="0" type="inter-area-bridge-forest"/>
-		<object x="2" y="2" type="door"/>
-		<object x="2" y="3" type="door"/>
-	</pattern>
-</PatternBase>
+<patterns>
+  <pattern width="5" height="5" type="castle" tag="path-e-s" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>wwwww</row>
+      <row>w    </row>
+      <row>w    </row>
+      <row>w    </row>
+      <row>w    </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="path-e-s" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" canrotate="true" priority="0" weight="0.2">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>wwwww</row>
+      <row>www  </row>
+      <row>www  </row>
+      <row>w    </row>
+      <row>w    </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="path-e-s" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" canrotate="true" priority="0" weight="0.2">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>wwwww</row>
+      <row>w    </row>
+      <row>w p  </row>
+      <row>w    </row>
+      <row>w    </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="0.25">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>wwwww</row>
+      <row>     </row>
+      <row>  p  </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="bookshelves,path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="0.5">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>wwwww</row>
+      <row>bbbbb</row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>wwwww</row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>wwwww</row>
+      <row>  w  </row>
+      <row>  w  </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="wall-passage" east="none" south="none" west="none" canrotate="true" priority="1" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>ww ww</row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="" north="wall,outer-wall" east="none" south="middle-wall" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>wwwww</row>
+      <row>  w  </row>
+      <row>  w  </row>
+      <row>  w  </row>
+      <row>  w  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="" north="middle-wall" east="none" south="middle-wall" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>  w  </row>
+      <row>  w  </row>
+      <row>  w  </row>
+      <row>  w  </row>
+      <row>  w  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="middle-wall" east="none" south="middle-wall" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>  w  </row>
+      <row>  w  </row>
+      <row>     </row>
+      <row>  w  </row>
+      <row>  w  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="middle-wall" east="none" south="middle-wall" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>  w  </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>  w  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="" north="middle-wall" east="middle-wall" south="middle-wall" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>  w  </row>
+      <row>  w  </row>
+      <row>  www</row>
+      <row>  w  </row>
+      <row>  w  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="" north="middle-wall" east="middle-wall" south="middle-wall" west="middle-wall" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>  w  </row>
+      <row>  w  </row>
+      <row>wwwww</row>
+      <row>  w  </row>
+      <row>  w  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="middle-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>  w  </row>
+      <row>  w  </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="door,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="wall-door" east="none" south="none" west="none" canrotate="true" priority="1" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>ww ww</row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="2-doors,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="wall-door" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>ww ww</row>
+      <row> w w </row>
+      <row> w w </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="door"/>
+    <object x="2" y="2" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="carpet,path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>wwwww</row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="carpet,path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>wwwww</row>
+      <row>  h  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="carpet,path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>wwwww</row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="carpet,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="carpet" east="none" south="carpet" west="none" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="carpet,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="carpet" east="none" south="none" west="none" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="2" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="wood,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="2" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="table,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="2" weight="0.5">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row> ttt </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="npc,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="2" weight="0.25">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="npc"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="enemy,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="2" weight="0.5">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="enemy"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="enemy,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="2" weight="0.5">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="1" y="1" type="enemy"/>
+    <object x="3" y="3" type="enemy"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="item,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="2" weight="0.25">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="item"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="start,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="0" weight="0.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="start"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="goal,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="0" weight="0.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="goal"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="inter-area-bridge-house,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="inter-area-bridge-house"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="inter-area-bridge-house,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" canrotate="true" priority="0" weight="0.25">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row> www </row>
+      <row> w   </row>
+      <row> www </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="inter-area-bridge-house"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="inter-area-bridge-castle,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="inter-area-bridge-castle"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="inter-area-bridge-castle,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row> www </row>
+      <row> w   </row>
+      <row> www </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="inter-area-bridge-castle"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="inter-area-bridge-forest,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="outer-wall" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>ww ww</row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="inter-area-bridge-forest"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="outer-wall" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>ww ww</row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="inter-area-bridge-village"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="inter-area-bridge-castle-lock,path-w-n,path-w-s,path-n-s" north="none" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row> wwww</row>
+      <row> w   </row>
+      <row> wwww</row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="inter-area-bridge-castle"/>
+    <object x="4" y="2" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="inter-area-bridge-house-lock,path-w-n,path-w-s,path-n-s" north="none" east="none" south="none" west="none" canrotate="true" priority="0" weight="0.25">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row> wwww</row>
+      <row> w   </row>
+      <row> wwww</row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="inter-area-bridge-house"/>
+    <object x="4" y="2" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="inter-area-bridge-forest-lock,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="outer-wall" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>ww ww</row>
+      <row> w w </row>
+      <row> w w </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="inter-area-bridge-forest"/>
+    <object x="2" y="2" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="inter-area-bridge-village-lock,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="outer-wall" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>ww ww</row>
+      <row> w w </row>
+      <row> w w </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="inter-area-bridge-village"/>
+    <object x="2" y="2" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="inter-area-bridge-house-lock,path-w-n,path-w-s,path-n-s" north="none" east="wall-door" south="none" west="none" canrotate="true" priority="0" weight="0.25">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>    p</row>
+      <row> wwww</row>
+      <row> w   </row>
+      <row> wwww</row>
+      <row>    p</row>
+    </layer>
+    <object x="2" y="2" type="inter-area-bridge-house"/>
+    <object x="4" y="2" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="inter-area-bridge-castle-lock,path-w-n,path-w-s,path-n-s" north="none" east="wall-door" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>    p</row>
+      <row> wwww</row>
+      <row> w   </row>
+      <row> wwww</row>
+      <row>    p</row>
+    </layer>
+    <object x="2" y="2" type="inter-area-bridge-castle"/>
+    <object x="4" y="2" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="inter-area-bridge-castle-2-locks,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="outer-wall" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>ww ww</row>
+      <row> w w </row>
+      <row> w w </row>
+      <row> w w </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="inter-area-bridge-castle"/>
+    <object x="2" y="2" type="door"/>
+    <object x="2" y="3" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="inter-area-bridge-village-2-locks,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="outer-wall" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>ww ww</row>
+      <row> w w </row>
+      <row> w w </row>
+      <row> w w </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="inter-area-bridge-village"/>
+    <object x="2" y="2" type="door"/>
+    <object x="2" y="3" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="castle" tag="inter-area-bridge-forest-2-locks,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="outer-wall" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+      <row>.....</row>
+    </layer>
+    <layer layer="1">
+      <row>ww ww</row>
+      <row> w w </row>
+      <row> w w </row>
+      <row> w w </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="inter-area-bridge-forest"/>
+    <object x="2" y="2" type="door"/>
+    <object x="2" y="3" type="door"/>
+  </pattern>
+</patterns>

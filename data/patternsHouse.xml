@@ -1,581 +1,939 @@
-<PatternBase>
-	<tile symbol="." type="floor"/>
-	<tile symbol="," type="grass"/>
-	<tile symbol="~" type="water"/>
-	<tile symbol="#" type="fence"/>
-	<tile symbol="@" type="house"/>
-	<tile symbol="0" type="rock"/>
-
-	<tile symbol="a" type="castle-locked"/>
-	<tile symbol="b" type="bookshelves"/>
-	<tile symbol="c" type="carpet"/>
-	<tile symbol="d" type="door"/>
-	<tile symbol="e" type="house-decoration"/>
-	<tile symbol="h" type="throne"/>
-	<tile symbol="k" type="darktower-locked"/>
-	<tile symbol="o" type="wood"/>
-	<tile symbol="p" type="pillar"/>
-	<tile symbol="r" type="tree"/>
-	<tile symbol="t" type="table"/>
-	<tile symbol="v" type="cave"/>
-	<tile symbol="w" type="wall"/>
-
-	<tile symbol="A" type="castle"/>
-	<tile symbol="C" type="inter-area-bridge-castle"/>
-	<tile symbol="E" type="enemy"/>
-	<tile symbol="F" type="inter-area-bridge-forest"/>
-	<tile symbol="G" type="goal"/>
-	<tile symbol="H" type="inter-area-bridge-house"/>
-	<tile symbol="K" type="darktower"/>
-	<tile symbol="N" type="npc"/>
-	<tile symbol="R" type="choppable-tree"/>
-	<tile symbol="S" type="start"/>
-	<tile symbol="V" type="inter-area-bridge-village"/>
-	<tile symbol="W" type="wood-wall"/>
-	
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="1.0" canrotate="true">
-		<data>
-			ooooo	WWWWW
-			ooooo	W    
-			ooooo	W    
-			ooooo	W    
-			ooooo	W    
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="wall,outer-wall" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true">
-		<data>
-			ooooo	WWWWW
-			ooooo	We eW
-			ooooo	W   W
-			ooooo	We eW
-			ooooo	WW WW
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="wall,outer-wall" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true" tag="bookshelves">
-		<data>
-			ooooo	WWWWW
-			ooooo	WbbbW
-			ooooo	W   W
-			ooooo	We eW
-			ooooo	WW WW
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="wall,outer-wall" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true" tag="enemy">
-		<data>
-			ooooo	WWWWW
-			ooooo	We eW
-			ooooo	W   W
-			ooooo	We eW
-			ooooo	WW WW
-		</data>
-		<object x="2" y="2" type="enemy"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="wall,outer-wall" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true" tag="item">
-		<data>
-			ooooo	WWWWW
-			ooooo	We eW
-			ooooo	W   W
-			ooooo	We eW
-			ooooo	WW WW
-		</data>
-		<object x="2" y="2" type="item"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true" tag="enemy">
-		<data>
-			ooooo	WWWWW
-			ooooo	We eW
-			ooooo	W    
-			ooooo	We eW
-			ooooo	WW WW
-		</data>
-		<object x="2" y="2" type="enemy"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true" tag="item">
-		<data>
-			ooooo	WWWWW
-			ooooo	We eW
-			ooooo	W    
-			ooooo	We eW
-			ooooo	WW WW
-		</data>
-		<object x="2" y="2" type="item"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.5" canrotate="true" tag="bookshelves">
-		<data>
-			ooooo	WWWWW
-			ooooo	bbbbb
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.25" canrotate="true" tag="bookshelves,enemy">
-		<data>
-			ooooo	WWWWW
-			ooooo	bbbbb
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="3" type="enemy"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.5" canrotate="true" tag="bookshelves">
-		<data>
-			ooooo	WWWWW
-			ooooo	 bbb 
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			ooooo	WWWWW
-			ooooo	 e e 
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true" tag="enemy">
-		<data>
-			ooooo	WWWWW
-			ooooo	 e e 
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="3" type="enemy"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			ooooo	WWWWW
-			ooooo	 eee 
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			ooooo	WWWWW
-			ooooo	  e  
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true" tag="item">
-		<data>
-			ooooo	WWWWW
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="1" type="item"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
-		<data>
-			ooooo	WWWWW
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			ooooo	WWWWW
-			ooooo	  W  
-			ooooo	  W  
-			ooooo	     
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			ooooo	WWWWW
-			ooooo	 eWe 
-			ooooo	  W  
-			ooooo	     
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.5" canrotate="true">
-		<data>
-			ooooo	WWWWW
-			ooooo	  W  
-			ooooo	  W  
-			ooooo	  W  
-			ooooo	  W  
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.5" canrotate="true">
-		<data>
-			ooooo	WWWWW
-			ooooo	 eWe 
-			ooooo	  W  
-			ooooo	  W  
-			ooooo	  W  
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="middle-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			ooooo	  W  
-			ooooo	  W  
-			ooooo	  W  
-			ooooo	  W  
-			ooooo	  W  
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="middle-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			ooooo	  W  
-			ooooo	  We 
-			ooooo	  We 
-			ooooo	  We 
-			ooooo	  W  
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="middle-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			ooooo	  W  
-			ooooo	  W  
-			ooooo	     
-			ooooo	  W  
-			ooooo	  W  
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="middle-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			ooooo	  W  
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	  W  
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="middle-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			ooooo	  W  
-			ooooo	  e  
-			ooooo	     
-			ooooo	  e  
-			ooooo	  W  
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="middle-wall" east="middle-wall" south="none" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			ooooo	  W  
-			ooooo	  W  
-			ooooo	  WWW
-			ooooo	     
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="middle-wall" east="middle-wall" south="none" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			ooooo	  W  
-			ooooo	  We 
-			ooooo	  WWW
-			ooooo	     
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="middle-wall" east="middle-wall" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
-		<data>
-			ooooo	  W  
-			ooooo	  W  
-			ooooo	  WWW
-			ooooo	  W  
-			ooooo	  W  
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall-passage" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
-		<data>
-			ooooo	WW WW
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true" tag="door">
-		<data>
-			ooooo	WW WW
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="0" type="door"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="0" weight="1.0" canrotate="true" tag="2-doors">
-		<data>
-			ooooo	WW WW
-			ooooo	 W W 
-			ooooo	 W W 
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="0" type="door"/>
-		<object x="2" y="2" type="door"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="false" tag="carpet">
-		<data>
-			ooooo	WWWWW
-			ooooo	  c  
-			ooooo	  c  
-			ooooo	  c  
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1" canrotate="false" tag="carpet">
-		<data>
-			ooooo	WWWWW
-			ooooo	  h  
-			ooooo	  c  
-			ooooo	  c  
-			ooooo	  c  
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1" canrotate="false" tag="carpet">
-		<data>
-			ooooo	WWWWW
-			ooooo	  c  
-			ooooo	  c  
-			ooooo	  c  
-			ooooo	  c  
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="carpet" east="none" south="carpet" west="none" priority="0" weight="1.0" canrotate="false" tag="carpet">
-		<data>
-			ooooo	  c  
-			ooooo	  c  
-			ooooo	  c  
-			ooooo	  c  
-			ooooo	  c  
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="carpet" east="none" south="none" west="none" priority="0" weight="1.0" canrotate="false" tag="carpet">
-		<data>
-			ooooo	  c  
-			ooooo	  c  
-			ooooo	  c  
-			ooooo	     
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="1.0" canrotate="false">
-		<data>
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false" tag="table">
-		<data>
-			ooooo	     
-			ooooo	     
-			ooooo	 ttt 
-			ooooo	     
-			ooooo	     
-		</data>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false" tag="npc">
-		<data>
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="2" type="npc"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false" tag="enemy">
-		<data>
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="2" type="enemy"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false" tag="enemy">
-		<data>
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="1" y="1" type="enemy"/>
-		<object x="3" y="3" type="enemy"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false" tag="item">
-		<data>
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="2" type="item"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false" tag="start">
-		<data>
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="2" type="start"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false" tag="goal">
-		<data>
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="2" type="goal"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-house">
-		<data>
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="2" type="inter-area-bridge-house"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.25" canrotate="true" tag="inter-area-bridge-house">
-		<data>
-			ooooo	     
-			ooooo	 WWW 
-			ooooo	 W   
-			ooooo	 WWW 
-			ooooo	     
-		</data>
-		<object x="2" y="2" type="inter-area-bridge-house"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.25" canrotate="true" tag="inter-area-bridge-house-lock">
-		<data>
-			ooooo	     
-			ooooo	 WWW 
-			ooooo	 W   
-			ooooo	 WWW 
-			ooooo	     
-		</data>
-		<object x="2" y="2" type="inter-area-bridge-house"/>
-		<object x="3" y="2" type="door"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="wall,outer-wall" priority="0" weight="0.25" canrotate="true" tag="inter-area-bridge-house-2-locks">
-		<data>
-			ooooo	W    
-			ooooo	WWWW 
-			ooooo	W    
-			ooooo	WWWW 
-			ooooo	W    
-		</data>
-		<object x="1" y="2" type="inter-area-bridge-house"/>
-		<object x="2" y="2" type="door"/>
-		<object x="3" y="2" type="door"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-forest">
-		<data>
-			ooooo	WW WW
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="0" type="inter-area-bridge-forest"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-village">
-		<data>
-			ooooo	WW WW
-			ooooo	     
-			ooooo	     
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="0" type="inter-area-bridge-village"/>
-	</pattern>	
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-forest-lock">
-		<data>
-			o,,,o	W   W
-			o,,,o	W   W
-			ooooo	WW WW
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="0" type="inter-area-bridge-forest"/>
-		<object x="2" y="2" type="door"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-forest-2-locks">
-		<data>
-			o,,,o	W   W
-			o,,,o	W   W
-			ooooo	WW WW
-			ooooo	 W W 
-			ooooo	     
-		</data>
-		<object x="2" y="0" type="inter-area-bridge-forest"/>
-		<object x="2" y="2" type="door"/>
-		<object x="2" y="3" type="door"/>
-	</pattern>
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-village-lock">
-		<data>
-			o,,,o	W   W
-			o,,,o	W   W
-			ooooo	WW WW
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="0" type="inter-area-bridge-village"/>
-		<object x="2" y="2" type="door"/>
-	</pattern>	
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-village-2-locks">
-		<data>
-			o,,,o	W   W
-			o,,,o	W   W
-			ooooo	WW WW
-			ooooo	 W W 
-			ooooo	     
-		</data>
-		<object x="2" y="0" type="inter-area-bridge-village"/>
-		<object x="2" y="2" type="door"/>
-		<object x="2" y="3" type="door"/>
-	</pattern>	
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-house-lock">
-		<data>
-			ooooo	WW WW
-			ooooo	 W W 
-			ooooo	 W W 
-			ooooo	     
-			ooooo	     
-		</data>
-		<object x="2" y="0" type="inter-area-bridge-house"/>
-		<object x="2" y="2" type="door"/>
-	</pattern>	
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-house-2-locks">
-		<data>
-			ooooo	WW WW
-			ooooo	 W W 
-			ooooo	 W W 
-			ooooo	 W W 
-			ooooo	     
-		</data>
-		<object x="2" y="0" type="inter-area-bridge-house"/>
-		<object x="2" y="2" type="door"/>
-		<object x="2" y="3" type="door"/>
-	</pattern>	
-</PatternBase>
+<patterns>
+  <pattern width="5" height="5" type="house" tag="path-e-s" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>W    </row>
+      <row>W    </row>
+      <row>W    </row>
+      <row>W    </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="" north="wall,outer-wall" east="wall,outer-wall" south="none" west="wall,outer-wall" canrotate="true" priority="0" weight="0.15">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>We eW</row>
+      <row>W   W</row>
+      <row>We eW</row>
+      <row>WW WW</row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="bookshelves" north="wall,outer-wall" east="wall,outer-wall" south="none" west="wall,outer-wall" canrotate="true" priority="0" weight="0.15">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>WbbbW</row>
+      <row>W   W</row>
+      <row>We eW</row>
+      <row>WW WW</row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="enemy" north="wall,outer-wall" east="wall,outer-wall" south="none" west="wall,outer-wall" canrotate="true" priority="0" weight="0.15">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>We eW</row>
+      <row>W   W</row>
+      <row>We eW</row>
+      <row>WW WW</row>
+    </layer>
+    <object x="2" y="2" type="enemy"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="item" north="wall,outer-wall" east="wall,outer-wall" south="none" west="wall,outer-wall" canrotate="true" priority="0" weight="0.15">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>We eW</row>
+      <row>W   W</row>
+      <row>We eW</row>
+      <row>WW WW</row>
+    </layer>
+    <object x="2" y="2" type="item"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="enemy,path-e-s" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" canrotate="true" priority="0" weight="0.15">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>We eW</row>
+      <row>W    </row>
+      <row>We eW</row>
+      <row>WW WW</row>
+    </layer>
+    <object x="2" y="2" type="enemy"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="item,path-e-s" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" canrotate="true" priority="0" weight="0.15">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>We eW</row>
+      <row>W    </row>
+      <row>We eW</row>
+      <row>WW WW</row>
+    </layer>
+    <object x="2" y="2" type="item"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="bookshelves,path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="0.5">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>bbbbb</row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="bookshelves,enemy,path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="0.25">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>bbbbb</row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="3" type="enemy"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="bookshelves,path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="0.5">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row> bbb </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row> e e </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="enemy,path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row> e e </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="3" type="enemy"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row> eee </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>  e  </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="item,path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="1" type="item"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="1.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>  W  </row>
+      <row>  W  </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row> eWe </row>
+      <row>  W  </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="" north="wall,outer-wall" east="none" south="middle-wall" west="none" canrotate="true" priority="1" weight="0.5">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>  W  </row>
+      <row>  W  </row>
+      <row>  W  </row>
+      <row>  W  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="" north="wall,outer-wall" east="none" south="middle-wall" west="none" canrotate="true" priority="1" weight="0.5">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row> eWe </row>
+      <row>  W  </row>
+      <row>  W  </row>
+      <row>  W  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="" north="middle-wall" east="none" south="middle-wall" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>  W  </row>
+      <row>  W  </row>
+      <row>  W  </row>
+      <row>  W  </row>
+      <row>  W  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="" north="middle-wall" east="none" south="middle-wall" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>  W  </row>
+      <row>  We </row>
+      <row>  We </row>
+      <row>  We </row>
+      <row>  W  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="middle-wall" east="none" south="middle-wall" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>  W  </row>
+      <row>  W  </row>
+      <row>     </row>
+      <row>  W  </row>
+      <row>  W  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="middle-wall" east="none" south="middle-wall" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>  W  </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>  W  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="middle-wall" east="none" south="middle-wall" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>  W  </row>
+      <row>  e  </row>
+      <row>     </row>
+      <row>  e  </row>
+      <row>  W  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="path-w-s" north="middle-wall" east="middle-wall" south="none" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>  W  </row>
+      <row>  W  </row>
+      <row>  WWW</row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="path-w-s" north="middle-wall" east="middle-wall" south="none" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>  W  </row>
+      <row>  We </row>
+      <row>  WWW</row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="" north="middle-wall" east="middle-wall" south="middle-wall" west="none" canrotate="true" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>  W  </row>
+      <row>  W  </row>
+      <row>  WWW</row>
+      <row>  W  </row>
+      <row>  W  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="wall-passage" east="none" south="none" west="none" canrotate="true" priority="1" weight="1.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WW WW</row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="door,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="wall-door" east="none" south="none" west="none" canrotate="true" priority="1" weight="1.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WW WW</row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="2-doors,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="wall-door" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WW WW</row>
+      <row> W W </row>
+      <row> W W </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="door"/>
+    <object x="2" y="2" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="carpet,path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="1.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="carpet,path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>  h  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="carpet,path-w-e,path-w-s,path-e-s" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WWWWW</row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="carpet,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="carpet" east="none" south="carpet" west="none" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="carpet,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="carpet" east="none" south="none" west="none" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>  c  </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="2" weight="1.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="table,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="2" weight="0.5">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row> ttt </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="npc,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="2" weight="0.25">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="npc"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="enemy,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="2" weight="0.5">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="enemy"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="enemy,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="2" weight="0.25">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="1" y="1" type="enemy"/>
+    <object x="3" y="3" type="enemy"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="item,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="2" weight="0.25">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="item"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="start,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="0" weight="0.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="start"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="goal,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="0" weight="0.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="goal"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="inter-area-bridge-house,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="inter-area-bridge-house"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="inter-area-bridge-house,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" canrotate="true" priority="0" weight="0.25">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row> WWW </row>
+      <row> W   </row>
+      <row> WWW </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="inter-area-bridge-house"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="inter-area-bridge-house-lock,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="none" canrotate="true" priority="0" weight="0.25">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>     </row>
+      <row> WWW </row>
+      <row> W   </row>
+      <row> WWW </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="2" type="inter-area-bridge-house"/>
+    <object x="3" y="2" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="inter-area-bridge-house-2-locks,path-n-e,path-n-s,path-e-s" north="none" east="none" south="none" west="wall,outer-wall" canrotate="true" priority="0" weight="0.25">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>W    </row>
+      <row>WWWW </row>
+      <row>W    </row>
+      <row>WWWW </row>
+      <row>W    </row>
+    </layer>
+    <object x="1" y="2" type="inter-area-bridge-house"/>
+    <object x="2" y="2" type="door"/>
+    <object x="3" y="2" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="inter-area-bridge-forest,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="outer-wall" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WW WW</row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="inter-area-bridge-forest"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="inter-area-bridge-village,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="outer-wall" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WW WW</row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="inter-area-bridge-village"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="inter-area-bridge-forest-lock,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="outer-wall" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>o,,,o</row>
+      <row>o,,,o</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>W   W</row>
+      <row>W   W</row>
+      <row>WW WW</row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="inter-area-bridge-forest"/>
+    <object x="2" y="2" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="inter-area-bridge-forest-2-locks,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="outer-wall" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>o,,,o</row>
+      <row>o,,,o</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>W   W</row>
+      <row>W   W</row>
+      <row>WW WW</row>
+      <row> W W </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="inter-area-bridge-forest"/>
+    <object x="2" y="2" type="door"/>
+    <object x="2" y="3" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="inter-area-bridge-village-lock,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="outer-wall" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>o,,,o</row>
+      <row>o,,,o</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>W   W</row>
+      <row>W   W</row>
+      <row>WW WW</row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="inter-area-bridge-village"/>
+    <object x="2" y="2" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="inter-area-bridge-village-2-locks,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="outer-wall" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>o,,,o</row>
+      <row>o,,,o</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>W   W</row>
+      <row>W   W</row>
+      <row>WW WW</row>
+      <row> W W </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="inter-area-bridge-village"/>
+    <object x="2" y="2" type="door"/>
+    <object x="2" y="3" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="inter-area-bridge-house-lock,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="outer-wall" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WW WW</row>
+      <row> W W </row>
+      <row> W W </row>
+      <row>     </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="inter-area-bridge-house"/>
+    <object x="2" y="2" type="door"/>
+  </pattern>
+  <pattern width="5" height="5" type="house" tag="inter-area-bridge-house-2-locks,path-w-n,path-w-e,path-w-s,path-n-e,path-n-s,path-e-s" north="outer-wall" east="none" south="none" west="none" canrotate="true" priority="0" weight="1.0">
+    <layer layer="0">
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+      <row>ooooo</row>
+    </layer>
+    <layer layer="1">
+      <row>WW WW</row>
+      <row> W W </row>
+      <row> W W </row>
+      <row> W W </row>
+      <row>     </row>
+    </layer>
+    <object x="2" y="0" type="inter-area-bridge-house"/>
+    <object x="2" y="2" type="door"/>
+    <object x="2" y="3" type="door"/>
+  </pattern>
+</patterns>

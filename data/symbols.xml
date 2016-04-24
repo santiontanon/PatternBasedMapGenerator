@@ -1,0 +1,39 @@
+<Symbols>
+	<tile symbol="." type="floor"/>
+	<tile symbol="," type="grass"/>
+	<tile symbol="~" type="water"/>
+	<tile symbol="#" type="fence"/>
+	<tile symbol="@" type="house"/>
+	<tile symbol="$" type="large-house"/>
+	<tile symbol="%" type="large-house-closed"/>
+	<tile symbol="0" type="rock"/>
+	<tile symbol="=" type="path"/>
+
+	<tile symbol="a" type="castle-locked"/>
+	<tile symbol="b" type="bookshelves"/>
+	<tile symbol="c" type="carpet"/>
+	<tile symbol="d" type="door"/>
+	<tile symbol="e" type="house-decoration"/>
+	<tile symbol="h" type="throne"/>
+	<tile symbol="i" type="item"/>
+	<tile symbol="k" type="darktower-locked"/>
+	<tile symbol="o" type="wood"/>
+	<tile symbol="p" type="pillar"/>
+	<tile symbol="r" type="tree"/>
+	<tile symbol="t" type="table"/>
+	<tile symbol="v" type="cave"/>
+	<tile symbol="w" type="wall"/>
+
+	<tile symbol="A" type="castle"/>
+	<tile symbol="C" type="inter-area-bridge-castle"/>
+	<tile symbol="E" type="enemy"/>
+	<tile symbol="F" type="inter-area-bridge-forest"/>
+	<tile symbol="G" type="goal"/>
+	<tile symbol="H" type="inter-area-bridge-house"/>
+	<tile symbol="K" type="darktower"/>
+	<tile symbol="N" type="npc"/>
+	<tile symbol="R" type="choppable-tree"/>
+	<tile symbol="S" type="start"/>
+	<tile symbol="V" type="inter-area-bridge-village"/>
+	<tile symbol="W" type="wood-wall"/>
+</Symbols>
