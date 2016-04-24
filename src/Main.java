@@ -105,19 +105,38 @@ public class Main {
     
     
     public static void loadInputConfiguration(String fileName) throws Exception {
-        symbolFileNames.add("data/symbols.xml");
-        patternFileNames.add("data/patternsForest.xml");
-        patternFileNames.add("data/patternsCastle.xml");
-        patternFileNames.add("data/patternsHouse.xml");
-        patternFileNames.add("data/patternsVillage.xml");
+        SAXBuilder builder = new SAXBuilder();
+        Element root = builder.build(fileName).getRootElement();
+        if (DEBUG>=1) System.out.println("Loading file '" + fileName + "'...");
         
-        // width, height, ...
+        for(Object o:root.getChildren("symbolFile")) {
+            Element e = (Element)o;
+            symbolFileNames.add(e.getAttributeValue("name"));
+        }
+        for(Object o:root.getChildren("patternsfile")) {
+            Element e = (Element)o;
+            patternFileNames.add(e.getAttributeValue("name"));
+        }
         
+        Element ps_e = root.getChild("patternSize");
+        patternWidth = Integer.parseInt(ps_e.getAttributeValue("width"));
+        patternHeight = Integer.parseInt(ps_e.getAttributeValue("height"));
+
+        Element ms_e = root.getChild("mapSize");
+        widthInPatterns = Integer.parseInt(ms_e.getAttributeValue("width"));
+        heightInPatterns = Integer.parseInt(ms_e.getAttributeValue("height"));
+        
+        // load constraints:
+        /*
         constraints.add(new RegularConstraint(TilePattern.TYPE, new Label("forest")));
         constraints.add(new BorderConstraint(new Label("outer-wall")));
         constraints.add(new NotBorderConstraint(new Label("outer-wall"), false));
-
-        // multipliers ...
+        */
+        
+        // load multipliers:
+        /*
+        ...
+        */
     }
             
     

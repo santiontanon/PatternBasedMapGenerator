@@ -1,9 +1,9 @@
 <PBMGInput>
-	<symbolFile name="data/symbols.xml"/>
-	<patternsfile name="data/patternsCastle.xml"/>
-	<patternsfile name="data/patternsForest.xml"/>
-	<patternsfile name="data/patternsHouse.xml"/>
-	<patternsfile name="data/patternsVillage.xml"/>
+	<symbolFile name="examples/symbols.xml"/>
+	<patternsfile name="examples/patternsCastle.xml"/>
+	<patternsfile name="examples/patternsForest.xml"/>
+	<patternsfile name="examples/patternsHouse.xml"/>
+	<patternsfile name="examples/patternsVillage.xml"/>
 	<patternSize width="5" height="5"/>
 	<mapSize width="5" height="5"/>
 	<constraints>
