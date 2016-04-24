@@ -1,0 +1,1324 @@
+<PatternBase>
+	<!--
+		When choosing a pattern for a given position, all of those that tie to the maximum value for priority will be sampled based on their weight
+	-->
+
+	<tile symbol="." type="floor"/>
+	<tile symbol="," type="grass"/>
+	<tile symbol="~" type="water"/>
+	<tile symbol="#" type="fence"/>
+	<tile symbol="@" type="house"/>
+	<tile symbol="$" type="large-house"/>
+	<tile symbol="0" type="rock"/>
+	<tile symbol="=" type="path"/>
+
+	<tile symbol="a" type="castle-locked"/>
+	<tile symbol="b" type="bookshelves"/>
+	<tile symbol="c" type="carpet"/>
+	<tile symbol="d" type="door"/>
+	<tile symbol="h" type="throne"/>
+	<tile symbol="k" type="darktower-locked"/>
+	<tile symbol="o" type="wood"/>
+	<tile symbol="p" type="pillar"/>
+	<tile symbol="r" type="tree"/>
+	<tile symbol="t" type="table"/>
+	<tile symbol="v" type="cave"/>
+	<tile symbol="w" type="wall"/>
+
+	<tile symbol="A" type="castle"/>
+	<tile symbol="C" type="inter-area-bridge-castle"/>
+	<tile symbol="E" type="enemy"/>
+	<tile symbol="F" type="inter-area-bridge-forest"/>
+	<tile symbol="G" type="goal"/>
+	<tile symbol="H" type="inter-area-bridge-house"/>
+	<tile symbol="K" type="darktower"/>
+	<tile symbol="N" type="npc"/>
+	<tile symbol="R" type="choppable-tree"/>
+	<tile symbol="S" type="start"/>
+	<tile symbol="V" type="inter-area-bridge-village"/>
+	<tile symbol="W" type="wood-wall"/>
+
+	<pattern area="forest" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="1" weight="1.0" canrotate="true">
+		<data>
+			,,,,,	rrrrr
+			,,,,,	r    
+			,,,,,	r    
+			,,,,,	r    
+			,,,,,	r    
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="1" weight="0.5" canrotate="true">
+		<data>
+			,,,,,	rrrrr
+			,,,,,	rrr  
+			,,,,,	rrr  
+			,,,,,	r    
+			,,,,,	r    
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
+		<data>
+			,,,,,	rrrrr
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
+		<data>
+			,,,,,	rrrrr
+			,,,,,	 rrr 
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,,,,	rrrrr
+			,,,,,	 rrr 
+			,,,,,	 rr  
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,,,,	rrrrr
+			,,,,,	  r  
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,,,,	rrrrr
+			,,,,,	  r  
+			,,,,,	  r  
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,,,,	rrrrr
+			,,,,,	 r r 
+			,,,,,	 rRr 
+			,,,,,	  R  
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall-passage" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
+		<data>
+			,,,,,	rr rr
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
+		<tag name="door"/>
+		<data>
+			,,,,,	rr rr
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="0" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="0" weight="1.0" canrotate="true">
+		<tag name="2-doors"/>
+		<data>
+			,,,,,	rr rr
+			,,,,,	 r r 
+			,,,,,	 r r 
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="0" type="door"/>
+		<object x="2" y="2" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="false">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	     
+			,,,,,	  r  
+			,,,,,	 rrr 
+			,,,,,	  r  
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	  0  
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	     
+			,,,,,	  0  
+			,,,,,	 000 
+			,,,,,	  0  
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall,outer-wall" east="none" south="middle-wall" west="none" priority="1" weight="1.0" canrotate="true">
+		<data>
+			,,,,,	rrrrr
+			,,,,,	  r  
+			,,,,,	  r  
+			,,,,,	  r  
+			,,,,,	  r  
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="middle-wall" south="none" west="middle-wall" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	rrrrr
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="middle-wall" south="none" west="middle-wall" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	rr rr
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="middle-wall" south="none" west="middle-wall" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,,,,	     
+			,,,,,	 rrr 
+			,,,,,	rrrrr
+			,,,,,	 rrr 
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="middle-wall" south="none" west="none" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	  rrr
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="middle-wall" east="middle-wall" south="none" west="none" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,,,,	  r  
+			,,,,,	  r  
+			,,,,,	  rrr
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="middle-wall" east="middle-wall" south="middle-wall" west="none" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,,,,	  r  
+			,,,,,	  r  
+			,,,,,	  rrr
+			,,,,,	  r  
+			,,,,,	  r  
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="outer-wall,wall" east="outer-wall,wall" south="outer-wall,wall" west="outer-wall,wall" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,,,,	rrrrr
+			,,,,,	rrrrr
+			,,,,,	rrrrr
+			,,,,,	rrrrr
+			,,,,,	rrrrr
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall" east="wall" south="wall" west="wall" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,,,,	rrrrr
+			,,,,,	rrrrr
+			,,,,,	rrr r
+			,,,,,	r rrr
+			,,,,,	rrrrr
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="bottom-wall" south="wall,outer-wall" west="bottom-wall" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	rrrrr
+			,,,,,	rrrrr
+			,,,,,	rrrrr
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="bottom-wall" south="wall,outer-wall" west="bottom-wall" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	r  rr
+			,,,,,	rrrrr
+			,,,,,	rrrrr
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall,outer-wall" east="top-wall" south="none" west="top-wall" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	rrrrr
+			,,,,,	rrrrr
+			,,,,,	rrrrr
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall,outer-wall" east="top-wall" south="none" west="top-wall" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	rrrrr
+			,,,,,	rrrrr
+			,,,,,	rr  r
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="right-wall" east="wall,outer-wall" south="right-wall" west="none" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	  rrr
+			,,,,,	  rrr
+			,,,,,	  rrr
+			,,,,,	  rrr
+			,,,,,	  rrr
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="left-wall" east="none" south="left-wall" west="wall,outer-wall" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	rrr  
+			,,,,,	rrr  
+			,,,,,	rrr  
+			,,,,,	rrr  
+			,,,,,	rrr  
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="left-wall" east="none" south="none" west="top-wall" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	rrr  
+			,,,,,	rrr  
+			,,,,,	rrr  
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="left-wall" east="none" south="none" west="top-wall" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	rrr  
+			,,,,,	rr   
+			,,,,,	r    
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="right-wall" east="top-wall" south="none" west="none" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	  rrr
+			,,,,,	  rrr
+			,,,,,	  rrr
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="right-wall" east="top-wall" south="none" west="none" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	  rrr
+			,,,,,	   rr
+			,,,,,	    r
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="bottom-wall" south="right-wall" west="none" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	  rrr
+			,,,,,	  rrr
+			,,,,,	  rrr
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="bottom-wall" south="right-wall" west="none" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	    r
+			,,,,,	   rr
+			,,,,,	  rrr
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="left-wall" west="bottom-wall" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	rrr  
+			,,,,,	rrr  
+			,,,,,	rrr  
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="left-wall" west="bottom-wall" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	r    
+			,,,,,	rr   
+			,,,,,	rrr  
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="outer-wall" east="none" south="river" west="none" priority="1" weight="0.5" canrotate="true">
+		<data>
+			,,~,,	rr rr
+			,,~,,	     
+			,,~,,	     
+			,,~,,	     
+			,,~,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="outer-wall" east="river" south="none" west="none" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,~,,	rr rr
+			,,~,,	     
+			,,~~~	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="outer-wall" east="none" south="none" west="river" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,~,,	rr rr
+			,,~,,	     
+			~~~,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="river" east="none" south="river" west="none" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,~,,	     
+			,,~,,	     
+			,,~,,	     
+			,,~,,	     
+			,,~,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="river" east="none" south="river" west="none" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,~,,	     
+			,,~~,	     
+			,,,~,	     
+			,,~~,	     
+			,,~,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="river" east="none" south="river" west="none" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,~,,	     
+			,,~,,	     
+			,,~,,	 ooo 
+			,,~,,	     
+			,,~,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="river" east="path" south="river" west="path" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,~,,	     
+			,,~,,	     
+			,,~,,	=ooo=
+			,,~,,	     
+			,,~,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="river" east="none" south="none" west="river" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,~,,	     
+			,,~,,	     
+			~~~,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="river" east="river" south="none" west="river" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,~,,	     
+			,,~,,	     
+			~~~~~	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="river" east="none" south="none" west="none" priority="1" weight="0.2" canrotate="true">
+		<data>
+			,,~,,	     
+			,~~~,	     
+			,~~~,	     
+			,~~~,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="water,outer-wall" east="water,outer-wall" south="water,outer-wall" west="water,outer-wall" priority="1" weight="0.5" canrotate="false">
+		<data>
+			~~~~~	     
+			~~~~~	     
+			~~~~~	     
+			~~~~~	     
+			~~~~~	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="water,outer-wall" east="top-water" south="none" west="top-water" priority="1" weight="0.5" canrotate="false">
+		<data>
+			~~~~~	     
+			~~~~~	     
+			~~~~~	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="water,outer-wall" east="top-water" south="river" west="top-water" priority="1" weight="0.5" canrotate="false">
+		<data>
+			~~~~~	     
+			~~~~~	     
+			~~~~~	     
+			,,~,,	     
+			,,~,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="bottom-water" south="water,outer-wall" west="bottom-water" priority="1" weight="0.5" canrotate="false">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			~~~~~	     
+			~~~~~	     
+			~~~~~	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="river" east="bottom-water" south="water,outer-wall" west="bottom-water" priority="1" weight="0.5" canrotate="false">
+		<data>
+			,,~,,	     
+			,,~,,	     
+			~~~~~	     
+			~~~~~	     
+			~~~~~	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="left-water" east="none" south="left-water" west="water,outer-wall" priority="1" weight="0.5" canrotate="false">
+		<data>
+			~~~,,	     
+			~~~,,	     
+			~~~,,	     
+			~~~,,	     
+			~~~,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="left-water" east="river" south="left-water" west="water,outer-wall" priority="1" weight="0.5" canrotate="false">
+		<data>
+			~~~,,	     
+			~~~,,	     
+			~~~~~	     
+			~~~,,	     
+			~~~,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="right-water" east="water,outer-wall" south="right-water" west="none" priority="1" weight="0.5" canrotate="false">
+		<data>
+			,,~~~	     
+			,,~~~	     
+			,,~~~	     
+			,,~~~	     
+			,,~~~	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="right-water" east="water,outer-wall" south="right-water" west="river" priority="1" weight="0.5" canrotate="false">
+		<data>
+			,,~~~	     
+			,,~~~	     
+			~~~~~	     
+			,,~~~	     
+			,,~~~	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="right-water" east="top-water" south="none" west="none" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,~~~	     
+			,,~~~	     
+			,,~~~	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="left-water" east="none" south="none" west="top-water" priority="1" weight="0.2" canrotate="false">
+		<data>
+			~~~,,	     
+			~~~,,	     
+			~~~,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="bottom-water" south="right-water" west="none" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,~~~	     
+			,,~~~	     
+			,,~~~	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="left-water" west="bottom-water" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			~~~,,	     
+			~~~,,	     
+			~~~,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="right-water" east="top-water" south="none" west="none" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,~~~	     
+			,,,~~	     
+			,,,,~	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="left-water" east="none" south="none" west="top-water" priority="1" weight="0.2" canrotate="false">
+		<data>
+			~~~,,	     
+			~~,,,	     
+			~,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="bottom-water" south="right-water" west="none" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,~	     
+			,,,~~	     
+			,,~~~	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="left-water" west="bottom-water" priority="1" weight="0.2" canrotate="false">
+		<data>
+			,,,,,	     
+			,,,,,	     
+			~,,,,	     
+			~~,,,	     
+			~~~,,	     
+		</data>
+	</pattern>	
+	<pattern area="forest" dx="5" dy="5" north="outer-wall" east="none" south="left-water" west="water,outer-wall" priority="1" weight="0.5" canrotate="false">
+		<data>
+			~~~,,	   rr
+			~~~,,	     
+			~~~,,	     
+			~~~,,	     
+			~~~,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="outer-wall" east="water,outer-wall" south="right-water" west="none" priority="1" weight="0.5" canrotate="false">
+		<data>
+			,,~~~	rr   
+			,,~~~	     
+			,,~~~	     
+			,,~~~	     
+			,,~~~	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="left-water" east="none" south="outer-wall" west="water,outer-wall" priority="1" weight="0.5" canrotate="false">
+		<data>
+			~~~,,	     
+			~~~,,	     
+			~~~,,	     
+			~~~,,	     
+			~~~,,	   rr
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="right-water" east="water,outer-wall" south="outer-wall" west="none" priority="1" weight="0.5" canrotate="false">
+		<data>
+			,,~~~	     
+			,,~~~	     
+			,,~~~	     
+			,,~~~	     
+			,,~~~	rr   
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="right-water" east="water,outer-wall" south="water,outer-wall" west="bottom-water" priority="1" weight="0.5" canrotate="false">
+		<data>
+			,,~~~	     
+			,,~~~	     
+			~~~~~	     
+			~~~~~	     
+			~~~~~	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="water,outer-wall" east="water,outer-wall" south="right-water" west="top-water" priority="1" weight="0.5" canrotate="false">
+		<data>
+			~~~~~	     
+			~~~~~	     
+			~~~~~	     
+			,,~~~	     
+			,,~~~	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="left-water" east="bottom-water" south="water,outer-wall" west="water,outer-wall" priority="1" weight="0.5" canrotate="false">
+		<data>
+			~~~,,	     
+			~~~,,	     
+			~~~~~	     
+			~~~~~	     
+			~~~~~	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="water,outer-wall" east="top-water" south="left-water" west="water,outer-wall" priority="1" weight="0.5" canrotate="false">
+		<data>
+			~~~~~	     
+			~~~~~	     
+			~~~~~	     
+			~~~,,	     
+			~~~,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="path" south="none" west="none" priority="2" weight="0.05" canrotate="true">
+		<tag name="path"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	  ===
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true">
+		<tag name="path"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	=====
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true">
+		<tag name="path"/>
+		<tag name="enemy"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	=====
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="enemy"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true">
+		<tag name="path"/>
+		<tag name="enemy"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	== ==
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="enemy"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true">
+		<tag name="path"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	== ==
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="enemy"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true">
+		<tag name="path"/>
+		<data>
+			,,,,,	     
+			,,,,,	 === 
+			,,,,,	== ==
+			,,,,,	     
+			,,,,,	     
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="path" east="path" south="path" west="path" priority="2" weight="0.1" canrotate="false">
+		<tag name="path"/>
+		<data>
+			,,,,,	  =  
+			,,,,,	  =  
+			,,,,,	=====
+			,,,,,	  =  
+			,,,,,	  =  
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="path" south="path" west="path" priority="2" weight="0.1" canrotate="true">
+		<tag name="path"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	=====
+			,,,,,	  =  
+			,,,,,	  =  
+		</data>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="path" south="path" west="none" priority="2" weight="0.1" canrotate="true">
+		<tag name="path"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	  ===
+			,,,,,	  =  
+			,,,,,	  =  
+		</data>
+	</pattern>
+
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false">
+		<tag name="npc"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="npc"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false">
+		<tag name="enemy"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="enemy"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false">
+		<tag name="enemy"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="1" y="1" type="enemy"/>
+		<object x="3" y="3" type="enemy"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false">
+		<tag name="item"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="item"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="2" weight="0.05" canrotate="true">
+		<tag name="item"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	  =  
+			,,,,,	  =  
+			,,,,,	  =  
+		</data>
+		<object x="2" y="2" type="item"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.0" canrotate="false">
+		<tag name="start"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="start"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false">
+		<tag name="goal"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="goal"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-castle"/>
+		<data>
+			,,,,,	     
+			,,,,,	 A   
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="1" y="2" width="2" type="inter-area-bridge-castle"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-castle"/>
+		<data>
+			,,,,,	     
+			,,,,,	 A   
+			,,,,,	     
+			,,,,,	  =  
+			,,,,,	  =  
+		</data>
+		<object x="1" y="2" width="2" type="inter-area-bridge-castle"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-castle"/>
+		<data>
+			,,,,,	     
+			,,,,,	 K   
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="1" y="2" width="2" type="inter-area-bridge-castle"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-castle"/>
+		<data>
+			,,,,,	     
+			,,,,,	 K   
+			,,,,,	     
+			,,,,,	 =   
+			,,,,,	 =   
+		</data>
+		<object x="1" y="2" width="2" type="inter-area-bridge-castle"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-castle-lock"/>
+		<data>
+			,,,,,	     
+			,,,,,	 A   
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="1" y="1" width="2" height="2" type="castle-locked"/>
+		<object x="1" y="2" width="2" type="inter-area-bridge-castle"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-castle-lock"/>
+		<data>
+			,,,,,	     
+			,,,,,	 A   
+			,,,,,	     
+			,,,,,	 =   
+			,,,,,	 =   
+		</data>
+		<object x="1" y="1" width="2" height="2" type="castle-locked"/>
+		<object x="1" y="2" width="2" type="inter-area-bridge-castle"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-castle-lock"/>
+		<data>
+			,,,,,	     
+			,,,,,	 K   
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="1" y="1" width="2" height="2" type="darktower-locked"/>
+		<object x="1" y="2" width="2" type="inter-area-bridge-castle"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-castle-lock"/>
+		<data>
+			,,,,,	     
+			,,,,,	 K   
+			,,,,,	     
+			,,,,,	  =  
+			,,,,,	  =  
+		</data>
+		<object x="1" y="1" width="2" height="2" type="darktower-locked"/>
+		<object x="1" y="2" width="2" type="inter-area-bridge-castle"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-house"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="inter-area-bridge-house"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-house"/>
+		<data>
+			,,,,,	     
+			,,,,,	 $   
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="inter-area-bridge-house"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-house-lock"/>
+		<data>
+			,,,,,	     
+			,,,,,	 ### 
+			,,,,,	 # # 
+			,,,,,	 # # 
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="inter-area-bridge-house"/>
+		<object x="2" y="3" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-house-lock"/>
+		<data>
+			,,,,,	rrrrr
+			,,,,,	 ### 
+			,,,,,	 # # 
+			,,,,,	 # # 
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="inter-area-bridge-house"/>
+		<object x="2" y="3" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-house-lock"/>
+		<data>
+			,,,,,	rrrrr
+			,,,,,	r### 
+			,,,,,	r# # 
+			,,,,,	r# # 
+			,,,,,	r    
+		</data>
+		<object x="2" y="2" type="inter-area-bridge-house"/>
+		<object x="2" y="3" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall-outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-house-2-locks"/>
+		<data>
+			,,,,,	rrrrr
+			,,,,,	 # # 
+			,,,,,	 # # 
+			,,,,,	 # # 
+			,,,,,	     
+		</data>
+		<object x="2" y="1" type="inter-area-bridge-house"/>
+		<object x="2" y="2" type="door"/>
+		<object x="2" y="3" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall-outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-house-2-locks"/>
+		<data>
+			,,,,,	rrrrr
+			,,,,,	r# # 
+			,,,,,	r# # 
+			,,,,,	r# # 
+			,,,,,	r    
+		</data>
+		<object x="2" y="1" type="inter-area-bridge-house"/>
+		<object x="2" y="2" type="door"/>
+		<object x="2" y="3" type="door"/>
+	</pattern>	
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-house"/>
+		<data>
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	  =  
+			,,,,,	  =  
+		</data>
+		<object x="2" y="2" type="inter-area-bridge-house"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-house"/>
+		<data>
+			,,,,,	     
+			,,,,,	 $   
+			,,,,,	     
+			,,,,,	  =  
+			,,,,,	  =  
+		</data>
+		<object x="2" y="2" type="inter-area-bridge-house"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-forest"/>
+		<data>
+			,,,,,	rr rr
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="0" type="inter-area-bridge-forest"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="outer-wall" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-forest"/>
+		<data>
+			,,,,,	rr=rr
+			,,,,,	  =  
+			,,,,,	  =  
+			,,,,,	  =  
+			,,,,,	  =  
+		</data>
+		<object x="2" y="0" type="inter-area-bridge-forest"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-forest"/>
+		<data>
+			,,,,,	     
+			,,,,,	 000 
+			,,v,,	 0 0 
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="inter-area-bridge-forest"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-forest"/>
+		<data>
+			,,,,,	     
+			,,,,,	 000 
+			,,v,,	 0 0 
+			,,,,,	  =  
+			,,,,,	  =  
+		</data>
+		<object x="2" y="2" type="inter-area-bridge-forest"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-forest-lock"/>
+		<data>
+			,,,,,	     
+			,,,,,	 000 
+			,,v,,	 0 0 
+			,,,,,	 0 0 
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="inter-area-bridge-forest"/>
+		<object x="2" y="3" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-forest-lock"/>
+		<data>
+			,,,,,	     
+			,,,,,	 000 
+			,,v,,	 0 0 
+			,,,,,	 0 0 
+			,,,,,	  =  
+		</data>
+		<object x="2" y="2" type="inter-area-bridge-forest"/>
+		<object x="2" y="3" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-forest"/>
+		<data>
+			,,,,,	     
+			,,,,,	 rrr 
+			,,v,,	 r r 
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="inter-area-bridge-forest"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-forest"/>
+		<data>
+			,,,,,	     
+			,,,,,	 rrr 
+			,,v,,	 r r 
+			,,,,,	  =  
+			,,,,,	  =  
+		</data>
+		<object x="2" y="2" type="inter-area-bridge-forest"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-forest-lock"/>
+		<data>
+			,,,,,	     
+			,,,,,	 rrr 
+			,,v,,	 r r 
+			,,,,,	 r r 
+			,,,,,	     
+		</data>
+		<object x="2" y="2" type="inter-area-bridge-forest"/>
+		<object x="2" y="3" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-forest-lock"/>
+		<data>
+			,,,,,	     
+			,,,,,	 rrr 
+			,,v,,	 r r 
+			,,,,,	 r r 
+			,,,,,	  =  
+		</data>
+		<object x="2" y="2" type="inter-area-bridge-forest"/>
+		<object x="2" y="3" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-village"/>
+		<data>
+			,,,,,	rr rr
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="0" type="inter-area-bridge-village"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="outer-wall" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-village"/>
+		<data>
+			,,,,,	rr=rr
+			,,,,,	  =  
+			,,,,,	  =  
+			,,,,,	  =  
+			,,,,,	  =  
+		</data>
+		<object x="2" y="0" type="inter-area-bridge-village"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-forest-lock"/>
+		<data>
+			,,,,,	rr rr
+			,,,,,	 r r 
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="0" type="inter-area-bridge-forest"/>
+		<object x="2" y="1" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="outer-wall" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-forest-lock"/>
+		<data>
+			,,,,,	rr rr
+			,,,,,	 r r 
+			,,,,,	  =  
+			,,,,,	  =  
+			,,,,,	  =  
+		</data>
+		<object x="2" y="0" type="inter-area-bridge-forest"/>
+		<object x="2" y="1" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-village-lock"/>
+		<data>
+			,,,,,	rr rr
+			,,,,,	 r r 
+			,,,,,	     
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="0" type="inter-area-bridge-village"/>
+		<object x="2" y="1" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="outer-wall" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-village-lock"/>
+		<data>
+			,,,,,	rr rr
+			,,,,,	 r r 
+			,,,,,	  =  
+			,,,,,	  =  
+			,,,,,	  =  
+		</data>
+		<object x="2" y="0" type="inter-area-bridge-village"/>
+		<object x="2" y="1" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall" east="wall" south="none" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-castle-2-locks"/>
+		<data>
+			,,,,,	r####
+			,,,,,	 #K #
+			,,,,,	 #  #
+			,,,,,	 ## #
+			,,,,,	    r
+		</data>
+		<object x="2" y="1" width="2" height="2" type="darktower-locked"/>
+		<object x="2" y="2" width="2" type="inter-area-bridge-castle"/>
+		<object x="3" y="3" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall" east="wall" south="none" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-castle-2-locks"/>
+		<data>
+			,,,,,	r####
+			,,,,,	 #A #
+			,,,,,	 #  #
+			,,,,,	 ## #
+			,,,,,	    r
+		</data>
+		<object x="2" y="1" width="2" height="2" type="castle-locked"/>
+		<object x="2" y="2" width="2" type="inter-area-bridge-castle"/>
+		<object x="3" y="3" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
+		<tag name="inter-area-bridge-house-2-locks"/>
+		<data>
+			,,,,,	r###r
+			,,,,,	 # # 
+			,,,,,	 # # 
+			,,,,,	 # # 
+			,,,,,	     
+		</data>
+		<object x="2" y="1" type="inter-area-bridge-house"/>
+		<object x="2" y="2" type="door"/>
+		<object x="2" y="3" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-forest-2-locks"/>
+		<data>
+			,,,,,	## ##
+			,,,,,	 # # 
+			,,,,,	 # # 
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="0" type="inter-area-bridge-forest"/>
+		<object x="2" y="1" type="door"/>
+		<object x="2" y="2" type="door"/>
+	</pattern>
+	<pattern area="forest" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+		<tag name="inter-area-bridge-village-2-locks"/>
+		<data>
+			,,,,,	## ##
+			,,,,,	 # # 
+			,,,,,	 # # 
+			,,,,,	     
+			,,,,,	     
+		</data>
+		<object x="2" y="0" type="inter-area-bridge-village"/>
+		<object x="2" y="1" type="door"/>
+		<object x="2" y="2" type="door"/>
+	</pattern>		
+</PatternBase>
