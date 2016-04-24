@@ -23,66 +23,34 @@ public class PatternBasedLocationGenerator {
 
     public static boolean patternOverlap = false;
     
-    HashMap<String,Character> typeSymbols = new HashMap<>();
-    HashMap<Character,String> symbolTypes = new HashMap<>();
+    HashMap<String,Character> typeToSymbol_table = new HashMap<>();
+    HashMap<Character,String> symboltoType_table = new HashMap<>();
     List<TilePattern> patterns = new ArrayList<>();
     Random r = new Random();
     
-    public PatternBasedLocationGenerator(String[] patternFileNames) throws Exception {
-        SAXBuilder builder = new SAXBuilder();
-        for(String configFileName:patternFileNames) {
-            Element root = builder.build(configFileName).getRootElement();
-            if (DEBUG>=1) System.out.println(this.getClass().getSimpleName() + ": loading file '" + configFileName + "'...");
 
-            for(Object o:root.getChildren("tile")) {
-                Element e = (Element)o;
-                symbolTypes.put(e.getAttributeValue("symbol").charAt(0), e.getAttributeValue("type"));
-                typeSymbols.put(e.getAttributeValue("type"), e.getAttributeValue("symbol").charAt(0));
-            }
-            for(Object o:root.getChildren("pattern")) {
-                Element e = (Element)o;
-                TilePattern p = TilePattern.fromXML(e);
-                patterns.add(p);
-                if (e.getAttributeValue("canrotate").equals("true")) {
-                    // generate rotations:
-                    for(int i = 0;i<3;i++) {
-                        p = p.rotateClockWise();
-                        patterns.add(p);
-                    }
-                }
-            }
-        }
-        if (DEBUG>=1) System.out.println("PatternBaseLocationGenerator: " + patterns.size() + " loaded.");
-        for(TilePattern p:patterns) {
-            p.precomputePathTags();
-        }
+    public PatternBasedLocationGenerator(List<TilePattern> a_patterns, 
+                                         HashMap<String, Character> a_typeToSymbol,
+                                         HashMap<Character, String> a_symbolTotype) {
+        patterns = a_patterns;
+        typeToSymbol_table = a_typeToSymbol;
+        symboltoType_table = a_symbolTotype;
     }
     
+    
     public char typeToSymbol(String type) throws Exception {
-        Character symbol = typeSymbols.get(type);
+        Character symbol = typeToSymbol_table.get(type);
         if (symbol==null) throw new Exception("No symbol for type '"+type+"'");
         return symbol;
     }
     
     public String symbolToType(char symbol) {
-        return symbolTypes.get(symbol);
+        return symboltoType_table.get(symbol);
     }
 
-
-    public Pair<char [][][],List<ContentLocationRecord>>
-                       generateArea(int locationWidthInPatterns, int locationHeightInPatterns,
-                                    int patternWidth, int patternHeight,
-                                    List<Label> locationTypeTags
-                                    ) throws Exception {
-        return generateArea(locationWidthInPatterns, locationHeightInPatterns, 
-                patternWidth, patternHeight,
-                locationTypeTags,
-                new HashMap<>());
-    }
-    
     
     public Pair<char [][][], List<ContentLocationRecord>>
-                       generateArea(int widthInPatterns, int heightInPatterns,
+                       generate(int widthInPatterns, int heightInPatterns,
                                     int patternWidth, int patternHeight,
                                     List<Label> locationTypeTags,
                                     HashMap<Label,Double> multipliers) throws Exception {
@@ -99,6 +67,8 @@ public class PatternBasedLocationGenerator {
                 }
             }
         }
+        
+        if (DEBUG>=1) System.out.println(this.getClass().getSimpleName() + ".generate: map is " + width + " * " + height + " tiles in size.");
 
         // initialize generator:
         List<TilePattern> [][]possibilities = new List[widthInPatterns][heightInPatterns];
@@ -342,7 +312,7 @@ public class PatternBasedLocationGenerator {
                                 alreadyUsedPositions.add(position.m_b*width + position.m_a);
                                 coarseContentLocations.add(new ContentLocationRecord(n, position.m_a, position.m_b, constraint));
                             } else {
-                                throw new Exception("PatternBasedLocationGenerator.generateLocation: room could not be generated (can't place "+constraint+" position)!");
+                                throw new Exception("PatternBasedLocationGenerator.generate: room could not be generated (can't place "+constraint+" position)!");
                             }  
                         }
                     }
@@ -381,7 +351,7 @@ public class PatternBasedLocationGenerator {
 //                            if (idx1==-1 || idx2==-1) throw new Exception("Can't find one of the locations in the orderInWhichLocationsHaveToBeVisited, while generating an inter area bridge.");
 //                            // The locks should be placed in the location that is to be visited earlier
 //                            if (idx1>idx2) n2locks = null;
-                            if (DEBUG>=1) System.out.println("PatternBasedLocationGenerator.generateLocation: interarea bridge constraint on " + rj + "," + ri);
+                            if (DEBUG>=1) System.out.println("PatternBasedLocationGenerator.generate: interarea bridge constraint on " + rj + "," + ri);
                             // inter-area bridge:
                             List<Pair<Integer,Integer>> candidates = new ArrayList<>();
 
@@ -442,7 +412,7 @@ public class PatternBasedLocationGenerator {
                                         printSuroundingConstraints(jj + j, ii + i, possibilities);
                                     }
                                 }
-                                throw new Exception("PatternBasedLocationGenerator.generateLocation: room could not be generated (can't find a position for "+tried+")!");
+                                throw new Exception("PatternBasedLocationGenerator.generate: room could not be generated (can't find a position for "+tried+")!");
                             }                          
                         }
                     }
@@ -452,7 +422,7 @@ public class PatternBasedLocationGenerator {
         */
 
         if (DEBUG>=1) {
-            System.out.println("PatternBasedLocationGenerator.generateArea: Possibilities after initial constraints:");
+            System.out.println("PatternBasedLocationGenerator.generate: Possibilities after initial constraints:");
             for(int i = 0;i<heightInPatterns;i++) {
                 for(int j = 0;j<widthInPatterns;j++) {
                     if (possibilities[j][i]==null) {
@@ -466,10 +436,10 @@ public class PatternBasedLocationGenerator {
         }
 
         // find paths between the key elements of the map:
-        addPathConstraints(possibilities, coarseContentLocations, passageLocations, width, height, widthInPatterns, heightInPatterns);
+        addPathConstraints(possibilities, coarseContentLocations, passageLocations);
         
         if (DEBUG>=1) {
-            System.out.println("PatternBasedLocationGenerator.generateArea: Possibilities after path constraints:");
+            System.out.println("PatternBasedLocationGenerator.generate: Possibilities after path constraints:");
             for(int i = 0;i<heightInPatterns;i++) {
                 for(int j = 0;j<widthInPatterns;j++) {
                     if (possibilities[j][i]==null) {
@@ -486,9 +456,9 @@ public class PatternBasedLocationGenerator {
         TilePattern[][]result = generateDFS(possibilities, selected, true, multipliers);
 
         if (result==null) {
-            throw new Exception("PatternBasedLocationGenerator.generateLocation: room could not be generated!");
+            throw new Exception("PatternBasedLocationGenerator.generate: room could not be generated!");
         } else {
-            if (DEBUG>=1) System.out.println("PatternBasedLocationGenerator.generateLocation: room generated!");
+            if (DEBUG>=1) System.out.println("PatternBasedLocationGenerator.generate: room generated!");
 
             // clone the patterns, and remove duplicated objects in the edge of the patterns:
             for(int i = 0;i<heightInPatterns;i++) {
@@ -619,14 +589,9 @@ public class PatternBasedLocationGenerator {
         }
 
         if (DEBUG>=1) {
-            System.out.println("PatternBasedLocationGenerator.generateLocation: required content:");
+            System.out.println("PatternBasedLocationGenerator.generate: content:");
             for(ContentLocationRecord cl:contentLocations) {
                 //if (cl.n!=null) 
-                System.out.println("  " + cl.type + ": " + cl.x + "," + cl.y);
-            }
-            System.out.println("PatternBasedLocationGenerator.generateLocation: additional content:");
-            for(ContentLocationRecord cl:contentLocations) {
-                //if (cl.n==null) 
                 System.out.println("  " + cl.type + ": " + cl.x + "," + cl.y);
             }
         }
@@ -637,9 +602,7 @@ public class PatternBasedLocationGenerator {
 
     public void addPathConstraints(List<TilePattern> [][]possibilities,
                                    List<ContentLocationRecord> coarseContentLocations,
-                                   List<ContentLocationRecord> passageLocations,
-                                   int width, int height,
-                                   int locationWidthInPatterns, int locationHeightInPatterns) throws Exception
+                                   List<ContentLocationRecord> passageLocations) throws Exception
     {
         int dx = possibilities.length;
         int dy = possibilities[0].length;
@@ -669,14 +632,8 @@ public class PatternBasedLocationGenerator {
                 System.out.println("");
             }
         }
-        // add paths (only between elements in the same "room"):
-        for(int roomy = 0;roomy<height;roomy++) {
-            for(int roomx = 0;roomx<width;roomx++) {
-                addPathConstraintsToLocation(possibilities, buffer,
-                                             roomx*locationWidthInPatterns, roomy*locationHeightInPatterns,
-                                             (roomx+1)*locationWidthInPatterns, (roomy+1)*locationHeightInPatterns);
-            }
-        }
+
+        addPathConstraintsToLocation(possibilities, buffer, 0, 0, dx, dy);
     }
 
 
