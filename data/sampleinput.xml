@@ -1,0 +1,15 @@
+<PBMGInput>
+	<symbolFile name="data/symbols.xml"/>
+	<patternsfile name="data/patternsCastle.xml"/>
+	<patternsfile name="data/patternsForest.xml"/>
+	<patternsfile name="data/patternsHouse.xml"/>
+	<patternsfile name="data/patternsVillage.xml"/>
+	<patternSize width="5" height="5"/>
+	<mapSize width="5" height="5"/>
+	<constraints>
+		<constraint type="type" tag="forest"/>
+		<borderConstraint tag="outer-wall"/>
+		<notBorderConstraint tag="~outer-wall"/>
+	</constraints>
+	<multiplier tag="enemy" factor="0.5"/>
+</PBMGInput>
