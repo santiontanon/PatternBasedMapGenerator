@@ -5,6 +5,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.StringTokenizer;
 import mapgenerator.ContentLocationRecord;
 import mapgenerator.PatternBasedLocationGenerator;
 import mapgenerator.TilePattern;
@@ -127,16 +128,58 @@ public class Main {
         heightInPatterns = Integer.parseInt(ms_e.getAttributeValue("height"));
         
         // load constraints:
-        /*
-        constraints.add(new RegularConstraint(TilePattern.TYPE, new Label("forest")));
-        constraints.add(new BorderConstraint(new Label("outer-wall")));
-        constraints.add(new NotBorderConstraint(new Label("outer-wall"), false));
-        */
-        
+        Element c_e_l = root.getChild("constraints");
+        for(Object o:c_e_l.getChildren()) {
+            Element c_e = (Element)o;
+            String type_att = c_e.getAttributeValue("type");
+            String tag_att = c_e.getAttributeValue("tag");
+            int type = -1;
+            if (type_att!=null) {
+                if (type_att.equals("type")) type = TilePattern.TYPE;
+                if (type_att.equals("tag")) type = TilePattern.TAG;
+                if (type_att.equals("north")) type = TilePattern.NORTH;
+                if (type_att.equals("east")) type = TilePattern.EAST;
+                if (type_att.equals("south")) type = TilePattern.SOUTH;
+                if (type_att.equals("west")) type = TilePattern.WEST;
+            }
+            List<Label> tags = new ArrayList<>();
+            List<Label> negativeTags = new ArrayList<>();
+            if (tag_att!=null) {
+                StringTokenizer st = new StringTokenizer(tag_att,", ");
+                while(st.hasMoreTokens()) {
+                    String tag = st.nextToken();
+                    if (tag.startsWith("~")) {
+                        negativeTags.add(new Label(tag.substring(1)));
+                    } else {
+                        tags.add(new Label(tag));
+                    }
+                }
+            }
+            
+            if (c_e.getName().equals("constraint")) {
+                RegularConstraint c = new RegularConstraint(type);
+                for(Label t:tags) c.addTag(t);
+                for(Label t:negativeTags) c.addNegativeTag(t);
+                constraints.add(c);
+            } else if (c_e.getName().equals("borderConstraint")) {
+                BorderConstraint c = new BorderConstraint();
+                for(Label t:tags) c.addTag(t);
+                for(Label t:negativeTags) c.addNegativeTag(t);
+                constraints.add(c);
+            } else if (c_e.getName().equals("notBorderConstraint")) {
+                NotBorderConstraint c = new NotBorderConstraint();
+                for(Label t:tags) c.addTag(t);
+                for(Label t:negativeTags) c.addNegativeTag(t);
+                constraints.add(c);
+            }
+        }
+
         // load multipliers:
-        /*
-        ...
-        */
+        for(Object o:root.getChildren("multiplier")) {
+            Element m_e = (Element)o;
+            multipliers.put(new Label(m_e.getAttributeValue("tag")),
+                            Double.parseDouble(m_e.getAttributeValue("factor")));
+        }
     }
             
     
