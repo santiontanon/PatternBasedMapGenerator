@@ -15,7 +15,7 @@ import java.util.*;
 import mapgenerator.constraints.BorderConstraint;
 import mapgenerator.constraints.Constraint;
 import mapgenerator.constraints.NotBorderConstraint;
-import mapgenerator.constraints.RegularConstraint;
+import mapgenerator.constraints.ApplyToAllConstraint;
 import util.Label;
 
 /**
@@ -76,7 +76,7 @@ public class PatternBasedLocationGenerator {
         }
         
         if (DEBUG>=1) System.out.println(this.getClass().getSimpleName() + ".generate: map is " + width + " * " + height + " tiles in size.");
-
+ 
         // initialize generator and apply type and border constraints:
         List<TilePattern> [][]possibilities = new List[widthInPatterns][heightInPatterns];
         TilePattern[][]selected = new TilePattern[widthInPatterns][heightInPatterns];
@@ -95,8 +95,8 @@ public class PatternBasedLocationGenerator {
                             } else if (c instanceof NotBorderConstraint) {
                                 if (!((NotBorderConstraint)c).checkConstraint(p, j, i, widthInPatterns, heightInPatterns)) 
                                     filtered = true;
-                            } else if (c instanceof RegularConstraint) {
-                                if (!((RegularConstraint)c).checkConstraint(p)) 
+                            } else if (c instanceof ApplyToAllConstraint) {
+                                if (!((ApplyToAllConstraint)c).checkConstraint(p)) 
                                     filtered = true;
                             }
                             if (filtered) break;
@@ -108,181 +108,6 @@ public class PatternBasedLocationGenerator {
             }
         }
                 
-        /*
-        // Forbid 'outer-walls' inside:
-        for(int ri = 0;ri<height;ri++) {
-            for(int rj = 0;rj<width;rj++) {                
-                for(int i = 0;i<locationHeightInPatterns;i++) {
-                    for(int j = 0;j<locationWidthInPatterns;j++) {
-                        int ii = ri*locationHeightInPatterns+i;
-                        int jj = rj*locationWidthInPatterns+j;
-                        if (possibilities[jj][ii]!=null) {
-                            if (jj>0 && possibilities[jj-1][ii]!=null) addNegativeConstraint(jj,ii, TilePattern.WEST,"outer-wall",possibilities);
-                            if (ii>0 && possibilities[jj][ii-1]!=null) addNegativeConstraint(jj,ii, TilePattern.NORTH,"outer-wall",possibilities);
-                            if (jj<possibilities.length-1 && possibilities[jj+1][ii]!=null) addNegativeConstraint(jj,ii, TilePattern.EAST,"outer-wall",possibilities);
-                            if (ii<possibilities[0].length-1 && possibilities[jj][ii+1]!=null) addNegativeConstraint(jj,ii, TilePattern.SOUTH,"outer-wall",possibilities);
-                        }
-                    }
-                }
-            }
-        }
-        // Add initial constraints (enemies, npcs and items):
-        List<Integer> alreadyUsedPositions = new ArrayList<>();
-        for(int ri = 0;ri<height;ri++) {
-            for(int rj = 0;rj<width;rj++) {
-                LocationInformationForOrthographicLayout li = areaLayout[rj][ri];
-                int ii = ri*locationHeightInPatterns;
-                int jj = rj*locationWidthInPatterns;
-                if (li!=null) {
-                    for(LGraphNode n:li.content) {
-                        String constraint = null;
-                        if (n.subsumedBy(Ontology.player)) {
-                            // set player coordinates here:
-                            constraint = "start";
-                        } else if (n.subsumedBy(Ontology.itemLabel)) {
-                            // item:
-                            constraint = "item";
-                        } else if (n.subsumedBy(Ontology.enemyNpcLabel)) {
-                            // enemy:
-                            constraint = "enemy";
-                        } else if (n.subsumedBy(Ontology.friendlyNpcLabel)) {
-                            // npc:
-                            constraint = "npc";
-                        } else if (n.subsumedBy(Ontology.goal)) {
-                            // goal:
-                            constraint = "goal";
-                        } else if (n.subsumedBy(Ontology.lockLabel)) {
-                            // lock:
-                            // this can be ignored, since it has been added above
-                        } else {
-                            throw new Exception("location has a "+n.getLabels()+", not handled yet");
-                        }
-                        if (constraint!=null) {
-                            if (DEBUG>=1) System.out.println("adding constraint: " + constraint);
-                            List<Pair<Integer,Integer>> candidates = new ArrayList<>();
-                            for(int i = 0;i<locationHeightInPatterns;i++) {
-                                for(int j = 0;j<locationWidthInPatterns;j++) {
-                                    if (!alreadyUsedPositions.contains((ii+i)*width + jj+j) && 
-                                        satisfiableConstraint(jj+j, ii+i, TilePattern.TAG,constraint, possibilities)) {
-                                        candidates.add(new Pair<>(jj+j,ii+i));
-                                    }
-                                }
-                            }
-                            if (!candidates.isEmpty()) {
-                                Pair<Integer,Integer> position = candidates.get(r.nextInt(candidates.size()));
-                                addConstraint(position.m_a, position.m_b, TilePattern.TAG,constraint, possibilities);
-                                alreadyUsedPositions.add(position.m_b*width + position.m_a);
-                                coarseContentLocations.add(new ContentLocationRecord(n, position.m_a, position.m_b, constraint));
-                            } else {
-                                throw new Exception("PatternBasedLocationGenerator.generate: room could not be generated (can't place "+constraint+" position)!");
-                            }  
-                        }
-                    }
-                }
-            }
-        }
-        // add initial constraints: inter-area bridges
-        List<LGraphNode> alreadyConsidered = new LinkedList<>();
-        for(int ri = 0;ri<height;ri++) {
-            for(int rj = 0;rj<width;rj++) {
-                LocationInformationForOrthographicLayout li = areaLayout[rj][ri];
-                int ii = ri*locationHeightInPatterns;
-                int jj = rj*locationWidthInPatterns;
-                if (li!=null && li.location!=null && !alreadyConsidered.contains(li.location.locationNode)) {
-                    alreadyConsidered.add(li.location.locationNode);
-                    for(int idx = 0;idx<li.location.connections.size();idx++) {
-                        LGraphNode n2 = li.location.connections.get(idx);
-                        if (!locationsInArea.contains(n2)) {
-                            // find the bridge object:
-                            XMLInterAreaBridge bridge = null;
-                            for(XMLInterAreaBridge b:bridges) {
-                                if (b.origin == li.location.locationNode &&
-                                    b.destination == n2) {
-                                    bridge = b;
-                                    break;
-                                }
-                                if (b.destination == li.location.locationNode &&
-                                    b.origin == n2) {
-                                    bridge = b;
-                                    break;
-                                }
-                            }
-                            List<LGraphNode> n2locks = li.location.connectionLocks.get(idx);
-//                            int idx1 = orderInWhichLocationsHaveToBeVisited.indexOf(li.location.locationNode);
-//                            int idx2 = orderInWhichLocationsHaveToBeVisited.indexOf(n2);
-//                            if (idx1==-1 || idx2==-1) throw new Exception("Can't find one of the locations in the orderInWhichLocationsHaveToBeVisited, while generating an inter area bridge.");
-//                            // The locks should be placed in the location that is to be visited earlier
-//                            if (idx1>idx2) n2locks = null;
-                            if (DEBUG>=1) System.out.println("PatternBasedLocationGenerator.generate: interarea bridge constraint on " + rj + "," + ri);
-                            // inter-area bridge:
-                            List<Pair<Integer,Integer>> candidates = new ArrayList<>();
-
-                            // the destination might have a very specific label (e.g. "shop"), and we
-                            // might only have a pattern for a more general sort, such as "house", so
-                            // we have to look at the parents of the destination sort, until a matching
-                            // sort is found:
-                            LGraphNode destinationType = locationTypes.get(n2);
-                            List<Sort> candidateSorts = new LinkedList<>();
-                            candidateSorts.add(destinationType.getLabel());
-                            String constraint = null;
-                            String final_constraint = null;
-                            List<String> tried = new ArrayList<>();
-                            while(!candidateSorts.isEmpty()) {
-                                Sort s = candidateSorts.remove(0);
-                                constraint = "inter-area-bridge-" + s;
-                                final_constraint = constraint;
-                                if (n2locks!=null && n2locks.size()==1) final_constraint+="-lock";
-                                if (n2locks!=null && n2locks.size()>1) final_constraint+="-"+n2locks.size()+"-locks";
-                                tried.add(final_constraint);
-                                for(int i = 0;i<locationHeightInPatterns;i++) {
-                                    for(int j = 0;j<locationWidthInPatterns;j++) {
-                                        if (!alreadyUsedPositions.contains((ii+i)*width + jj+j) && 
-                                            satisfiableConstraint(jj+j, ii+i, TilePattern.TAG,final_constraint, possibilities)) {
-                                            candidates.add(new Pair<>(jj+j,ii+i));
-                                        }
-                                    }
-                                }
-                                if (candidates.isEmpty()) {
-                                    candidateSorts.addAll(s.getParents());
-                                } else {
-                                    break;
-                                }
-                            }
-                            if (!candidates.isEmpty()) {
-                                Pair<Integer,Integer> position = candidates.get(r.nextInt(candidates.size()));
-                                addConstraint(position.m_a, position.m_b, TilePattern.TAG,final_constraint, possibilities);
-                                alreadyUsedPositions.add(position.m_b*width + position.m_a);
-                                coarseContentLocations.add(new ContentLocationRecord(bridge, position.m_a, position.m_b, constraint));
-                                if (n2locks!=null) {
-                                    for(int i = 0;i<n2locks.size();i++) {
-                                        coarseContentLocations.add(new ContentLocationRecord(n2locks.get(i), position.m_a, position.m_b, "door"));
-                                    }
-                                }
-                            } else {
-                                System.out.println("Situation dump:");
-                                System.out.println("alreadyUsedPositions: " + alreadyUsedPositions);
-                                for(int i = 0;i<locationHeightInPatterns;i++) {
-                                    for (int j = 0; j < locationWidthInPatterns; j++) {
-                                        System.out.println(j + "," + i + " candidates: " + (possibilities[jj+j][ii+i]==null ? "-":possibilities[jj+j][ii+i].size()));
-                                        HashSet<String> contentTags = new HashSet<>();
-                                        for(TilePattern p:possibilities[jj+j][ii+i]) {
-                                            if (p.contentTags.isEmpty()) contentTags.add("-");
-                                            contentTags.addAll(p.contentTags);
-                                        }
-                                        System.out.println(j + "," + i + " contentTags: " + contentTags);
-
-                                        printSuroundingConstraints(jj + j, ii + i, possibilities);
-                                    }
-                                }
-                                throw new Exception("PatternBasedLocationGenerator.generate: room could not be generated (can't find a position for "+tried+")!");
-                            }                          
-                        }
-                    }
-                }
-            }
-        }
-        */
-
         if (DEBUG>=1) {
             System.out.println("PatternBasedLocationGenerator.generate: Possibilities after initial constraints:");
             for(int i = 0;i<heightInPatterns;i++) {
@@ -533,7 +358,7 @@ public class PatternBasedLocationGenerator {
             for(int j = 0;j<dx;j++) paths[j][i] = -1;
         }
 
-        // 3) att the first keypoint:
+        // 3) add the first keypoint:
         int keypoint = keypoints.remove(0);
         int x = keypoint % dx;
         int y = keypoint / dx;

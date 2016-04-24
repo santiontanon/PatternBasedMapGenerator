@@ -12,7 +12,7 @@ import mapgenerator.TilePattern;
 import mapgenerator.constraints.BorderConstraint;
 import mapgenerator.constraints.Constraint;
 import mapgenerator.constraints.NotBorderConstraint;
-import mapgenerator.constraints.RegularConstraint;
+import mapgenerator.constraints.ApplyToAllConstraint;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import util.Label;
@@ -31,7 +31,7 @@ import util.XMLWriter;
  */
 public class Main {
     
-    public static int DEBUG = 0;
+    public static int DEBUG = 1;
     
     static List<String> patternFileNames = new ArrayList<>();
     static List<String> symbolFileNames = new ArrayList<>();
@@ -156,8 +156,8 @@ public class Main {
                 }
             }
             
-            if (c_e.getName().equals("constraint")) {
-                RegularConstraint c = new RegularConstraint(type);
+            if (c_e.getName().equals("applyToAllConstraint")) {
+                ApplyToAllConstraint c = new ApplyToAllConstraint(type);
                 for(Label t:tags) c.addTag(t);
                 for(Label t:negativeTags) c.addNegativeTag(t);
                 constraints.add(c);
@@ -173,6 +173,8 @@ public class Main {
                 constraints.add(c);
             }
         }
+        
+        System.out.println(constraints.size() + " constraints loaded.");
 
         // load multipliers:
         for(Object o:root.getChildren("multiplier")) {

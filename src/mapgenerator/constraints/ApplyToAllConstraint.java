@@ -14,21 +14,21 @@ import util.Label;
  *
  * @author santi
  */
-public class RegularConstraint extends Constraint {
+public class ApplyToAllConstraint extends Constraint {
     int direction;
     List<Label> tags = new ArrayList<>();
     List<Label> negativeTags = new ArrayList<>();
     
-    public RegularConstraint(int a_direction) {
+    public ApplyToAllConstraint(int a_direction) {
         direction = a_direction;        
     }
 
-    public RegularConstraint(int a_direction, Label tag) {
+    public ApplyToAllConstraint(int a_direction, Label tag) {
         direction = a_direction;
         tags.add(tag);
     }
     
-    public RegularConstraint(int a_direction, Label a_border, boolean positive) {
+    public ApplyToAllConstraint(int a_direction, Label a_border, boolean positive) {
         direction = a_direction;
         if (positive) tags.add(a_border);
                  else negativeTags.add(a_border);

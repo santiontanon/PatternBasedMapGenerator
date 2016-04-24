@@ -317,6 +317,10 @@ public class TilePattern {
         return west;
     }
     
+    public List<Label> getType() {
+        return typeTags;
+    }
+    
     public char[][][] getPattern() {
         return pattern;
     }
