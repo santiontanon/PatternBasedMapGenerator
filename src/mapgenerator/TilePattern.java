@@ -39,7 +39,7 @@ public class TilePattern {
     char [][][]pattern;
     List<ContentLocationRecord> objects;
     
-    List<Label> typeTags = null;
+    List<Label> typeTags = new ArrayList<>();
     
     // connections;
     List<Label> north = new ArrayList<>();
@@ -97,8 +97,11 @@ public class TilePattern {
         while(st.hasMoreTokens()) t.south.add(new Label(st.nextToken()));
         st = new StringTokenizer(e.getAttributeValue("west"),", ");
         while(st.hasMoreTokens()) t.west.add(new Label(st.nextToken()));
-        st = new StringTokenizer(e.getAttributeValue("tag"),", ");
-        while(st.hasMoreTokens()) t.contentTags.add(new Label(st.nextToken()));
+        String tag = e.getAttributeValue("tag");
+        if (tag!=null) {
+            st = new StringTokenizer(tag,", ");
+            while(st.hasMoreTokens()) t.contentTags.add(new Label(st.nextToken()));
+        }
         
         String data = e.getChildText("data");        
         String []lines = data.split("\n");

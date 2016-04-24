@@ -21,17 +21,24 @@ public class Main {
     
     public static int DEBUG = 1;
     
-    public static int main(String args[]) {
+    public static void main(String args[]) throws Exception {
+        List<TilePattern> patterns = new ArrayList<>();
+        HashMap<String,Character> type2Symbol = new HashMap<>();
+        HashMap<Character,String> symbol2Type = new HashMap<>();
         
-        // ...
+        List<String> patternFileNames = new ArrayList<>();
+        patternFileNames.add("data/patternsForest.xml");
         
-        return 0;
+        for(String fn:patternFileNames) {
+            List<TilePattern> l = loadTilePatterns(fn, type2Symbol, symbol2Type);
+            patterns.addAll(l);
+        }
     }
     
     
     public static List<TilePattern> loadTilePatterns(String fileName,
-                                                     HashMap<String,Character> typeSymbols,
-                                                     HashMap<Character,String> symbolTypes) throws Exception
+                                                     HashMap<String,Character> type2Symbol,
+                                                     HashMap<Character,String> symbol2Type) throws Exception
     {
         List<TilePattern> patterns = new ArrayList<>();
         SAXBuilder builder = new SAXBuilder();
@@ -40,8 +47,8 @@ public class Main {
 
         for(Object o:root.getChildren("tile")) {
             Element e = (Element)o;
-            symbolTypes.put(e.getAttributeValue("symbol").charAt(0), e.getAttributeValue("type"));
-            typeSymbols.put(e.getAttributeValue("type"), e.getAttributeValue("symbol").charAt(0));
+            symbol2Type.put(e.getAttributeValue("symbol").charAt(0), e.getAttributeValue("type"));
+            type2Symbol.put(e.getAttributeValue("type"), e.getAttributeValue("symbol").charAt(0));
         }
         for(Object o:root.getChildren("pattern")) {
             Element e = (Element)o;

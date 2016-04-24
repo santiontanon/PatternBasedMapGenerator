@@ -32,7 +32,7 @@
 	<tile symbol="V" type="inter-area-bridge-village"/>
 	<tile symbol="W" type="wood-wall"/>
 
-	<pattern area="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="1.0" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="1.0" canrotate="true">
 		<data>
 			.....	wwwww
 			.....	w    
@@ -41,7 +41,7 @@
 			.....	w    
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="0.2" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="0.2" canrotate="true">
 		<data>
 			.....	wwwww
 			.....	www  
@@ -50,7 +50,7 @@
 			.....	w    
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="0.2" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="0.2" canrotate="true">
 		<data>
 			.....	wwwww
 			.....	w    
@@ -59,7 +59,7 @@
 			.....	w    
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.25" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.25" canrotate="true">
 		<data>
 			.....	wwwww
 			.....	     
@@ -68,7 +68,7 @@
 			.....	     
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.5" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.5" canrotate="true">
 		<tag name="bookshelves"/>
 		<data>
 			.....	wwwww
@@ -78,7 +78,7 @@
 			.....	     
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
 		<data>
 			.....	wwwww
 			.....	     
@@ -87,7 +87,7 @@
 			.....	     
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true">
 		<data>
 			.....	wwwww
 			.....	  w  
@@ -96,7 +96,7 @@
 			.....	     
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="wall-passage" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="wall-passage" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
 		<data>
 			.....	ww ww
 			.....	     
@@ -105,7 +105,7 @@
 			.....	     
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
 		<data>
 			.....	wwwww
 			.....	  w  
@@ -114,7 +114,7 @@
 			.....	  w  
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="middle-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="middle-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
 		<data>
 			.....	  w  
 			.....	  w  
@@ -123,7 +123,7 @@
 			.....	  w  
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="middle-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="middle-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
 		<data>
 			.....	  w  
 			.....	  w  
@@ -132,7 +132,7 @@
 			.....	  w  
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="middle-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="middle-wall" east="none" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
 		<data>
 			.....	  w  
 			.....	     
@@ -141,7 +141,7 @@
 			.....	  w  
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="middle-wall" east="middle-wall" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="middle-wall" east="middle-wall" south="middle-wall" west="none" priority="1" weight="0.1" canrotate="true">
 		<data>
 			.....	  w  
 			.....	  w  
@@ -150,7 +150,7 @@
 			.....	  w  
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="middle-wall" east="middle-wall" south="middle-wall" west="middle-wall" priority="1" weight="0.1" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="middle-wall" east="middle-wall" south="middle-wall" west="middle-wall" priority="1" weight="0.1" canrotate="false">
 		<data>
 			.....	  w  
 			.....	  w  
@@ -159,7 +159,7 @@
 			.....	  w  
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="middle-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="middle-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true">
 		<data>
 			.....	  w  
 			.....	  w  
@@ -168,7 +168,7 @@
 			.....	     
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
 		<tag name="door"/>
 		<data>
 			.....	ww ww
@@ -179,7 +179,7 @@
 		</data>
 		<object x="2" y="0" type="door"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="0" weight="1.0" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="0" weight="1.0" canrotate="true">
 		<tag name="2-doors"/>
 		<data>
 			.....	ww ww
@@ -191,7 +191,7 @@
 		<object x="2" y="0" type="door"/>
 		<object x="2" y="2" type="door"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="false">
 		<tag name="carpet"/>
 		<data>
 			.....	wwwww
@@ -201,7 +201,7 @@
 			.....	     
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1" canrotate="false">
 		<tag name="carpet"/>
 		<data>
 			.....	wwwww
@@ -211,7 +211,7 @@
 			.....	  c  
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1" canrotate="false">
 		<tag name="carpet"/>
 		<data>
 			.....	wwwww
@@ -221,7 +221,7 @@
 			.....	  c  
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="carpet" east="none" south="carpet" west="none" priority="0" weight="1.0" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="carpet" east="none" south="carpet" west="none" priority="0" weight="1.0" canrotate="false">
 		<tag name="carpet"/>
 		<data>
 			.....	  c  
@@ -231,7 +231,7 @@
 			.....	  c  
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="carpet" east="none" south="none" west="none" priority="0" weight="1.0" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="carpet" east="none" south="none" west="none" priority="0" weight="1.0" canrotate="false">
 		<tag name="carpet"/>
 		<data>
 			.....	  c  
@@ -241,7 +241,7 @@
 			.....	     
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="1.0" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="1.0" canrotate="false">
 		<data>
 			.....	     
 			.....	     
@@ -250,7 +250,7 @@
 			.....	     
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.1" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.1" canrotate="false">
 		<tag name="wood"/>
 		<data>
 			ooooo	     
@@ -260,7 +260,7 @@
 			ooooo	     
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false">
 		<tag name="table"/>
 		<data>
 			.....	     
@@ -270,7 +270,7 @@
 			.....	     
 		</data>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false">
 		<tag name="npc"/>
 		<data>
 			.....	     
@@ -281,7 +281,7 @@
 		</data>
 		<object x="2" y="2" type="npc"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false">
 		<tag name="enemy"/>
 		<data>
 			.....	     
@@ -292,7 +292,7 @@
 		</data>
 		<object x="2" y="2" type="enemy"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false">
 		<tag name="enemy"/>
 		<data>
 			.....	     
@@ -304,7 +304,7 @@
 		<object x="1" y="1" type="enemy"/>
 		<object x="3" y="3" type="enemy"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false">
 		<tag name="item"/>
 		<data>
 			.....	     
@@ -315,7 +315,7 @@
 		</data>
 		<object x="2" y="2" type="item"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false">
 		<tag name="start"/>
 		<data>
 			.....	     
@@ -326,7 +326,7 @@
 		</data>
 		<object x="2" y="2" type="start"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false">
 		<tag name="goal"/>
 		<data>
 			.....	     
@@ -337,7 +337,7 @@
 		</data>
 		<object x="2" y="2" type="goal"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
+	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
 		<tag name="inter-area-bridge-house"/>
 		<data>
 			.....	     
@@ -348,7 +348,7 @@
 		</data>
 		<object x="2" y="2" type="inter-area-bridge-house"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.25" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.25" canrotate="true">
 		<tag name="inter-area-bridge-house"/>
 		<data>
 			.....	     
@@ -359,7 +359,7 @@
 		</data>
 		<object x="2" y="2" type="inter-area-bridge-house"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
 		<tag name="inter-area-bridge-castle"/>
 		<data>
 			.....	     
@@ -370,7 +370,7 @@
 		</data>
 		<object x="2" y="2" type="inter-area-bridge-castle"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
 		<tag name="inter-area-bridge-castle"/>
 		<data>
 			.....	     
@@ -381,7 +381,7 @@
 		</data>
 		<object x="2" y="2" type="inter-area-bridge-castle"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
 		<tag name="inter-area-bridge-forest"/>
 		<data>
 			.....	ww ww
@@ -392,7 +392,7 @@
 		</data>
 		<object x="2" y="0" type="inter-area-bridge-forest"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
 		<tag name="inter-area-bridge-village"/>
 		<data>
 			.....	ww ww
@@ -403,7 +403,7 @@
 		</data>
 		<object x="2" y="0" type="inter-area-bridge-village"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
 		<tag name="inter-area-bridge-castle-lock"/>
 		<data>
 			.....	     
@@ -415,7 +415,7 @@
 		<object x="2" y="2" type="inter-area-bridge-castle"/>
 		<object x="4" y="2" type="door"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.25" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.25" canrotate="true">
 		<tag name="inter-area-bridge-house-lock"/>
 		<data>
 			.....	     
@@ -427,7 +427,7 @@
 		<object x="2" y="2" type="inter-area-bridge-house"/>
 		<object x="4" y="2" type="door"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
 		<tag name="inter-area-bridge-forest-lock"/>
 		<data>
 			.....	ww ww
@@ -439,7 +439,7 @@
 		<object x="2" y="0" type="inter-area-bridge-forest"/>
 		<object x="2" y="2" type="door"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
 		<tag name="inter-area-bridge-village-lock"/>
 		<data>
 			.....	ww ww
@@ -451,7 +451,7 @@
 		<object x="2" y="0" type="inter-area-bridge-village"/>
 		<object x="2" y="2" type="door"/>
 	</pattern>	
-	<pattern area="castle" dx="5" dy="5" north="none" east="wall-door" south="none" west="none" priority="0" weight="0.25" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="none" east="wall-door" south="none" west="none" priority="0" weight="0.25" canrotate="true">
 		<tag name="inter-area-bridge-house-lock"/>
 		<data>
 			.....	    p
@@ -463,7 +463,7 @@
 		<object x="2" y="2" type="inter-area-bridge-house"/>
 		<object x="4" y="2" type="door"/>
 	</pattern>
-	<pattern area="castle" dx="5" dy="5" north="none" east="wall-door" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="none" east="wall-door" south="none" west="none" priority="0" weight="1.00" canrotate="true">
 		<tag name="inter-area-bridge-castle-lock"/>
 		<data>
 			.....	    p
@@ -475,7 +475,7 @@
 		<object x="2" y="2" type="inter-area-bridge-castle"/>
 		<object x="4" y="2" type="door"/>
 	</pattern>	
-	<pattern area="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
 		<tag name="inter-area-bridge-castle-2-locks"/>
 		<data>
 			.....	ww ww
@@ -488,7 +488,7 @@
 		<object x="2" y="2" type="door"/>
 		<object x="2" y="3" type="door"/>
 	</pattern>	
-	<pattern area="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
 		<tag name="inter-area-bridge-village-2-locks"/>
 		<data>
 			.....	ww ww
@@ -501,7 +501,7 @@
 		<object x="2" y="2" type="door"/>
 		<object x="2" y="3" type="door"/>
 	</pattern>	
-	<pattern area="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
+	<pattern type="castle" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
 		<tag name="inter-area-bridge-forest-2-locks"/>
 		<data>
 			.....	ww ww
