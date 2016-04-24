@@ -98,8 +98,7 @@
 			,,,,,	     
 		</data>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
-		<tag name="door"/>
+	<pattern type="village" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true" tag="door">
 		<data>
 			,,,,,	## ##
 			,,,,,	     
@@ -109,8 +108,7 @@
 		</data>
 		<object x="2" y="0" type="door"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="0" weight="1.0" canrotate="true">
-		<tag name="2-doors"/>
+	<pattern type="village" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="0" weight="1.0" canrotate="true" tag="2-doors">
 		<data>
 			,,,,,	## ##
 			,,,,,	 # # 
@@ -175,8 +173,7 @@
 			,,,,,	     
 		</data>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.2" canrotate="false">
-		<tag name="npc"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.2" canrotate="false" tag="npc">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -240,8 +237,7 @@
 			,,,,,	     
 		</data>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="path" south="none" west="none" priority="2" weight="0.05" canrotate="true">
-		<tag name="path"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="path" south="none" west="none" priority="2" weight="0.05" canrotate="true" tag="path">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -250,8 +246,7 @@
 			,,,,,	     
 		</data>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true">
-		<tag name="path"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true" tag="path">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -260,8 +255,7 @@
 			,,,,,	     
 		</data>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true">
-		<tag name="path"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true" tag="path">
 		<data>
 			,,,,,	     
 			,,,,,	 r r 
@@ -270,8 +264,7 @@
 			,,,,,	     
 		</data>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true">
-		<tag name="path"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true" tag="path">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -280,9 +273,7 @@
 			,,,,,	     
 		</data>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true">
-		<tag name="path"/>
-		<tag name="npc"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true" tag="path,npc">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -292,8 +283,7 @@
 		</data>
 		<object x="2" y="2" type="npc"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true">
-		<tag name="path"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true" tag="path">
 		<data>
 			,,,,,	     
 			,,,,,	 === 
@@ -302,8 +292,7 @@
 			,,,,,	     
 		</data>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true">
-		<tag name="path"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="path" south="none" west="path" priority="2" weight="0.1" canrotate="true" tag="path">
 		<data>
 			,,,,,	     
 			,,,,,	 === 
@@ -312,8 +301,7 @@
 			,,,,,	     
 		</data>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="path" east="path" south="path" west="path" priority="2" weight="0.1" canrotate="false">
-		<tag name="path"/>
+	<pattern type="village" dx="5" dy="5" north="path" east="path" south="path" west="path" priority="2" weight="0.1" canrotate="false" tag="path">
 		<data>
 			,,,,,	  =  
 			,,,,,	  =  
@@ -322,8 +310,7 @@
 			,,,,,	  =  
 		</data>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="path" south="path" west="path" priority="2" weight="0.1" canrotate="true">
-		<tag name="path"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="path" south="path" west="path" priority="2" weight="0.1" canrotate="true" tag="path">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -332,8 +319,7 @@
 			,,,,,	  =  
 		</data>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="path" south="path" west="path" priority="2" weight="0.1" canrotate="true">
-		<tag name="path"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="path" south="path" west="path" priority="2" weight="0.1" canrotate="true" tag="path">
 		<data>
 			,,,,,	     
 			,,,,,	 rrr 
@@ -342,8 +328,7 @@
 			,,,,,	  =  
 		</data>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="path" south="path" west="none" priority="2" weight="0.1" canrotate="true">
-		<tag name="path"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="path" south="path" west="none" priority="2" weight="0.1" canrotate="true" tag="path">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -775,8 +760,7 @@
 			~~~,,	     
 		</data>
 	</pattern>	
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false">
-		<tag name="npc"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false" tag="npc">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -786,8 +770,7 @@
 		</data>
 		<object x="2" y="2" type="npc"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="2" weight="0.1" canrotate="true">
-		<tag name="npc"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="2" weight="0.1" canrotate="true" tag="npc">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -797,8 +780,7 @@
 		</data>
 		<object x="2" y="2" type="npc"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false">
-		<tag name="enemy"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false" tag="enemy">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -808,8 +790,7 @@
 		</data>
 		<object x="2" y="2" type="enemy"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false">
-		<tag name="enemy"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false" tag="enemy">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -820,8 +801,7 @@
 		<object x="1" y="1" type="enemy"/>
 		<object x="3" y="3" type="enemy"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false">
-		<tag name="item"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false" tag="item">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -831,8 +811,7 @@
 		</data>
 		<object x="2" y="2" type="item"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="2" weight="0.1" canrotate="true">
-		<tag name="item"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="2" weight="0.1" canrotate="true" tag="item">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -842,8 +821,7 @@
 		</data>
 		<object x="2" y="2" type="item"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false">
-		<tag name="start"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false" tag="start">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -853,8 +831,7 @@
 		</data>
 		<object x="2" y="2" type="start"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false">
-		<tag name="goal"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false" tag="goal">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -864,8 +841,7 @@
 		</data>
 		<object x="2" y="2" type="goal"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
-		<tag name="inter-area-bridge-castle"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-castle">
 		<data>
 			,,,,,	     
 			,,,,,	  A  
@@ -876,8 +852,7 @@
 		<object x="2" y="2" width="2" type="inter-area-bridge-castle"/>
 	</pattern>
 
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
-		<tag name="inter-area-bridge-castle"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-castle">
 		<data>
 			,,,,,	     
 			,,,,,	  K  
@@ -887,8 +862,7 @@
 		</data>
 		<object x="2" y="2" width="2" type="inter-area-bridge-castle"/>
 	</pattern>	
-		<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
-		<tag name="inter-area-bridge-castle-lock"/>
+		<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-castle-lock">
 		<data>
 			,,,,,	     
 			,,,,,	  A  
@@ -899,8 +873,7 @@
 		<object x="2" y="1" width="2" height="2" type="castle-locked"/>
 		<object x="2" y="2" width="2" type="inter-area-bridge-castle"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
-		<tag name="inter-area-bridge-castle-lock"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-castle-lock">
 		<data>
 			,,,,,	     
 			,,,,,	  K  
@@ -911,8 +884,7 @@
 		<object x="2" y="1" width="2" height="2" type="darktower-locked"/>
 		<object x="2" y="2" width="2" type="inter-area-bridge-castle"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="wall" east="wall" south="none" west="none" priority="0" weight="1.00" canrotate="false">
-		<tag name="inter-area-bridge-castle-2-locks"/>
+	<pattern type="village" dx="5" dy="5" north="wall" east="wall" south="none" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-castle-2-locks">
 		<data>
 			,,,,,	r####
 			,,,,,	 #K #
@@ -924,8 +896,7 @@
 		<object x="2" y="2" width="2" type="inter-area-bridge-castle"/>
 		<object x="3" y="3" type="door"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="wall" east="wall" south="none" west="none" priority="0" weight="1.00" canrotate="false">
-		<tag name="inter-area-bridge-castle-2-locks"/>
+	<pattern type="village" dx="5" dy="5" north="wall" east="wall" south="none" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-castle-2-locks">
 		<data>
 			,,,,,	r####
 			,,,,,	 #A #
@@ -937,8 +908,7 @@
 		<object x="2" y="2" width="2" type="inter-area-bridge-castle"/>
 		<object x="3" y="3" type="door"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
-		<tag name="inter-area-bridge-house"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-house">
 		<data>
 			,,,,,	     
 			,,,,,	     
@@ -948,8 +918,7 @@
 		</data>
 		<object x="2" y="2" type="inter-area-bridge-house"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
-		<tag name="inter-area-bridge-house-lock"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-house-lock">
 		<data>
 			,,,,,	     
 			,,,,,	 ### 
@@ -960,8 +929,7 @@
 		<object x="2" y="2" type="inter-area-bridge-house"/>
 		<object x="2" y="3" type="door"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
-		<tag name="inter-area-bridge-house-2-locks"/>
+	<pattern type="village" dx="5" dy="5" north="wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-house-2-locks">
 		<data>
 			,,,,,	r###r
 			,,,,,	 # # 
@@ -973,8 +941,7 @@
 		<object x="2" y="2" type="door"/>
 		<object x="2" y="3" type="door"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
-		<tag name="inter-area-bridge-house"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-house">
 		<data>
 			,,,,,	     
 			,,,,,	 $   
@@ -984,8 +951,7 @@
 		</data>
 		<object x="2" y="2" type="inter-area-bridge-house"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
-		<tag name="inter-area-bridge-forest"/>
+	<pattern type="village" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-forest">
 		<data>
 			,,,,,	## ##
 			,,,,,	     
@@ -995,8 +961,7 @@
 		</data>
 		<object x="2" y="0" type="inter-area-bridge-forest"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
-		<tag name="inter-area-bridge-village"/>
+	<pattern type="village" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-village">
 		<data>
 			,,,,,	## ##
 			,,,,,	     
@@ -1006,8 +971,7 @@
 		</data>
 		<object x="2" y="0" type="inter-area-bridge-village"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
-		<tag name="inter-area-bridge-forest-lock"/>
+	<pattern type="village" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-forest-lock">
 		<data>
 			,,,,,	## ##
 			,,,,,	 # # 
@@ -1018,8 +982,7 @@
 		<object x="2" y="0" type="inter-area-bridge-forest"/>
 		<object x="2" y="1" type="door"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
-		<tag name="inter-area-bridge-village-lock"/>
+	<pattern type="village" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-village-lock">
 		<data>
 			,,,,,	## ##
 			,,,,,	 # # 
@@ -1030,8 +993,7 @@
 		<object x="2" y="0" type="inter-area-bridge-village"/>
 		<object x="2" y="1" type="door"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
-		<tag name="inter-area-bridge-forest-2-locks"/>
+	<pattern type="village" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-forest-2-locks">
 		<data>
 			,,,,,	## ##
 			,,,,,	 # # 
@@ -1043,8 +1005,7 @@
 		<object x="2" y="1" type="door"/>
 		<object x="2" y="2" type="door"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
-		<tag name="inter-area-bridge-village-2-locks"/>
+	<pattern type="village" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-village-2-locks">
 		<data>
 			,,,,,	## ##
 			,,,,,	 # # 
@@ -1056,8 +1017,7 @@
 		<object x="2" y="1" type="door"/>
 		<object x="2" y="2" type="door"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
-		<tag name="inter-area-bridge-village"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-village">
 		<data>
 			,,,,,	     
 			,,,,,	 rrr 
@@ -1067,8 +1027,7 @@
 		</data>
 		<object x="2" y="2" type="inter-area-bridge-village"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="false">
-		<tag name="inter-area-bridge-village"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-village">
 		<data>
 			,,,,,	     
 			,,,,,	 rrr 
@@ -1078,8 +1037,7 @@
 		</data>
 		<object x="2" y="2" type="inter-area-bridge-village"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
-		<tag name="inter-area-bridge-village-lock"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-village-lock">
 		<data>
 			,,,,,	     
 			,,,,,	 rrr 
@@ -1090,8 +1048,7 @@
 		<object x="2" y="2" type="inter-area-bridge-village"/>
 		<object x="2" y="3" type="door"/>
 	</pattern>
-	<pattern type="village" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="false">
-		<tag name="inter-area-bridge-village-lock"/>
+	<pattern type="village" dx="5" dy="5" north="none" east="none" south="path" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-village-lock">
 		<data>
 			,,,,,	     
 			,,,,,	 rrr 

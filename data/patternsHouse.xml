@@ -51,8 +51,7 @@
 			ooooo	WW WW
 		</data>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="wall,outer-wall" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true">
-		<tag name="bookshelves"/>
+	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="wall,outer-wall" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true" tag="bookshelves">
 		<data>
 			ooooo	WWWWW
 			ooooo	WbbbW
@@ -61,8 +60,7 @@
 			ooooo	WW WW
 		</data>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="wall,outer-wall" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true">
-		<tag name="enemy"/>
+	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="wall,outer-wall" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true" tag="enemy">
 		<data>
 			ooooo	WWWWW
 			ooooo	We eW
@@ -72,8 +70,7 @@
 		</data>
 		<object x="2" y="2" type="enemy"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="wall,outer-wall" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true">
-		<tag name="item"/>
+	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="wall,outer-wall" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true" tag="item">
 		<data>
 			ooooo	WWWWW
 			ooooo	We eW
@@ -83,8 +80,7 @@
 		</data>
 		<object x="2" y="2" type="item"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true">
-		<tag name="enemy"/>
+	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true" tag="enemy">
 		<data>
 			ooooo	WWWWW
 			ooooo	We eW
@@ -94,8 +90,7 @@
 		</data>
 		<object x="2" y="2" type="enemy"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true">
-		<tag name="item"/>
+	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="wall,outer-wall" priority="0" weight="0.15" canrotate="true" tag="item">
 		<data>
 			ooooo	WWWWW
 			ooooo	We eW
@@ -105,8 +100,7 @@
 		</data>
 		<object x="2" y="2" type="item"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.5" canrotate="true">
-		<tag name="bookshelves"/>
+	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.5" canrotate="true" tag="bookshelves">
 		<data>
 			ooooo	WWWWW
 			ooooo	bbbbb
@@ -115,9 +109,7 @@
 			ooooo	     
 		</data>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.25" canrotate="true">
-		<tag name="bookshelves"/>
-		<tag name="enemy"/>
+	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.25" canrotate="true" tag="bookshelves,enemy">
 		<data>
 			ooooo	WWWWW
 			ooooo	bbbbb
@@ -127,8 +119,7 @@
 		</data>
 		<object x="2" y="3" type="enemy"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.5" canrotate="true">
-		<tag name="bookshelves"/>
+	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.5" canrotate="true" tag="bookshelves">
 		<data>
 			ooooo	WWWWW
 			ooooo	 bbb 
@@ -146,8 +137,7 @@
 			ooooo	     
 		</data>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true">
-		<tag name="enemy"/>
+	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true" tag="enemy">
 		<data>
 			ooooo	WWWWW
 			ooooo	 e e 
@@ -175,8 +165,7 @@
 			ooooo	     
 		</data>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true">
-		<tag name="item"/>
+	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="0.1" canrotate="true" tag="item">
 		<data>
 			ooooo	WWWWW
 			ooooo	     
@@ -312,8 +301,7 @@
 			ooooo	     
 		</data>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true">
-		<tag name="door"/>
+	<pattern type="house" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="true" tag="door">
 		<data>
 			ooooo	WW WW
 			ooooo	     
@@ -323,8 +311,7 @@
 		</data>
 		<object x="2" y="0" type="door"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="0" weight="1.0" canrotate="true">
-		<tag name="2-doors"/>
+	<pattern type="house" dx="5" dy="5" north="wall-door" east="none" south="none" west="none" priority="0" weight="1.0" canrotate="true" tag="2-doors">
 		<data>
 			ooooo	WW WW
 			ooooo	 W W 
@@ -335,8 +322,7 @@
 		<object x="2" y="0" type="door"/>
 		<object x="2" y="2" type="door"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="false">
-		<tag name="carpet"/>
+	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="none" west="none" priority="1" weight="1.0" canrotate="false" tag="carpet">
 		<data>
 			ooooo	WWWWW
 			ooooo	  c  
@@ -345,8 +331,7 @@
 			ooooo	     
 		</data>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1" canrotate="false">
-		<tag name="carpet"/>
+	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1" canrotate="false" tag="carpet">
 		<data>
 			ooooo	WWWWW
 			ooooo	  h  
@@ -355,8 +340,7 @@
 			ooooo	  c  
 		</data>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1" canrotate="false">
-		<tag name="carpet"/>
+	<pattern type="house" dx="5" dy="5" north="wall,outer-wall" east="none" south="carpet" west="none" priority="1" weight="0.1" canrotate="false" tag="carpet">
 		<data>
 			ooooo	WWWWW
 			ooooo	  c  
@@ -365,8 +349,7 @@
 			ooooo	  c  
 		</data>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="carpet" east="none" south="carpet" west="none" priority="0" weight="1.0" canrotate="false">
-		<tag name="carpet"/>
+	<pattern type="house" dx="5" dy="5" north="carpet" east="none" south="carpet" west="none" priority="0" weight="1.0" canrotate="false" tag="carpet">
 		<data>
 			ooooo	  c  
 			ooooo	  c  
@@ -375,8 +358,7 @@
 			ooooo	  c  
 		</data>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="carpet" east="none" south="none" west="none" priority="0" weight="1.0" canrotate="false">
-		<tag name="carpet"/>
+	<pattern type="house" dx="5" dy="5" north="carpet" east="none" south="none" west="none" priority="0" weight="1.0" canrotate="false" tag="carpet">
 		<data>
 			ooooo	  c  
 			ooooo	  c  
@@ -394,8 +376,7 @@
 			ooooo	     
 		</data>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false">
-		<tag name="table"/>
+	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false" tag="table">
 		<data>
 			ooooo	     
 			ooooo	     
@@ -404,8 +385,7 @@
 			ooooo	     
 		</data>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false">
-		<tag name="npc"/>
+	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false" tag="npc">
 		<data>
 			ooooo	     
 			ooooo	     
@@ -415,8 +395,7 @@
 		</data>
 		<object x="2" y="2" type="npc"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false">
-		<tag name="enemy"/>
+	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.5" canrotate="false" tag="enemy">
 		<data>
 			ooooo	     
 			ooooo	     
@@ -426,8 +405,7 @@
 		</data>
 		<object x="2" y="2" type="enemy"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false">
-		<tag name="enemy"/>
+	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false" tag="enemy">
 		<data>
 			ooooo	     
 			ooooo	     
@@ -438,8 +416,7 @@
 		<object x="1" y="1" type="enemy"/>
 		<object x="3" y="3" type="enemy"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false">
-		<tag name="item"/>
+	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="2" weight="0.25" canrotate="false" tag="item">
 		<data>
 			ooooo	     
 			ooooo	     
@@ -449,8 +426,7 @@
 		</data>
 		<object x="2" y="2" type="item"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false">
-		<tag name="start"/>
+	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false" tag="start">
 		<data>
 			ooooo	     
 			ooooo	     
@@ -460,8 +436,7 @@
 		</data>
 		<object x="2" y="2" type="start"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false">
-		<tag name="goal"/>
+	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.00" canrotate="false" tag="goal">
 		<data>
 			ooooo	     
 			ooooo	     
@@ -471,8 +446,7 @@
 		</data>
 		<object x="2" y="2" type="goal"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false">
-		<tag name="inter-area-bridge-house"/>
+	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="false" tag="inter-area-bridge-house">
 		<data>
 			ooooo	     
 			ooooo	     
@@ -482,8 +456,7 @@
 		</data>
 		<object x="2" y="2" type="inter-area-bridge-house"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.25" canrotate="true">
-		<tag name="inter-area-bridge-house"/>
+	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.25" canrotate="true" tag="inter-area-bridge-house">
 		<data>
 			ooooo	     
 			ooooo	 WWW 
@@ -493,8 +466,7 @@
 		</data>
 		<object x="2" y="2" type="inter-area-bridge-house"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.25" canrotate="true">
-		<tag name="inter-area-bridge-house-lock"/>
+	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="none" priority="0" weight="0.25" canrotate="true" tag="inter-area-bridge-house-lock">
 		<data>
 			ooooo	     
 			ooooo	 WWW 
@@ -505,8 +477,7 @@
 		<object x="2" y="2" type="inter-area-bridge-house"/>
 		<object x="3" y="2" type="door"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="wall,outer-wall" priority="0" weight="0.25" canrotate="true">
-		<tag name="inter-area-bridge-house-2-locks"/>
+	<pattern type="house" dx="5" dy="5" north="none" east="none" south="none" west="wall,outer-wall" priority="0" weight="0.25" canrotate="true" tag="inter-area-bridge-house-2-locks">
 		<data>
 			ooooo	W    
 			ooooo	WWWW 
@@ -518,8 +489,7 @@
 		<object x="2" y="2" type="door"/>
 		<object x="3" y="2" type="door"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
-		<tag name="inter-area-bridge-forest"/>
+	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-forest">
 		<data>
 			ooooo	WW WW
 			ooooo	     
@@ -529,8 +499,7 @@
 		</data>
 		<object x="2" y="0" type="inter-area-bridge-forest"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
-		<tag name="inter-area-bridge-village"/>
+	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-village">
 		<data>
 			ooooo	WW WW
 			ooooo	     
@@ -540,8 +509,7 @@
 		</data>
 		<object x="2" y="0" type="inter-area-bridge-village"/>
 	</pattern>	
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
-		<tag name="inter-area-bridge-forest-lock"/>
+	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-forest-lock">
 		<data>
 			o,,,o	W   W
 			o,,,o	W   W
@@ -552,8 +520,7 @@
 		<object x="2" y="0" type="inter-area-bridge-forest"/>
 		<object x="2" y="2" type="door"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
-		<tag name="inter-area-bridge-forest-2-locks"/>
+	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-forest-2-locks">
 		<data>
 			o,,,o	W   W
 			o,,,o	W   W
@@ -565,8 +532,7 @@
 		<object x="2" y="2" type="door"/>
 		<object x="2" y="3" type="door"/>
 	</pattern>
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
-		<tag name="inter-area-bridge-village-lock"/>
+	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-village-lock">
 		<data>
 			o,,,o	W   W
 			o,,,o	W   W
@@ -577,8 +543,7 @@
 		<object x="2" y="0" type="inter-area-bridge-village"/>
 		<object x="2" y="2" type="door"/>
 	</pattern>	
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
-		<tag name="inter-area-bridge-village-2-locks"/>
+	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-village-2-locks">
 		<data>
 			o,,,o	W   W
 			o,,,o	W   W
@@ -590,8 +555,7 @@
 		<object x="2" y="2" type="door"/>
 		<object x="2" y="3" type="door"/>
 	</pattern>	
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
-		<tag name="inter-area-bridge-house-lock"/>
+	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-house-lock">
 		<data>
 			ooooo	WW WW
 			ooooo	 W W 
@@ -602,8 +566,7 @@
 		<object x="2" y="0" type="inter-area-bridge-house"/>
 		<object x="2" y="2" type="door"/>
 	</pattern>	
-	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true">
-		<tag name="inter-area-bridge-house-2-locks"/>
+	<pattern type="house" dx="5" dy="5" north="outer-wall" east="none" south="none" west="none" priority="0" weight="1.00" canrotate="true" tag="inter-area-bridge-house-2-locks">
 		<data>
 			ooooo	WW WW
 			ooooo	 W W 
