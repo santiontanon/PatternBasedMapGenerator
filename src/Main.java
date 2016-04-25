@@ -57,7 +57,17 @@ public class Main {
         String outputFileName = null;
         
         inputFileName = args[0];
-        if (args.length>1) outputFileName = args[1];
+        if (args.length>1 && !args[1].startsWith("-")) outputFileName = args[1];
+        for(int i = 1;i<args.length;i++) {
+            if (args[i].equals("-d1")) {
+                DEBUG = 1;
+                PatternBasedLocationGenerator.DEBUG = 1;
+            }
+            if (args[i].equals("-d2")) {
+                DEBUG = 1;
+                PatternBasedLocationGenerator.DEBUG = 2;
+            }
+        }
         
         loadInputConfiguration(inputFileName);
         
@@ -78,8 +88,6 @@ public class Main {
         }
                                                 
         PatternBasedLocationGenerator generator = new PatternBasedLocationGenerator(patterns, type2Symbol, symbol2Type);
-        
-//        PatternBasedLocationGenerator.DEBUG = 2;
         TilePattern result = generator.generate(widthInPatterns, heightInPatterns, patternWidth, patternHeight, constraints, multipliers);
         
         if (outputFileName==null) {
@@ -99,9 +107,13 @@ public class Main {
         System.out.println("");
         System.out.println("This tool uses a pattern-based approach to generate two-dimensional maps. ");
         System.out.println("");
+        System.out.println("Usage: java -classpath PBMG.jar Main intputfilename [outputfilename] [options]");
         System.out.println("Example usage: java -classpath PBMG.jar Main examples/sampleInput.xml examples/output.xml");
         System.out.println("");
         System.out.println("The output file name is optional, and if not specified, the generated map will be just printed to standard output.");
+        System.out.println("Options:");
+        System.out.println(" -d1: turns on some verbose output of the process");
+        System.out.println(" -d2: turns on an even more verbose output of the process");
         System.out.println("");
     }
     
