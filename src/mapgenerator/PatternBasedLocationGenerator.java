@@ -57,9 +57,6 @@ public class PatternBasedLocationGenerator {
                                 int patternWidth, int patternHeight,
                                 List<Constraint> constraints,
                                 HashMap<Label,Double> multipliers) throws Exception {
-        List<ContentLocationRecord> coarseContentLocations = new LinkedList<>();
-        List<ContentLocationRecord> passageLocations = new LinkedList<>();
-
         int width = patternOverlap ? widthInPatterns*(patternWidth-1)+1 : widthInPatterns*patternWidth;
         int height = patternOverlap ? heightInPatterns*(patternHeight-1)+1 : heightInPatterns*patternHeight;
         int nlayers = 0;
@@ -121,9 +118,29 @@ public class PatternBasedLocationGenerator {
                 System.out.println();
             }
         }
+        
+        
+        // single pattern constraints:
+        // ...
 
-        // find paths between the key elements of the map:
-        addPathConstraints(possibilities, coarseContentLocations, passageLocations);
+        
+        if (DEBUG>=1) {
+            System.out.println("PatternBasedLocationGenerator.generate: Possibilities after single pattern constraints:");
+            for(int i = 0;i<heightInPatterns;i++) {
+                for(int j = 0;j<widthInPatterns;j++) {
+                    if (possibilities[j][i]==null) {
+                        System.out.print("- ");
+                    } else {
+                        System.out.print(possibilities[j][i].size() + " ");
+                    }
+                }
+                System.out.println();
+            }
+        }
+
+        // path constraints:
+        // ...
+
         
         if (DEBUG>=1) {
             System.out.println("PatternBasedLocationGenerator.generate: Possibilities after path constraints:");
@@ -297,7 +314,7 @@ public class PatternBasedLocationGenerator {
         return resultPattern;
     }
 
-
+/*
     public void addPathConstraints(List<TilePattern> [][]possibilities,
                                    List<ContentLocationRecord> coarseContentLocations,
                                    List<ContentLocationRecord> passageLocations) throws Exception
@@ -333,8 +350,8 @@ public class PatternBasedLocationGenerator {
 
         addPathConstraintsToLocation(possibilities, buffer, 0, 0, dx, dy);
     }
-
-
+*/
+/*
     public void addPathConstraintsToLocation(List<TilePattern> [][]possibilities,
                                              char buffer[][],
                                              int x0, int y0,
@@ -534,7 +551,7 @@ public class PatternBasedLocationGenerator {
             paths[current_x][current_y] = 0;
         }
     }
-
+*/
 
     public TilePattern[][] generateDFS(List<TilePattern> [][]possibilities, TilePattern[][]selected, boolean randomize, HashMap<Label,Double> multipliers) throws Exception {
 //        List<Pair<Integer,List<TilePattern>>> restore;
