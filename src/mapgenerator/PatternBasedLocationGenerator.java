@@ -254,46 +254,6 @@ public class PatternBasedLocationGenerator {
 
         // find the specific locations for all the content:
         List<ContentLocationRecord> contentLocations = new LinkedList<>();
-        /*
-        for(ContentLocationRecord ccl:coarseContentLocations) {
-            ContentLocationRecord cl = new ContentLocationRecord(ccl);
-            List<String> candidates = new ArrayList<>();
-            if (cl.n!=null &&
-                (cl.n instanceof LGraphNode) &&
-                ((LGraphNode)(cl.n)).subsumedBy( Ontology.lockLabel)) {
-                candidates.add("door");
-                candidates.add("castle-locked");
-                candidates.add("darktower-locked");
-            } else {
-                candidates.add(cl.type);
-            }
-
-            TilePattern pattern = selected[ccl.x][ccl.y];
-            ContentLocationRecord found = null;
-            for(ContentLocationRecord cl2:pattern.objects) {
-                if (candidates.contains(cl2.type)) {
-                    // found!
-                    if (patternOverlap) {
-                        cl.x = ccl.x * (patternDx - 1) + cl2.x;
-                        cl.y = ccl.y * (patternDy - 1) + cl2.y;
-                    } else {
-                        cl.x = ccl.x * patternDx + cl2.x;
-                        cl.y = ccl.y * patternDy + cl2.y;
-                    }
-//                    System.out.println(cl2.type + ": " + cl2.width + "(" + cl2.x + "," + cl2.y + ")");
-                    cl.width = cl2.width;
-                    cl.height = cl2.height;
-                    cl.type = cl2.type;
-                    found = cl2;
-                    break;
-                }
-            }
-            if (found==null)
-                throw new Exception("Cannot find a content location record for a coarse location record of type "+ccl.type+"!!");
-            pattern.objects.remove(found);
-            contentLocations.add(cl);
-        }
-        */
 
         // add the leftover content in the patterns:
         for(int i = 0;i<heightInPatterns;i++) {
@@ -322,7 +282,7 @@ public class PatternBasedLocationGenerator {
             }
         }
         
-        TilePattern resultPattern = new TilePattern(width, height, tiles.length);
+        TilePatternWithVariables resultPattern = new TilePatternWithVariables(width, height, tiles.length);
         
         for(int l = 0;l<tiles.length;l++) {
             for(int i = 0;i<height;i++) {
@@ -332,6 +292,9 @@ public class PatternBasedLocationGenerator {
             }
         }
         resultPattern.getObjects().addAll(contentLocations);
+        for(String v:singleCosntraintLocations.keySet()) {
+            resultPattern.addVariableBinding(v, singleCosntraintLocations.get(v));
+        }
         
         return resultPattern;
     }

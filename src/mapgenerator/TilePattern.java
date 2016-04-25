@@ -48,8 +48,7 @@ public class TilePattern {
     List<Label> south = new ArrayList<>();
     List<Label> west = new ArrayList<>();
     List<Label> contentTags = new ArrayList<>();
-    
-    
+        
     public TilePattern(int a_dx, int a_dy, int a_layers) {
         dx = a_dx;
         dy = a_dy;
@@ -140,6 +139,14 @@ public class TilePattern {
     
     
     public void writeToXML(XMLWriter w) {
+        writeOpenTagToXML(w);
+        writeBodyToXML(w);
+        writeClosingTagToXML(w);
+    }
+    
+    
+    // I separate this into three functions, so that it is easy to extend this class, and extend the writeToXML function:
+    public void writeOpenTagToXML(XMLWriter w) {
         String attributeString = "width=\""+dx+"\" height=\""+dy+"\" " + 
                                  labelListToXMLAttribute("type", typeTags) + " " +
                                  labelListToXMLAttribute("tag", contentTags) + " " +
@@ -148,9 +155,12 @@ public class TilePattern {
                                  labelListToXMLAttribute("south", south) + " " +
                                  labelListToXMLAttribute("west", west) + " " + 
                                  (canRotate ? "canrotate=\"true\" ":"") + 
-                                 "priority=\""+priority+"\" weight=\""+weight+"\"";
-        
+                                 "priority=\""+priority+"\" weight=\""+weight+"\"";        
         w.tagWithAttributes("pattern", attributeString);
+    }
+    
+    
+    public void writeBodyToXML(XMLWriter w) {
         for(int k = 0;k<pattern.length;k++) {
             w.tagWithAttributes("layer","layer=\""+k+"\"");
             for(int i=0;i<dy;i++) {
@@ -166,9 +176,12 @@ public class TilePattern {
                                             (clr.height>1 ? "height=\""+clr.height+"\" ":"") + 
                                             "type=\""+clr.type+"\"/>");   
         }
+    }
+
+    
+    public void writeClosingTagToXML(XMLWriter w) {
         w.tag("/pattern");
     }
-    
     
     String labelListToXMLAttribute(String attributeName, List<Label> ll) {
         String out = attributeName + "=\"";
@@ -410,123 +423,4 @@ public class TilePattern {
                 break;
         }
     }
-
-/*
-    public void precomputePathTags() throws Exception {
-        char buffer[][] = new char[dx][dy];
-        if (DEBUG>=1) System.out.println("TilePattern.precomputePathTags:");
-        for(int i = 0;i<dy;i++) {
-            for(int j = 0;j<dx;j++) {
-                buffer[j][i] = (walkable(j,i) ? ' ':'x');
-                if (DEBUG>=1) System.out.print(buffer[j][i]);
-            }
-            if (DEBUG>=1) System.out.println("");
-        }
-
-
-        // mark the left/up/right/down entrances:
-        for(int i = 1;i<dy-1;i++) {
-            if (buffer[0][i]==' ') buffer[0][i]='w';
-            if (buffer[dx-1][i]==' ') buffer[dx-1][i]='e';
-        }
-        for(int i = 1;i<dx-1;i++) {
-            if (buffer[i][0]==' ') buffer[i][0]='n';
-            if (buffer[i][dx-1]==' ') buffer[i][dx-1]='s';
-        }
-
-        // find if there is path between them:
-        for(int d1 = 0;d1<directions.length;d1++) {
-            for(int d2 = d1+1;d2<directions.length;d2++) {
-                if (pathBetweenEach(buffer, directions[d1], directions[d2])) {
-                    if (DEBUG>=1) System.out.println("  path-"+directions[d1]+'-'+directions[d2]);
-                    contentTags.add(new Label("path-"+directions[d1]+'-'+directions[d2]));
-                }
-            }
-        }
-    }
-
-    public boolean pathBetween(char buffer_in[][], char d1, char d2)
-    {
-        int dx = buffer_in.length;
-        int dy = buffer_in[0].length;
-        char buffer[][] = new char[dx][dy];
-        List<Integer> stack = new ArrayList<>();
-        for(int i = 0;i<dy;i++) {
-            for (int j = 0; j < dx; j++) {
-                buffer[j][i] = buffer_in[j][i];
-                if (buffer[j][i]==d1) stack.add(j+i*dx);
-            }
-        }
-        while(!stack.isEmpty()) {
-            int tmp = stack.remove(0);
-            int x = tmp%dx;
-            int y = tmp/dx;
-            if (buffer[x][y]==d2) return true;
-            if (buffer[x][y]!='x') {
-                buffer[x][y]=d1;
-                if (x > 0 && buffer[x-1][y]!=d1) stack.add((x-1)+y*dx);
-                if (y > 0 && buffer[x][y-1]!=d1) stack.add(x+(y-1)*dx);
-                if (x < dx-1 && buffer[x+1][y]!=d1) stack.add((x+1)+y*dx);
-                if (y < dy-1 && buffer[x][y+1]!=d1) stack.add(x+(y+1)*dx);
-            }
-        }
-        return false;
-    }
-
-    // this returns true if there is apath between EACH cell labeled as d1, and EACH cell labeled as d2
-    public boolean pathBetweenEach(char buffer_in[][], char d1, char d2)
-    {
-        int dx = buffer_in.length;
-        int dy = buffer_in[0].length;
-        char buffer[][] = new char[dx][dy];
-        List<Integer> d1_positions = new ArrayList<>();
-        List<Integer> d2_positions = new ArrayList<>();
-        for(int i = 0;i<dy;i++) {
-            for (int j = 0; j < dx; j++) {
-                buffer[j][i] = buffer_in[j][i];
-                if (buffer[j][i]==d1) {
-                    d1_positions.add(j+i*dx);
-                    buffer[j][i] = ' ';
-                }
-                if (buffer[j][i]==d2) {
-                    d2_positions.add(j+i*dx);
-                    buffer[j][i] = ' ';
-                }
-            }
-        }
-        if (d1_positions.isEmpty() || d2_positions.isEmpty()) return false;
-        for(int d1_pos:d1_positions) {
-            buffer[d1_pos%dx][d1_pos/dx] = d1;
-            for(int d2_pos:d2_positions) {
-                buffer[d2_pos%dx][d2_pos/dx] = d2;
-                if (!pathBetween(buffer,d1,d2)) return false;
-                buffer[d2_pos%dx][d2_pos/dx] = ' ';
-            }
-            buffer[d1_pos%dx][d1_pos/dx] = ' ';
-        }
-        return true;
-    }
-
-
-    // TODO: this is right now hardcoded, I should come up with a list of things that are
-    //       not walkable from the ontology and processing the character to concept mappings
-    public boolean walkable(int x, int y) {
-        for(int layer = 0;layer<pattern.length;layer++) {
-            if (pattern[layer][x][y]=='~') return false;
-            if (pattern[layer][x][y]=='#') return false;
-            if (pattern[layer][x][y]=='@') return false;
-            if (pattern[layer][x][y]=='0') return false;
-            if (pattern[layer][x][y]=='b') return false;
-            if (pattern[layer][x][y]=='e') return false;
-            if (pattern[layer][x][y]=='p') return false;
-            if (pattern[layer][x][y]=='r') return false;
-            if (pattern[layer][x][y]=='t') return false;
-            if (pattern[layer][x][y]=='w') return false;
-            if (pattern[layer][x][y]=='A') return false;
-            if (pattern[layer][x][y]=='K') return false;
-            if (pattern[layer][x][y]=='W') return false;
-        }
-        return true;
-    }
-    */
 }
