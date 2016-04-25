@@ -1,10 +1,13 @@
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.StringTokenizer;
+import javax.imageio.ImageIO;
 import mapgenerator.ContentLocationRecord;
 import mapgenerator.PatternBasedLocationGenerator;
 import mapgenerator.TilePattern;
@@ -16,6 +19,7 @@ import mapgenerator.constraints.PathConstraint;
 import mapgenerator.constraints.SinglePatternConstraint;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
+import pngrenderer.PNGRenderer;
 import util.Label;
 import util.Pair;
 import util.XMLWriter;
@@ -32,7 +36,7 @@ import util.XMLWriter;
  */
 public class Main {
     
-    public static int DEBUG = 1;
+    public static int DEBUG = 0;
     
     static List<String> patternFileNames = new ArrayList<>();
     static List<String> symbolFileNames = new ArrayList<>();
@@ -42,6 +46,7 @@ public class Main {
     static int patternWidth = 5;
     static int patternHeight = 5;
     static HashMap<Label,Double> multipliers = new HashMap<>();
+    static PNGRenderer renderer = null;
 
     public static void main(String args[]) throws Exception {
         List<TilePattern> patterns = new ArrayList<>();
@@ -55,6 +60,7 @@ public class Main {
         
         String inputFileName = null;
         String outputFileName = null;
+        String pngOutputFileName = null;
         
         inputFileName = args[0];
         if (args.length>1 && !args[1].startsWith("-")) outputFileName = args[1];
@@ -66,6 +72,10 @@ public class Main {
             if (args[i].equals("-d2")) {
                 DEBUG = 1;
                 PatternBasedLocationGenerator.DEBUG = 2;
+            }
+            if (args[i].startsWith("-png:")) {
+                pngOutputFileName = args[i].substring(5);
+                renderer = new PNGRenderer();
             }
         }
         
@@ -90,6 +100,11 @@ public class Main {
         PatternBasedLocationGenerator generator = new PatternBasedLocationGenerator(patterns, type2Symbol, symbol2Type);
         TilePattern result = generator.generate(widthInPatterns, heightInPatterns, patternWidth, patternHeight, constraints, multipliers);
         
+        if (pngOutputFileName!=null) {
+            BufferedImage img = renderer.render(result, symbol2Type);
+            ImageIO.write(img, "png", new File(pngOutputFileName));
+        }        
+        
         if (outputFileName==null) {
             XMLWriter w = new XMLWriter(new OutputStreamWriter(System.out));
             if (result!=null) result.writeToXML(w);
@@ -98,7 +113,7 @@ public class Main {
             XMLWriter w = new XMLWriter(new FileWriter(outputFileName));
             if (result!=null) result.writeToXML(w);
             w.close();
-        }
+        }        
     }
     
     
@@ -201,13 +216,19 @@ public class Main {
             }
         }
         
-        System.out.println(constraints.size() + " constraints loaded.");
+        if (DEBUG>=1) System.out.println(constraints.size() + " constraints loaded.");
 
         // load multipliers:
         for(Object o:root.getChildren("multiplier")) {
             Element m_e = (Element)o;
             multipliers.put(new Label(m_e.getAttributeValue("tag")),
                             Double.parseDouble(m_e.getAttributeValue("factor")));
+        }
+        
+        if (renderer!=null) {
+            // load tile graphic mappings:
+            Element gom_e = root.getChild("graphicOutputMapping");
+            if (gom_e!=null) renderer.parseXMLConfig(gom_e);
         }
     }
             

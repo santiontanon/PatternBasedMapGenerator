@@ -18,6 +18,7 @@
 	<multiplier tag="enemy" factor="0.5"/>
 
 	<graphicOutputMapping tileWidth="32" tileHeight="32">
+		<tile type="empty" tile="0" file="examples/sampleGraphics.png" weight="1.0"/>
 
 		<tile type="floor" tile="57" file="examples/sampleGraphics.png" weight="16.0"/>
 		<tile type="floor" tile="175" file="examples/sampleGraphics.png" weight="2.0"/>
