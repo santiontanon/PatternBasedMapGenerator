@@ -2,6 +2,10 @@
 
 This is a generic pattern-based map generator, that receives a collection of "patterns" and "cosntraints", and uses a constraint-based search process in order to find a configuration of the input patterns that satisfy the constraints. It was designed to be part of the procedural-content generation (PCG) pipeline of a little personal project. But I decided to separate it into its own project.
 
+Here is an  example output with some example patterns provided for testing purposes:
+
+![sample png output](https://raw.githubusercontent.com/santiontanon/PatternBasedMapGenerator/master/examples/sampleOutput3-1.png)
+
 
 ## Pattern File format
 
