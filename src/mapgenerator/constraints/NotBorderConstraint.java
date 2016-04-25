@@ -13,6 +13,11 @@ import util.Label;
 /**
  *
  * @author santi
+ * 
+ * This constraint specifies that the sides of the patterns that are NOT facing
+ * "outside" (i.e., everything but the outer edge of the map) must satisfy at 
+ * least one label in "tags" and none of the labels in "negativeTags"
+ * 
  */
 public class NotBorderConstraint extends Constraint {
     List<Label> tags = new ArrayList<>();

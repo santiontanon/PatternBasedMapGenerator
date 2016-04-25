@@ -13,6 +13,15 @@ import util.Label;
 /**
  *
  * @author santi
+ * 
+ * This constraint ensures that at least one of the patterns in the map satisfy
+ * the specified tags. If "x" or "y" are specified, it will only take into account
+ * patterns in those coordinates (e.g., if "x" is specified, only those positions
+ * in the map with that "x" coordinate will be candidates).
+ * 
+ * the "ID" is used to later refer to the pattern that was selected in the "path
+ * constraint".
+ * 
  */
 public class SinglePatternConstraint extends Constraint {
     int direction;

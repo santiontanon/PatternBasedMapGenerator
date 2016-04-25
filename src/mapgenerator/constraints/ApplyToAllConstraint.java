@@ -13,6 +13,10 @@ import util.Label;
 /**
  *
  * @author santi
+ * 
+ * This constraint specifies that ALL the patterns used to generate a map must
+ * satisfy at least one of the "tags" and none of the "negativeTags".
+ * 
  */
 public class ApplyToAllConstraint extends Constraint {
     int direction;
