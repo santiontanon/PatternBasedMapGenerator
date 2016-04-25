@@ -1,7 +1,6 @@
 
 import java.io.FileWriter;
 import java.io.OutputStreamWriter;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +12,8 @@ import mapgenerator.constraints.BorderConstraint;
 import mapgenerator.constraints.Constraint;
 import mapgenerator.constraints.NotBorderConstraint;
 import mapgenerator.constraints.ApplyToAllConstraint;
+import mapgenerator.constraints.PathConstraint;
+import mapgenerator.constraints.SinglePatternConstraint;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import util.Label;
@@ -171,6 +172,19 @@ public class Main {
                 for(Label t:tags) c.addTag(t);
                 for(Label t:negativeTags) c.addNegativeTag(t);
                 constraints.add(c);
+            } else if (c_e.getName().equals("singlePatternConstraint")) {
+                SinglePatternConstraint c = new SinglePatternConstraint(type);
+                for(Label t:tags) c.addTag(t);
+                for(Label t:negativeTags) c.addNegativeTag(t);
+                if (c_e.getAttributeValue("x")!=null) c.setX(Integer.parseInt(c_e.getAttributeValue("x")));
+                if (c_e.getAttributeValue("y")!=null) c.setY(Integer.parseInt(c_e.getAttributeValue("y")));
+                if (c_e.getAttributeValue("ID")!=null) c.setID(c_e.getAttributeValue("y"));
+                constraints.add(c);
+            } else if (c_e.getName().equals("pathConstraint")) {
+                PathConstraint c = new PathConstraint();
+                String patterns = c_e.getAttributeValue("patterns");
+                StringTokenizer st = new StringTokenizer(patterns,", ");
+                while(st.hasMoreTokens()) c.addID(st.nextToken());
             }
         }
         

@@ -33,6 +33,7 @@ public class SinglePatternConstraint extends Constraint {
     public SinglePatternConstraint(int a_direction) {
         direction = a_direction;        
     }
+    
 
     public SinglePatternConstraint(int a_direction, Label tag) {
         direction = a_direction;
@@ -52,9 +53,26 @@ public class SinglePatternConstraint extends Constraint {
         tags.add(tag);
     }
     
+    
     public void addNegativeTag(Label tag) {
         negativeTags.add(tag);
     }
+    
+    
+    public void setX(int a_x) {
+        x = a_x;
+    }
+    
+    
+    public void setY(int a_y) {
+        y = a_y;
+    }
+    
+    
+    public void setID(String a_ID) {
+        ID = a_ID;
+    }
+    
     
     public boolean checkConstraint(TilePattern tp, int px, int py) {
         if (!tags.isEmpty()) {
