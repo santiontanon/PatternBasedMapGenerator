@@ -16,6 +16,7 @@ import mapgenerator.constraints.BorderConstraint;
 import mapgenerator.constraints.Constraint;
 import mapgenerator.constraints.NotBorderConstraint;
 import mapgenerator.constraints.ApplyToAllConstraint;
+import mapgenerator.constraints.SinglePatternConstraint;
 import util.Label;
 
 /**
@@ -121,8 +122,7 @@ public class PatternBasedLocationGenerator {
         
         
         // single pattern constraints:
-        // ...
-
+        HashMap<String, Pair<Integer,Integer>> singleCosntraintLocations = singlePatternCosntraintsDFS(possibilities, constraints);
         
         if (DEBUG>=1) {
             System.out.println("PatternBasedLocationGenerator.generate: Possibilities after single pattern constraints:");
@@ -314,6 +314,56 @@ public class PatternBasedLocationGenerator {
         return resultPattern;
     }
 
+    
+    public HashMap<String, Pair<Integer,Integer>> singlePatternCosntraintsDFS(List<TilePattern> [][]possibilities, List<Constraint> constraints)
+    {
+        HashMap<String, Pair<Integer, Integer>> res = new HashMap<>();
+        
+        if (singlePatternCosntraintsDFS(possibilities, constraints, res, 0)) return res;
+        return null;
+    }
+
+
+    public boolean singlePatternCosntraintsDFS(List<TilePattern> [][]possibilities, List<Constraint> constraints,
+                                               HashMap<String, Pair<Integer, Integer>> res, int idx)
+    {
+        if (idx>=constraints.size()) return true;
+        
+        Constraint c = constraints.get(idx);
+        if (c instanceof SinglePatternConstraint) { 
+            SinglePatternConstraint spc = (SinglePatternConstraint)c;
+            List<Pair<Integer, Integer>> candidates = new ArrayList<>();
+            
+            // find the candidates:
+            for(int x = 0;x<possibilities.length;x++) {
+                if (spc.getX()!=-1 && spc.getX()!=x) continue;
+                for(int y = 0;y<possibilities[0].length;y++) {
+                    if (spc.getY()!=-1 && spc.getY()!=y) continue;
+                    
+                    
+                }
+            }
+            
+            // sort them randomly:
+            Collections.shuffle(candidates, r);
+            
+            for(Pair<Integer,Integer> candidate:candidates) {
+                // select:
+                // ...
+                
+                if (singlePatternCosntraintsDFS(possibilities, constraints, res, idx+1)) {
+                    return true;
+                } else {
+                    // undo the selection:
+                    // ...
+                }
+            }
+            return false;
+        } else {
+            return singlePatternCosntraintsDFS(possibilities, constraints, res, idx+1);
+        }        
+    }    
+    
 /*
     public void addPathConstraints(List<TilePattern> [][]possibilities,
                                    List<ContentLocationRecord> coarseContentLocations,

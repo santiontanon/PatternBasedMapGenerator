@@ -59,11 +59,21 @@ public class SinglePatternConstraint extends Constraint {
     }
     
     
+    public int getX() {
+        return x;
+    }
+    
+
     public void setX(int a_x) {
         x = a_x;
     }
     
     
+    public int getY() {
+        return y;
+    }
+
+
     public void setY(int a_y) {
         y = a_y;
     }
