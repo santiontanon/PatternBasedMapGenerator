@@ -125,6 +125,11 @@ public class PatternBasedLocationGenerator {
         HashMap<String, Pair<Integer,Integer>> singleCosntraintLocations = singlePatternCosntraintsDFS(possibilities, constraints);
         
         if (DEBUG>=1) {
+            System.out.println("PatternBasedLocationGenerator.generate: single pattern constriants locations:");
+            for(String ID:singleCosntraintLocations.keySet()) {
+                System.out.println(ID + " -> " + singleCosntraintLocations.get(ID));
+            }
+            
             System.out.println("PatternBasedLocationGenerator.generate: Possibilities after single pattern constraints:");
             for(int i = 0;i<heightInPatterns;i++) {
                 for(int j = 0;j<widthInPatterns;j++) {
@@ -340,7 +345,7 @@ public class PatternBasedLocationGenerator {
                 for(int y = 0;y<possibilities[0].length;y++) {
                     if (spc.getY()!=-1 && spc.getY()!=y) continue;
                     
-                    
+                    if (satisfiableConstraint(x, y, spc, possibilities)) candidates.add(new Pair<Integer,Integer>(x,y));
                 }
             }
             
@@ -349,13 +354,15 @@ public class PatternBasedLocationGenerator {
             
             for(Pair<Integer,Integer> candidate:candidates) {
                 // select:
-                // ...
+                RestoreStructure r = new RestoreStructure(possibilities, null);
+                addConstraint(candidate.m_a, candidate.m_b, spc, possibilities);
+                res.put(spc.getID(), candidate);
                 
                 if (singlePatternCosntraintsDFS(possibilities, constraints, res, idx+1)) {
                     return true;
                 } else {
                     // undo the selection:
-                    // ...
+                    r.restore(possibilities, null);
                 }
             }
             return false;
@@ -780,6 +787,21 @@ public class PatternBasedLocationGenerator {
         return toDelete;
     }
     
+    
+    // returns the list of patterns that have been removed, for restoring them after backtracking:
+    public List<TilePattern> addConstraint(int x, int y, SinglePatternConstraint spc, List<TilePattern> [][]possibilities) {
+        List<TilePattern> toDelete = new ArrayList<>();
+        if (possibilities[x][y]==null) return toDelete;
+        for(TilePattern p:possibilities[x][y]) {
+            if (!p.satisfiesAtLeastOneConstraint(spc.getDirection(),spc.getTags()) ||
+                p.satisfiesAtLeastOneConstraint(spc.getDirection(),spc.getNegativeTags())) {
+                toDelete.add(p);
+            }
+        }
+        possibilities[x][y].removeAll(toDelete);
+        return toDelete;
+    }    
+    
 
     public boolean satisfiableConstraint(int x, int y, int direction, Label constraint, List<TilePattern> [][]possibilities) {
         if (possibilities[x][y]==null) return false;
@@ -789,6 +811,34 @@ public class PatternBasedLocationGenerator {
         return false;
     }
 
+
+    public boolean satisfiableConstraint(int x, int y, int direction, List<Label> constraint, List<TilePattern> [][]possibilities) {
+        if (possibilities[x][y]==null) return false;
+        for(TilePattern p:possibilities[x][y]) {
+            if (p.satisfiesAtLeastOneConstraint(direction,constraint)) return true;
+        }
+        return false;
+    }
+
+
+    public boolean satisfiableNegativeConstraint(int x, int y, int direction, List<Label> constraint, List<TilePattern> [][]possibilities) {
+        if (possibilities[x][y]==null) return false;
+        for(TilePattern p:possibilities[x][y]) {
+            if (!p.satisfiesAtLeastOneConstraint(direction,constraint)) return true;
+        }
+        return false;
+    }
+
+    
+    public boolean satisfiableConstraint(int x, int y, SinglePatternConstraint spc, List<TilePattern> [][]possibilities) {
+        if (possibilities[x][y]==null) return false;
+        for(TilePattern p:possibilities[x][y]) {
+            if (p.satisfiesAtLeastOneConstraint(spc.getDirection(),spc.getTags()) &&
+                !p.satisfiesAtLeastOneConstraint(spc.getDirection(),spc.getNegativeTags())) return true;
+        }
+        return false;
+    }
+    
     
     public boolean inference(List<TilePattern> [][]possibilities, TilePattern[][]selected) {
         int pdx = possibilities.length;

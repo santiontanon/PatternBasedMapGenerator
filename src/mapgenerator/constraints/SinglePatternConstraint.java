@@ -54,8 +54,23 @@ public class SinglePatternConstraint extends Constraint {
     }
     
     
+    public List<Label> getTags() {
+        return tags;
+    }
+    
+    
+    public List<Label> getNegativeTags() {
+        return negativeTags;
+    }
+    
+    
     public void addNegativeTag(Label tag) {
         negativeTags.add(tag);
+    }
+    
+    
+    public int getDirection() {
+        return direction;
     }
     
     
@@ -76,6 +91,11 @@ public class SinglePatternConstraint extends Constraint {
 
     public void setY(int a_y) {
         y = a_y;
+    }
+    
+    
+    public String getID() {
+        return ID;
     }
     
     

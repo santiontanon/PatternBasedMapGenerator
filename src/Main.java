@@ -178,7 +178,7 @@ public class Main {
                 for(Label t:negativeTags) c.addNegativeTag(t);
                 if (c_e.getAttributeValue("x")!=null) c.setX(Integer.parseInt(c_e.getAttributeValue("x")));
                 if (c_e.getAttributeValue("y")!=null) c.setY(Integer.parseInt(c_e.getAttributeValue("y")));
-                if (c_e.getAttributeValue("ID")!=null) c.setID(c_e.getAttributeValue("y"));
+                if (c_e.getAttributeValue("id")!=null) c.setID(c_e.getAttributeValue("id"));
                 constraints.add(c);
             } else if (c_e.getName().equals("pathConstraint")) {
                 PathConstraint c = new PathConstraint();

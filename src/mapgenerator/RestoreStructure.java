@@ -14,14 +14,14 @@ import java.util.List;
  */
 public class RestoreStructure {
 
-    List<TilePattern>[][] possibilities;
-    TilePattern[][] selected;
+    List<TilePattern>[][] possibilities = null;
+    TilePattern[][] selected = null;
 
     public RestoreStructure(List<TilePattern>[][] p, TilePattern[][] s) {
         int dx = p.length;
         int dy = p[0].length;
         possibilities = new List[dx][dy];
-        selected = new TilePattern[dx][dy];
+        if (s!=null) selected = new TilePattern[dx][dy];
         for (int i = 0; i < dy; i++) {
             for (int j = 0; j < dx; j++) {
                 if (p[j][i] == null) {
@@ -30,7 +30,7 @@ public class RestoreStructure {
                     possibilities[j][i] = new ArrayList<>();
                     possibilities[j][i].addAll(p[j][i]);
                 }
-                selected[j][i] = s[j][i];
+                if (s!=null) selected[j][i] = s[j][i];
             }
         }
     }
@@ -46,7 +46,7 @@ public class RestoreStructure {
                     p[j][i] = new ArrayList<>();
                     p[j][i].addAll(possibilities[j][i]);
                 }
-                s[j][i] = selected[j][i];
+                if (s!=null) s[j][i] = selected[j][i];
             }
         }
     }
