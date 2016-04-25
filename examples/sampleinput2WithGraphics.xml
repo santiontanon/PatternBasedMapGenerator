@@ -7,7 +7,7 @@
 	<patternSize width="5" height="5"/>
 	<mapSize width="7" height="5"/>
 	<constraints>
-		<applyToAllConstraint type="type" tag="forest"/>
+		<applyToAllConstraint type="type" tag="castle"/>
 		<borderConstraint tag="outer-wall"/>
 		<notBorderConstraint tag="~outer-wall"/>
 		<singlePatternConstraint type="tag" tag="start" x="1" y="1" id="C1"/>
@@ -163,15 +163,15 @@
 		<tile type="inter-area-bridge-castle" tile="146" file="examples/sampleGraphics.png" weight="1.0"/>		
 		<tile type="inter-area-bridge-castle" tile="147" file="examples/sampleGraphics.png" weight="1.0"/>		
 
-		<tile type="enemy" file="examples/sampleGraphics.png" tile="101" weight="1.0"/>
-		<tile type="enemy" file="examples/sampleGraphics.png" tile="111" weight="1.0"/>
-		<tile type="enemy" file="examples/sampleGraphics.png" tile="121" weight="1.0"/>
-		<tile type="enemy" file="examples/sampleGraphics.png" tile="141" weight="1.0"/>
-		<tile type="enemy" file="examples/sampleGraphics.png" tile="151" weight="1.0"/>
-		<tile type="enemy" file="examples/sampleGraphics.png" tile="161" weight="1.0"/>
-		<tile type="enemy" file="examples/sampleGraphics.png" tile="171" weight="1.0"/>
-		<tile type="enemy" file="examples/sampleGraphics.png" tile="107" weight="1.0"/>
-		<tile type="enemy" file="examples/sampleGraphics.png" tile="117" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="5" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="15" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="25" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="35" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="45" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="55" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="65" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="75" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="85" weight="1.0"/>
 
 		<tile type="inter-area-bridge-forest" tile="0" file="examples/sampleGraphics.png" weight="1.0"/>		
 
@@ -181,17 +181,22 @@
 
 		<tile type="darktower" file="examples/sampleGraphics.png" tile="54" weight="1.0" width="2" height="2"/>
 
-		<tile type="npc" file="examples/sampleGraphics.png" tile="81" weight="1.0"/>
-		<tile type="npc" file="examples/sampleGraphics.png" tile="91" weight="1.0"/>
-		<tile type="npc" file="examples/sampleGraphics.png" tile="97" weight="1.0"/>
-		<tile type="npc" file="examples/sampleGraphics.png" tile="131" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="11" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="21" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="31" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="41" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="51" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="61" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="71" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="81" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="91" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="101" weight="1.0"/>
 
 		<tile type="choppable-tree" tile="46" file="examples/sampleGraphics.png" weight="1.0"/>
 
 		<tile type="start" tile="0" file="examples/sampleGraphics.png" weight="1.0"/>
 
 		<tile type="inter-area-bridge-village" tile="0" file="examples/sampleGraphics.png" weight="1.0"/>		
-
 		<tile type="wood-wall0" tile="214" file="examples/sampleGraphics.png" weight="1.0"/>
 		<tile type="wood-wall1" tile="224" file="examples/sampleGraphics.png" weight="1.0"/>
 		<tile type="wood-wall2" tile="234" file="examples/sampleGraphics.png" weight="1.0"/>

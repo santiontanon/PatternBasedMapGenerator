@@ -36,6 +36,12 @@ public class PNGRenderer {
             int tile = Integer.parseInt(tile_e.getAttributeValue("tile"));
             String file = tile_e.getAttributeValue("file");
             double weight = Double.parseDouble(tile_e.getAttributeValue("weight"));
+            int width = 1;
+            int height = 1;
+            if (tile_e.getAttributeValue("width")!=null) 
+                width = Integer.parseInt(tile_e.getAttributeValue("width"));
+            if (tile_e.getAttributeValue("height")!=null) 
+                height = Integer.parseInt(tile_e.getAttributeValue("height"));
             
             TypeGraphic tg = typeGraphics.get(l);
             if (tg==null) {
@@ -44,14 +50,14 @@ public class PNGRenderer {
             }
             BufferedImage img = images.get(file);
             if (img==null) img = img = ImageIO.read(new File(file));
-            BufferedImage g = new BufferedImage(tileWidth, tileHeight, BufferedImage.TYPE_INT_ARGB);
+            BufferedImage g = new BufferedImage(width*tileWidth, height*tileHeight, BufferedImage.TYPE_INT_ARGB);
             
             if (tile>0) {
                 int widthInTiles = img.getWidth()/tileWidth;
                 int srcx = ((tile-1)%widthInTiles) * tileWidth;
                 int srcy = ((tile-1)/widthInTiles) * tileHeight;
-                g.getGraphics().drawImage(img, 0, 0, tileWidth, tileHeight,
-                                               srcx, srcy, srcx+tileWidth, srcy+tileHeight, null);
+                g.getGraphics().drawImage(img, 0, 0, width*tileWidth, height*tileHeight,
+                                               srcx, srcy, srcx+width*tileWidth, srcy+height*tileHeight, null);
             }
             
             tg.addGraphic(g, weight);
@@ -103,7 +109,8 @@ public class PNGRenderer {
     public void drawTile(BufferedImage img, int x, int y, TypeGraphic tg) throws Exception {
         BufferedImage tile = tg.draw();
         if (tile!=null) {
-            img.getGraphics().drawImage(tile, x, y, x+tileWidth, y+tileHeight, 0, 0, tileWidth, tileHeight, null);
+            img.getGraphics().drawImage(tile, x, y, x+tile.getWidth(), y+tile.getWidth(), 
+                                              0, 0, tile.getWidth(), tile.getWidth(), null);
         }
     }
 

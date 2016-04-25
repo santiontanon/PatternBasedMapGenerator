@@ -1,0 +1,218 @@
+<PBMGInput>
+	<symbolFile name="examples/symbols.xml"/>
+	<patternsfile name="examples/patternsCastle.xml"/>
+	<patternsfile name="examples/patternsForest.xml"/>
+	<patternsfile name="examples/patternsHouse.xml"/>
+	<patternsfile name="examples/patternsVillage.xml"/>
+	<patternSize width="5" height="5"/>
+	<mapSize width="7" height="5"/>
+	<constraints>
+		<applyToAllConstraint type="type" tag="forest"/>
+		<borderConstraint tag="outer-wall"/>
+		<notBorderConstraint tag="~outer-wall"/>
+		<singlePatternConstraint type="tag" tag="start" x="1" y="1" id="C1"/>
+		<singlePatternConstraint type="tag" tag="goal" x="5" id="C3"/>
+		<singlePatternConstraint type="tag" tag="item" id="C2"/>
+		<pathConstraint patterns="C1,C2,C3"/>
+	</constraints>
+	<multiplier tag="enemy" factor="0.5"/>
+
+	<graphicOutputMapping tileWidth="32" tileHeight="32">
+		<tile type="empty" tile="0" file="examples/sampleGraphics.png" weight="1.0"/>
+
+		<tile type="floor" tile="57" file="examples/sampleGraphics.png" weight="16.0"/>
+		<tile type="floor" tile="175" file="examples/sampleGraphics.png" weight="2.0"/>
+		<tile type="floor" tile="176" file="examples/sampleGraphics.png" weight="2.0"/>
+		<tile type="floor" tile="185" file="examples/sampleGraphics.png" weight="1.0"/>
+
+		<tile type="grass0" tile="31" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="grass1" tile="31" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="grass2" tile="31" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="grass3" tile="31" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="grass4" tile="31" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="grass5" tile="34" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="grass6" tile="36" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="grass7" tile="33" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="grass8" tile="31" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="grass9" tile="35" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="grass10" tile="37" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="grass11" tile="39" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="grass12" tile="31" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="grass13" tile="38" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="grass14" tile="32" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="grass15" tile="31" file="examples/sampleGraphics.png" weight="1.0"/>
+
+		<tile type="water" tile="21" file="examples/sampleGraphics.png" weight="1.0"/>
+
+		<tile type="fence0" tile="213" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="fence1" tile="223" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="fence2" tile="233" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="fence3" tile="243" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="fence4" tile="253" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="fence5" tile="263" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="fence6" tile="273" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="fence7" tile="283" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="fence8" tile="293" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="fence9" tile="303" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="fence10" tile="313" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="fence11" tile="323" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="fence12" tile="333" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="fence13" tile="343" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="fence14" tile="353" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="fence15" tile="363" file="examples/sampleGraphics.png" weight="1.0"/>
+
+		<tile type="house" tile="42" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="house" tile="43" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="house" tile="44" file="examples/sampleGraphics.png" weight="1.0"/>
+
+		<tile type="large-house" file="examples/sampleGraphics.png" tile="257" weight="1.0" width="3" height="2"/>
+		<tile type="large-house-closed" file="examples/sampleGraphics.png" tile="237" weight="1.0" width="3" height="2"/>
+
+		<tile type="rock" tile="47" file="examples/sampleGraphics.png" weight="1.0"/>
+
+		<tile type="path0" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="path1" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="path2" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="path3" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="path4" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="path5" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="path6" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="path7" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="path8" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="path9" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="path10" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="path11" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="path12" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="path13" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="path14" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="path15" tile="41" file="examples/sampleGraphics.png" weight="1.0"/>
+
+		<tile type="castle-locked" file="examples/sampleGraphics.png" tile="52" weight="1.0" width="2" height="2"/>
+		
+		<tile type="bookshelves" tile="69" file="examples/sampleGraphics.png" weight="1.0"/>		
+		<tile type="bookshelves" tile="3" file="examples/sampleGraphics.png" weight="1.0"/>		
+
+		<tile type="carpet1" tile="165" file="examples/sampleGraphics.png" weight="1.0"/>		
+		<tile type="carpet2" tile="68" file="examples/sampleGraphics.png" weight="1.0"/>		
+		<tile type="carpet3" tile="58" file="examples/sampleGraphics.png" weight="1.0"/>		
+
+		<tile type="door" file="examples/sampleGraphics.png" tile="40" weight="1.0"/>
+
+		<tile type="house-decoration" tile="4" file="examples/sampleGraphics.png" weight="1.0"/>	
+		<tile type="house-decoration" tile="13" file="examples/sampleGraphics.png" weight="1.0"/>	
+		<tile type="house-decoration" tile="87" file="examples/sampleGraphics.png" weight="1.0"/>	
+		<tile type="house-decoration" tile="96" file="examples/sampleGraphics.png" weight="1.0"/>	
+		<tile type="house-decoration" tile="106" file="examples/sampleGraphics.png" weight="1.0"/>	
+		<tile type="house-decoration" tile="126" file="examples/sampleGraphics.png" weight="1.0"/>	
+		<tile type="house-decoration" tile="148" file="examples/sampleGraphics.png" weight="1.0"/>	
+
+		<tile type="throne" tile="59" file="examples/sampleGraphics.png" weight="1.0"/>		
+
+		<tile type="item" tile="30" file="examples/sampleGraphics.png" weight="1.0"/>		
+
+		<tile type="darktower-locked" file="examples/sampleGraphics.png" tile="54" weight="1.0" width="2" height="2"/>
+
+		<tile type="wood" tile="60" file="examples/sampleGraphics.png" weight="1.0"/>	
+
+		<tile type="pillar" tile="136" file="examples/sampleGraphics.png" weight="1.0"/>		
+
+		<tile type="tree" tile="45" file="examples/sampleGraphics.png" weight="1.0"/>
+
+		<tile type="table0" tile="87" file="examples/sampleGraphics.png" weight="1.0"/>		
+		<tile type="table4" tile="88" file="examples/sampleGraphics.png" weight="1.0"/>		
+		<tile type="table12" tile="89" file="examples/sampleGraphics.png" weight="1.0"/>		
+		<tile type="table8" tile="90" file="examples/sampleGraphics.png" weight="1.0"/>		
+
+		<tile type="cave" file="examples/sampleGraphics.png" tile="166" weight="1.0" width="1" height="1"/>
+
+		<tile type="wall0" tile="211" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall0" tile="212" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wall1" tile="221" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall1" tile="222" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wall2" tile="231" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall2" tile="232" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wall3" tile="241" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall3" tile="242" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wall4" tile="251" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall4" tile="252" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wall5" tile="261" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall5" tile="262" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wall6" tile="271" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall6" tile="272" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wall7" tile="281" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall7" tile="282" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wall8" tile="291" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall8" tile="292" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wall9" tile="301" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall9" tile="302" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wall10" tile="311" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall10" tile="312" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wall11" tile="321" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall11" tile="322" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wall12" tile="331" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall12" tile="332" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wall13" tile="341" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall13" tile="342" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wall14" tile="351" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall14" tile="352" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wall15" tile="361" file="examples/sampleGraphics.png" weight="15.0"/>
+		<tile type="wall15" tile="362" file="examples/sampleGraphics.png" weight="1.0"/>
+
+		<tile type="castle" file="examples/sampleGraphics.png" tile="52" weight="1.0" width="2" height="2"/>
+
+		<tile type="inter-area-bridge-castle" tile="146" file="examples/sampleGraphics.png" weight="1.0"/>		
+		<tile type="inter-area-bridge-castle" tile="147" file="examples/sampleGraphics.png" weight="1.0"/>		
+
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="5" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="15" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="25" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="35" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="45" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="55" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="65" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="75" weight="1.0"/>
+		<tile type="enemy" file="examples/sampleGraphicsCreatures.png" tile="85" weight="1.0"/>
+
+		<tile type="inter-area-bridge-forest" tile="0" file="examples/sampleGraphics.png" weight="1.0"/>		
+
+		<tile type="goal" tile="147" file="examples/sampleGraphics.png" weight="1.0"/>
+
+		<tile type="inter-area-bridge-house" tile="70" file="examples/sampleGraphics.png" weight="1.0"/>		
+
+		<tile type="darktower" file="examples/sampleGraphics.png" tile="54" weight="1.0" width="2" height="2"/>
+
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="11" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="21" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="31" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="41" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="51" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="61" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="71" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="81" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="91" weight="1.0"/>
+		<tile type="npc" file="examples/sampleGraphicsCreatures.png" tile="101" weight="1.0"/>
+
+		<tile type="choppable-tree" tile="46" file="examples/sampleGraphics.png" weight="1.0"/>
+
+		<tile type="start" tile="0" file="examples/sampleGraphics.png" weight="1.0"/>
+
+		<tile type="inter-area-bridge-village" tile="0" file="examples/sampleGraphics.png" weight="1.0"/>		
+		<tile type="wood-wall0" tile="214" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wood-wall1" tile="224" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wood-wall2" tile="234" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wood-wall3" tile="244" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wood-wall4" tile="254" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wood-wall5" tile="264" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wood-wall6" tile="274" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wood-wall7" tile="284" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wood-wall8" tile="294" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wood-wall9" tile="304" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wood-wall10" tile="314" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wood-wall11" tile="324" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wood-wall12" tile="334" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wood-wall13" tile="344" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wood-wall14" tile="354" file="examples/sampleGraphics.png" weight="1.0"/>
+		<tile type="wood-wall15" tile="364" file="examples/sampleGraphics.png" weight="1.0"/>
+
+	</graphicOutputMapping>
+</PBMGInput>
