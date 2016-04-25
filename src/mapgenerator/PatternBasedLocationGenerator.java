@@ -16,6 +16,7 @@ import mapgenerator.constraints.BorderConstraint;
 import mapgenerator.constraints.Constraint;
 import mapgenerator.constraints.NotBorderConstraint;
 import mapgenerator.constraints.ApplyToAllConstraint;
+import mapgenerator.constraints.PathConstraint;
 import mapgenerator.constraints.SinglePatternConstraint;
 import util.Label;
 
@@ -144,7 +145,23 @@ public class PatternBasedLocationGenerator {
         }
 
         // path constraints:
-        // ...
+        for(Constraint c:constraints) {
+            if (c instanceof PathConstraint) {
+                PathConstraint pc = (PathConstraint)c;
+                List<Pair<Integer,Integer>> locationsToConnect = new ArrayList<>();
+                
+                for(String ID:pc.getIDs()) {
+                    Pair<Integer,Integer> l = singleCosntraintLocations.get(ID);
+                    if (l==null) {
+                        System.out.println("PathConstraint specifies an ID ('" + ID + "'), that is undefined.");
+                        return null;
+                    }
+                    locationsToConnect.add(l);
+                }
+                
+                if (locationsToConnect.size()>1) addPathConstraints(possibilities, locationsToConnect);
+            }
+        }
 
         
         if (DEBUG>=1) {
@@ -371,10 +388,9 @@ public class PatternBasedLocationGenerator {
         }        
     }    
     
-/*
+
     public void addPathConstraints(List<TilePattern> [][]possibilities,
-                                   List<ContentLocationRecord> coarseContentLocations,
-                                   List<ContentLocationRecord> passageLocations) throws Exception
+                                   List<Pair<Integer,Integer>> locationsToConnect) throws Exception
     {
         int dx = possibilities.length;
         int dy = possibilities[0].length;
@@ -391,10 +407,9 @@ public class PatternBasedLocationGenerator {
                 }
             }
         }
-        for(ContentLocationRecord clr:passageLocations) buffer[clr.x][clr.y]='+';
-        for(ContentLocationRecord clr:coarseContentLocations) {
-            buffer[clr.x][clr.y]='*';
-            if (DEBUG>=2) System.out.println("important location: " + clr.x + "," + clr.y + " -> " + clr.type);
+        for(Pair<Integer,Integer> p:locationsToConnect) {
+            buffer[p.m_a][p.m_b]='*';
+            if (DEBUG>=2) System.out.println("location in the path: " + p.m_a + "," + p.m_b);
         }
         if (DEBUG>=2) {
             for (int i = 0; i < dy; i++) {
@@ -407,8 +422,8 @@ public class PatternBasedLocationGenerator {
 
         addPathConstraintsToLocation(possibilities, buffer, 0, 0, dx, dy);
     }
-*/
-/*
+
+
     public void addPathConstraintsToLocation(List<TilePattern> [][]possibilities,
                                              char buffer[][],
                                              int x0, int y0,
@@ -608,7 +623,7 @@ public class PatternBasedLocationGenerator {
             paths[current_x][current_y] = 0;
         }
     }
-*/
+
 
     public TilePattern[][] generateDFS(List<TilePattern> [][]possibilities, TilePattern[][]selected, boolean randomize, HashMap<Label,Double> multipliers) throws Exception {
 //        List<Pair<Integer,List<TilePattern>>> restore;

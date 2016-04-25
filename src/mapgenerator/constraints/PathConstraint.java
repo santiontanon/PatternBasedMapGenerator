@@ -18,6 +18,12 @@ public class PathConstraint extends Constraint {
     public PathConstraint() {
     }
     
+    
+    public List<String> getIDs() {
+        return IDs;
+    }
+    
+    
     public void addID(String ID) {
         IDs.add(ID);
     }

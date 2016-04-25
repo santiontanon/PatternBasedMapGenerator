@@ -79,7 +79,7 @@ public class Main {
                                                 
         PatternBasedLocationGenerator generator = new PatternBasedLocationGenerator(patterns, type2Symbol, symbol2Type);
         
-        PatternBasedLocationGenerator.DEBUG = 1;
+//        PatternBasedLocationGenerator.DEBUG = 2;
         TilePattern result = generator.generate(widthInPatterns, heightInPatterns, patternWidth, patternHeight, constraints, multipliers);
         
         if (outputFileName==null) {
@@ -185,6 +185,7 @@ public class Main {
                 String patterns = c_e.getAttributeValue("patterns");
                 StringTokenizer st = new StringTokenizer(patterns,", ");
                 while(st.hasMoreTokens()) c.addID(st.nextToken());
+                constraints.add(c);
             }
         }
         
