@@ -33,7 +33,7 @@ import util.XMLWriter;
  *
  * @author santi
  */
-public class PatternBasedLocationGenerator {
+public class PatternBasedMapGenerator {
     public static int DEBUG = 0;
     
     List<String> patternFileNames = new ArrayList<>();
@@ -49,7 +49,7 @@ public class PatternBasedLocationGenerator {
     ConstraintSolver generator = null;
     PNGRenderer renderer = null;
 
-    public PatternBasedLocationGenerator(String configFileName, boolean initializePNGrenderer) throws Exception {
+    public PatternBasedMapGenerator(String configFileName, boolean initializePNGrenderer) throws Exception {
         
         loadInputConfiguration(configFileName);
         

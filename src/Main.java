@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.OutputStreamWriter;
 import javax.imageio.ImageIO;
-import mapgenerator.PatternBasedLocationGenerator;
+import mapgenerator.PatternBasedMapGenerator;
 import mapgenerator.TilePattern;
 import util.XMLWriter;
 
@@ -23,7 +23,7 @@ public class Main {
     public static int DEBUG = 0;
     
     public static void main(String args[]) throws Exception {                
-        PatternBasedLocationGenerator generator = null;
+        PatternBasedMapGenerator generator = null;
         
         if (args.length<3) {
             printInstructions();
@@ -42,11 +42,11 @@ public class Main {
         for(int i = 3;i<args.length;i++) {
             if (args[i].equals("-d1")) {
                 DEBUG = 1;
-                PatternBasedLocationGenerator.DEBUG = 1;
+                PatternBasedMapGenerator.DEBUG = 1;
             }
             if (args[i].equals("-d2")) {
                 DEBUG = 1;
-                PatternBasedLocationGenerator.DEBUG = 2;
+                PatternBasedMapGenerator.DEBUG = 2;
             }
             if (args[i].startsWith("-png:")) {
                 initializePNGGenerator = true;
@@ -54,7 +54,7 @@ public class Main {
             }
         }
 
-        generator = new PatternBasedLocationGenerator(inputFileName, initializePNGGenerator);                                                        
+        generator = new PatternBasedMapGenerator(inputFileName, initializePNGGenerator);                                                        
         TilePattern result = generator.generate(widthInPatterns, heightInPatterns);
         
         if (pngOutputFileName!=null) {
