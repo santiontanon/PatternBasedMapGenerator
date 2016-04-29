@@ -58,7 +58,7 @@ public class ConstraintSolver {
     }
 
     
-    public TilePattern generate(int widthInPatterns, int heightInPatterns,
+    public TilePatternWithVariables generate(int widthInPatterns, int heightInPatterns,
                                 int patternWidth, int patternHeight,
                                 List<Constraint> constraints,
                                 HashMap<Label,Double> multipliers) throws Exception {

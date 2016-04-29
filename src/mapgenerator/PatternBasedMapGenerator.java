@@ -7,14 +7,10 @@
 package mapgenerator;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.StringTokenizer;
-import javax.imageio.ImageIO;
 import mapgenerator.constraints.ApplyToAllConstraint;
 import mapgenerator.constraints.BorderConstraint;
 import mapgenerator.constraints.Constraint;
@@ -25,8 +21,6 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import pngrenderer.PNGRenderer;
 import util.Label;
-import util.Pair;
-import util.XMLWriter;
 
 
 /**
@@ -83,7 +77,7 @@ public class PatternBasedMapGenerator {
     }
     
     
-    public TilePattern generate(int widthInPatterns, int heightInPatterns,
+    public TilePatternWithVariables generate(int widthInPatterns, int heightInPatterns,
                                 List<Constraint> additionalConstraints,
                                 HashMap<Label,Double> additionalMultipliers) throws Exception {
         List<Constraint> finalConstraints = new ArrayList<>();
@@ -254,7 +248,7 @@ public class PatternBasedMapGenerator {
     }
     
 
-    public char typeToSymbol(String type) {
+    public char typeToSymbol(Label type) {
        return type2Symbol.get(type);
     }
 

@@ -13,7 +13,6 @@ import util.Label;
  * @author santi
  */
 public class ContentLocationRecord {
-//    public Object n = null;
     public int x=-1, y=-1, width=1,height=1;
     public Label type = null;
 
@@ -21,8 +20,7 @@ public class ContentLocationRecord {
 
     }
 
-    public ContentLocationRecord(/*Object a_n, */int a_x, int a_y, Label a_type) {
-//        n = a_n;
+    public ContentLocationRecord(int a_x, int a_y, Label a_type) {
         x = a_x;
         y = a_y;
         type = a_type;
@@ -30,7 +28,6 @@ public class ContentLocationRecord {
     }
 
     public ContentLocationRecord(ContentLocationRecord r) {
-//        n = r.n;
         x = r.x;
         y = r.y;
         width = r.width;
