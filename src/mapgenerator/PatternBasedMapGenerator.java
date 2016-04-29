@@ -83,6 +83,30 @@ public class PatternBasedMapGenerator {
     }
     
     
+    public TilePattern generate(int widthInPatterns, int heightInPatterns,
+                                List<Constraint> additionalConstraints,
+                                HashMap<Label,Double> additionalMultipliers) throws Exception {
+        List<Constraint> finalConstraints = new ArrayList<>();
+        finalConstraints.addAll(constraints);
+        finalConstraints.addAll(additionalConstraints);
+        
+        HashMap<Label,Double> finalMultipliers = new HashMap<>();
+        finalMultipliers.putAll(multipliers);
+        for(Label ml:additionalMultipliers.keySet()) {
+            Double mv = finalMultipliers.get(ml);
+            if (mv==null) {
+                finalMultipliers.put(ml, additionalMultipliers.get(ml));
+            } else {
+                finalMultipliers.put(ml, mv * additionalMultipliers.get(ml));
+            }
+        }
+        
+        return generator.generate(widthInPatterns, heightInPatterns, 
+                                 patternWidth, patternHeight, 
+                                 finalConstraints, finalMultipliers);
+    }    
+    
+    
     public BufferedImage renderPNG(TilePattern result) throws Exception {
         return renderer.render(result, symbol2Type);
     }
@@ -108,65 +132,67 @@ public class PatternBasedMapGenerator {
         
         // load constraints:
         Element c_e_l = root.getChild("constraints");
-        for(Object o:c_e_l.getChildren()) {
-            Element c_e = (Element)o;
-            String type_att = c_e.getAttributeValue("type");
-            String tag_att = c_e.getAttributeValue("tag");
-            int type = -1;
-            if (type_att!=null) {
-                if (type_att.equals("type")) type = TilePattern.TYPE;
-                if (type_att.equals("tag")) type = TilePattern.TAG;
-                if (type_att.equals("north")) type = TilePattern.NORTH;
-                if (type_att.equals("east")) type = TilePattern.EAST;
-                if (type_att.equals("south")) type = TilePattern.SOUTH;
-                if (type_att.equals("west")) type = TilePattern.WEST;
-            }
-            List<Label> tags = new ArrayList<>();
-            List<Label> negativeTags = new ArrayList<>();
-            if (tag_att!=null) {
-                StringTokenizer st = new StringTokenizer(tag_att,", ");
-                while(st.hasMoreTokens()) {
-                    String tag = st.nextToken();
-                    if (tag.startsWith("~")) {
-                        negativeTags.add(new Label(tag.substring(1)));
-                    } else {
-                        tags.add(new Label(tag));
+        if (c_e_l!=null) {
+            for(Object o:c_e_l.getChildren()) {
+                Element c_e = (Element)o;
+                String type_att = c_e.getAttributeValue("type");
+                String tag_att = c_e.getAttributeValue("tag");
+                int type = -1;
+                if (type_att!=null) {
+                    if (type_att.equals("type")) type = TilePattern.TYPE;
+                    if (type_att.equals("tag")) type = TilePattern.TAG;
+                    if (type_att.equals("north")) type = TilePattern.NORTH;
+                    if (type_att.equals("east")) type = TilePattern.EAST;
+                    if (type_att.equals("south")) type = TilePattern.SOUTH;
+                    if (type_att.equals("west")) type = TilePattern.WEST;
+                }
+                List<Label> tags = new ArrayList<>();
+                List<Label> negativeTags = new ArrayList<>();
+                if (tag_att!=null) {
+                    StringTokenizer st = new StringTokenizer(tag_att,", ");
+                    while(st.hasMoreTokens()) {
+                        String tag = st.nextToken();
+                        if (tag.startsWith("~")) {
+                            negativeTags.add(new Label(tag.substring(1)));
+                        } else {
+                            tags.add(new Label(tag));
+                        }
                     }
                 }
-            }
-            
-            if (c_e.getName().equals("applyToAllConstraint")) {
-                ApplyToAllConstraint c = new ApplyToAllConstraint(type);
-                for(Label t:tags) c.addTag(t);
-                for(Label t:negativeTags) c.addNegativeTag(t);
-                constraints.add(c);
-            } else if (c_e.getName().equals("borderConstraint")) {
-                BorderConstraint c = new BorderConstraint();
-                for(Label t:tags) c.addTag(t);
-                for(Label t:negativeTags) c.addNegativeTag(t);
-                constraints.add(c);
-            } else if (c_e.getName().equals("notBorderConstraint")) {
-                NotBorderConstraint c = new NotBorderConstraint();
-                for(Label t:tags) c.addTag(t);
-                for(Label t:negativeTags) c.addNegativeTag(t);
-                constraints.add(c);
-            } else if (c_e.getName().equals("singlePatternConstraint")) {
-                SinglePatternConstraint c = new SinglePatternConstraint(type);
-                for(Label t:tags) c.addTag(t);
-                for(Label t:negativeTags) c.addNegativeTag(t);
-                if (c_e.getAttributeValue("x")!=null) c.setX(Integer.parseInt(c_e.getAttributeValue("x")));
-                if (c_e.getAttributeValue("y")!=null) c.setY(Integer.parseInt(c_e.getAttributeValue("y")));
-                if (c_e.getAttributeValue("id")!=null) c.setID(c_e.getAttributeValue("id"));
-                constraints.add(c);
-            } else if (c_e.getName().equals("pathConstraint")) {
-                PathConstraint c = new PathConstraint();
-                String patterns = c_e.getAttributeValue("patterns");
-                StringTokenizer st = new StringTokenizer(patterns,", ");
-                while(st.hasMoreTokens()) c.addID(st.nextToken());
-                constraints.add(c);
+
+                if (c_e.getName().equals("applyToAllConstraint")) {
+                    ApplyToAllConstraint c = new ApplyToAllConstraint(type);
+                    for(Label t:tags) c.addTag(t);
+                    for(Label t:negativeTags) c.addNegativeTag(t);
+                    constraints.add(c);
+                } else if (c_e.getName().equals("borderConstraint")) {
+                    BorderConstraint c = new BorderConstraint();
+                    for(Label t:tags) c.addTag(t);
+                    for(Label t:negativeTags) c.addNegativeTag(t);
+                    constraints.add(c);
+                } else if (c_e.getName().equals("notBorderConstraint")) {
+                    NotBorderConstraint c = new NotBorderConstraint();
+                    for(Label t:tags) c.addTag(t);
+                    for(Label t:negativeTags) c.addNegativeTag(t);
+                    constraints.add(c);
+                } else if (c_e.getName().equals("singlePatternConstraint")) {
+                    SinglePatternConstraint c = new SinglePatternConstraint(type);
+                    for(Label t:tags) c.addTag(t);
+                    for(Label t:negativeTags) c.addNegativeTag(t);
+                    if (c_e.getAttributeValue("x")!=null) c.setX(Integer.parseInt(c_e.getAttributeValue("x")));
+                    if (c_e.getAttributeValue("y")!=null) c.setY(Integer.parseInt(c_e.getAttributeValue("y")));
+                    if (c_e.getAttributeValue("id")!=null) c.setID(c_e.getAttributeValue("id"));
+                    constraints.add(c);
+                } else if (c_e.getName().equals("pathConstraint")) {
+                    PathConstraint c = new PathConstraint();
+                    String patterns = c_e.getAttributeValue("patterns");
+                    StringTokenizer st = new StringTokenizer(patterns,", ");
+                    while(st.hasMoreTokens()) c.addID(st.nextToken());
+                    constraints.add(c);
+                }
             }
         }
-        
+
         if (DEBUG>=1) System.out.println(constraints.size() + " constraints loaded.");
 
         // load multipliers:
@@ -227,8 +253,13 @@ public class PatternBasedMapGenerator {
         return patterns;
     }
     
+
+    public char typeToSymbol(String type) {
+       return type2Symbol.get(type);
+    }
+
     
-    static TilePattern translateOutput(Pair<char[][][], List<ContentLocationRecord>> result) {
-        return null;
-    }    
+    public Label symbolToType(char symbol) {
+        return symbol2Type.get(symbol);
+    }
 }
