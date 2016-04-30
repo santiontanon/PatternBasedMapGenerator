@@ -48,6 +48,15 @@ public class ApplyToAllConstraint extends Constraint {
     }
     
     
+    public List<Label> getTags() {
+        return tags;
+    }
+    
+    public List<Label> getNegativeTags() {
+        return negativeTags;
+    }
+    
+    
     public boolean checkConstraint(TilePattern tp) {
         if (!tags.isEmpty()) {
             if (!tp.satisfiesAtLeastOneConstraint(direction, tags)) return false;

@@ -82,6 +82,17 @@ public class ConstraintSolver {
         // initialize generator and apply type and border constraints:
         List<TilePattern> [][]possibilities = new List[widthInPatterns][heightInPatterns];
         TilePattern[][]selected = new TilePattern[widthInPatterns][heightInPatterns];
+        if (DEBUG>=1) {
+            for(Constraint c:constraints) {
+                if (c instanceof BorderConstraint) {
+                    System.out.println("Applying BorderConstraint:" + ((BorderConstraint)c).getTags() + " but not " + ((BorderConstraint)c).getNegativeTags());
+                } else if (c instanceof NotBorderConstraint) {
+                    System.out.println("Applying NotBorderConstraint:" + ((NotBorderConstraint)c).getTags() + " but not " + ((NotBorderConstraint)c).getNegativeTags());
+                } else if (c instanceof ApplyToAllConstraint) {
+                    System.out.println("Applying ApplyToAllConstraint:" + ((ApplyToAllConstraint)c).getTags() + " but not " + ((ApplyToAllConstraint)c).getNegativeTags());
+                }
+            }
+        }
         for(int i = 0;i<heightInPatterns;i++) {
             for(int j = 0;j<widthInPatterns;j++) {
                 possibilities[j][i] = new ArrayList<>();
@@ -126,9 +137,10 @@ public class ConstraintSolver {
         
         
         // single pattern constraints:
-        HashMap<String, Pair<Integer,Integer>> singleCosntraintLocations = singlePatternCosntraintsDFS(possibilities, constraints);
+        if (DEBUG>=1) System.out.println("ConstraintSolver.generate: trying to solve single pattern consrtriants...");
+        HashMap<String, Pair<Integer,Integer>> singleCosntraintLocations = singlePatternConstraintsDFS(possibilities, constraints);
         if (singleCosntraintLocations==null) {
-            System.out.println("ConstraintSolver..generate: single pattern constraints are not solvable!");
+            System.out.println("ConstraintSolver.generate: single pattern constraints are not solvable!");
             return null;
         }
         if (DEBUG>=1) {
@@ -306,7 +318,7 @@ public class ConstraintSolver {
     }
 
     
-    public HashMap<String, Pair<Integer,Integer>> singlePatternCosntraintsDFS(List<TilePattern> [][]possibilities, List<Constraint> constraints)
+    public HashMap<String, Pair<Integer,Integer>> singlePatternConstraintsDFS(List<TilePattern> [][]possibilities, List<Constraint> constraints)
     {
         HashMap<String, Pair<Integer, Integer>> res = new HashMap<>();
         
@@ -335,6 +347,8 @@ public class ConstraintSolver {
                 }
             }
             
+            if (DEBUG>=2) System.out.println("  constraint "+spc.getID()+": " + spc.getTags() + " but not " + spc.getNegativeTags() + " at: " + spc.getDirection() + ", " + spc.getX() + ", " + spc.getY() + " candidates: " + candidates.size());
+            
             // sort them randomly:
             Collections.shuffle(candidates, r);
             
@@ -342,7 +356,7 @@ public class ConstraintSolver {
                 // select:
                 RestoreStructure r = new RestoreStructure(possibilities, null);
                 addConstraint(candidate.m_a, candidate.m_b, spc, possibilities);
-                res.put(spc.getID(), candidate);
+                if (spc.getID()!=null) res.put(spc.getID(), candidate);
                 
                 if (singlePatternCosntraintsDFS(possibilities, constraints, res, idx+1)) {
                     return true;
@@ -777,8 +791,10 @@ public class ConstraintSolver {
         List<TilePattern> toDelete = new ArrayList<>();
         if (possibilities[x][y]==null) return toDelete;
         for(TilePattern p:possibilities[x][y]) {
-            if (!p.satisfiesAtLeastOneConstraint(spc.getDirection(),spc.getTags()) ||
-                p.satisfiesAtLeastOneConstraint(spc.getDirection(),spc.getNegativeTags())) {
+            if (! ((spc.getTags().isEmpty() || p.satisfiesAtLeastOneConstraint(spc.getDirection(),spc.getTags())) &&
+                   (spc.getNegativeTags().isEmpty() || !p.satisfiesAtLeastOneConstraint(spc.getDirection(),spc.getNegativeTags())))) {
+//            if (!p.satisfiesAtLeastOneConstraint(spc.getDirection(),spc.getTags()) ||
+//                p.satisfiesAtLeastOneConstraint(spc.getDirection(),spc.getNegativeTags())) {
                 toDelete.add(p);
             }
         }
@@ -799,7 +815,7 @@ public class ConstraintSolver {
     public boolean satisfiableConstraint(int x, int y, int direction, List<Label> constraint, List<TilePattern> [][]possibilities) {
         if (possibilities[x][y]==null) return false;
         for(TilePattern p:possibilities[x][y]) {
-            if (p.satisfiesAtLeastOneConstraint(direction,constraint)) return true;
+            if (constraint.isEmpty() || p.satisfiesAtLeastOneConstraint(direction,constraint)) return true;
         }
         return false;
     }
@@ -808,7 +824,7 @@ public class ConstraintSolver {
     public boolean satisfiableNegativeConstraint(int x, int y, int direction, List<Label> constraint, List<TilePattern> [][]possibilities) {
         if (possibilities[x][y]==null) return false;
         for(TilePattern p:possibilities[x][y]) {
-            if (!p.satisfiesAtLeastOneConstraint(direction,constraint)) return true;
+            if (constraint.isEmpty() || !p.satisfiesAtLeastOneConstraint(direction,constraint)) return true;
         }
         return false;
     }
@@ -817,8 +833,8 @@ public class ConstraintSolver {
     public boolean satisfiableConstraint(int x, int y, SinglePatternConstraint spc, List<TilePattern> [][]possibilities) {
         if (possibilities[x][y]==null) return false;
         for(TilePattern p:possibilities[x][y]) {
-            if (p.satisfiesAtLeastOneConstraint(spc.getDirection(),spc.getTags()) &&
-                !p.satisfiesAtLeastOneConstraint(spc.getDirection(),spc.getNegativeTags())) return true;
+            if ((spc.getTags().isEmpty() || p.satisfiesAtLeastOneConstraint(spc.getDirection(),spc.getTags())) &&
+                (spc.getNegativeTags().isEmpty() || !p.satisfiesAtLeastOneConstraint(spc.getDirection(),spc.getNegativeTags()))) return true;
         }
         return false;
     }

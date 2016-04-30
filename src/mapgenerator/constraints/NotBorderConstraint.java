@@ -43,6 +43,16 @@ public class NotBorderConstraint extends Constraint {
         negativeTags.add(tag);
     }
     
+    
+    public List<Label> getTags() {
+        return tags;
+    }
+    
+    public List<Label> getNegativeTags() {
+        return negativeTags;
+    }
+    
+    
     public boolean checkConstraint(TilePattern tp, int px, int py, int width, int height) {
         if (!tags.isEmpty()) {
             if (px!=0 && !tp.satisfiesAtLeastOneConstraint(TilePattern.WEST, tags)) return false;

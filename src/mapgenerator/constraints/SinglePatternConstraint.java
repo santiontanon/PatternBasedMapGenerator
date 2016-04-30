@@ -37,12 +37,12 @@ public class SinglePatternConstraint extends Constraint {
 
     public SinglePatternConstraint(int a_direction, Label tag) {
         direction = a_direction;
-        tags.add(tag);
+        if (tag!=null) tags.add(tag);
     }
     
-    public SinglePatternConstraint(int a_direction, Label a_border, int a_x, int a_y, String a_ID) {
+    public SinglePatternConstraint(int a_direction, Label a_tag, int a_x, int a_y, String a_ID) {
         direction = a_direction;
-        tags.add(a_border);
+        if (a_tag!=null) tags.add(a_tag);
         x = a_x;
         y = a_y;
         ID = a_ID;
