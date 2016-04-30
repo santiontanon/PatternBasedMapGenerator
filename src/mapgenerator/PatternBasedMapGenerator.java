@@ -14,6 +14,7 @@ import java.util.StringTokenizer;
 import mapgenerator.constraints.ApplyToAllConstraint;
 import mapgenerator.constraints.BorderConstraint;
 import mapgenerator.constraints.Constraint;
+import mapgenerator.constraints.DifferentConstraint;
 import mapgenerator.constraints.NotBorderConstraint;
 import mapgenerator.constraints.PathConstraint;
 import mapgenerator.constraints.SinglePatternConstraint;
@@ -183,6 +184,14 @@ public class PatternBasedMapGenerator {
                     StringTokenizer st = new StringTokenizer(patterns,", ");
                     while(st.hasMoreTokens()) c.addID(st.nextToken());
                     constraints.add(c);
+                } else if (c_e.getName().equals("differentConstraint")) {
+                    DifferentConstraint c = new DifferentConstraint();
+                    String patterns = c_e.getAttributeValue("patterns");
+                    StringTokenizer st = new StringTokenizer(patterns,", ");
+                    while(st.hasMoreTokens()) c.addID(st.nextToken());
+                    constraints.add(c);
+                } else {
+                    throw new Exception("Unknown constraint type: " + c_e.getName());
                 }
             }
         }

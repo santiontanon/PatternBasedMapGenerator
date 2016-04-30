@@ -16,6 +16,7 @@ import java.util.Random;
 import mapgenerator.constraints.ApplyToAllConstraint;
 import mapgenerator.constraints.BorderConstraint;
 import mapgenerator.constraints.Constraint;
+import mapgenerator.constraints.DifferentConstraint;
 import mapgenerator.constraints.NotBorderConstraint;
 import mapgenerator.constraints.PathConstraint;
 import mapgenerator.constraints.SinglePatternConstraint;
@@ -122,7 +123,7 @@ public class ConstraintSolver {
         }
                 
         if (DEBUG>=1) {
-            System.out.println("ConstraintSolver..generate: Possibilities after initial constraints:");
+            System.out.println("ConstraintSolver.generate: Possibilities after initial constraints:");
             for(int i = 0;i<heightInPatterns;i++) {
                 for(int j = 0;j<widthInPatterns;j++) {
                     if (possibilities[j][i]==null) {
@@ -144,12 +145,12 @@ public class ConstraintSolver {
             return null;
         }
         if (DEBUG>=1) {
-            System.out.println("ConstraintSolver..generate: single pattern constriants locations:");
+            System.out.println("ConstraintSolver.generate: single pattern constriants locations:");
             for(String ID:singleCosntraintLocations.keySet()) {
                 System.out.println(ID + " -> " + singleCosntraintLocations.get(ID));
             }
             
-            System.out.println("ConstraintSolver..generate: Possibilities after single pattern constraints:");
+            System.out.println("ConstraintSolver.generate: Possibilities after single pattern constraints:");
             for(int i = 0;i<heightInPatterns;i++) {
                 for(int j = 0;j<widthInPatterns;j++) {
                     if (possibilities[j][i]==null) {
@@ -183,7 +184,7 @@ public class ConstraintSolver {
 
         
         if (DEBUG>=1) {
-            System.out.println("ConstraintSolver..generate: Possibilities after path constraints:");
+            System.out.println("ConstraintSolver.generate: Possibilities after path constraints:");
             for(int i = 0;i<heightInPatterns;i++) {
                 for(int j = 0;j<widthInPatterns;j++) {
                     if (possibilities[j][i]==null) {
@@ -200,9 +201,9 @@ public class ConstraintSolver {
         TilePattern[][]result = generateDFS(possibilities, selected, true, multipliers);
 
         if (result==null) {
-            throw new Exception("ConstraintSolver..generate: room could not be generated!");
+            throw new Exception("ConstraintSolver.generate: room could not be generated!");
         } else {
-            if (DEBUG>=1) System.out.println("ConstraintSolver..generate: room generated!");
+            if (DEBUG>=1) System.out.println("ConstraintSolver.generate: room generated!");
 
             // clone the patterns, and remove duplicated objects in the edge of the patterns:
             for(int i = 0;i<heightInPatterns;i++) {
@@ -293,7 +294,7 @@ public class ConstraintSolver {
         }
 
         if (DEBUG>=1) {
-            System.out.println("ConstraintSolver..generate: content:");
+            System.out.println("ConstraintSolver.generate: content:");
             for(ContentLocationRecord cl:contentLocations) {
                 //if (cl.n!=null) 
                 System.out.println("  " + cl.type + ": " + cl.x + "," + cl.y);
@@ -321,14 +322,28 @@ public class ConstraintSolver {
     public HashMap<String, Pair<Integer,Integer>> singlePatternConstraintsDFS(List<TilePattern> [][]possibilities, List<Constraint> constraints)
     {
         HashMap<String, Pair<Integer, Integer>> res = new HashMap<>();
+        HashMap<String,List<DifferentConstraint>> differentConstraitns = new HashMap<>();
+        for(Constraint c:constraints) {
+            if (c instanceof DifferentConstraint) {
+                for(String id:((DifferentConstraint)c).getIDs()) {
+                    List<DifferentConstraint> l = differentConstraitns.get(id);
+                    if (l==null) {
+                        l = new ArrayList<>();
+                        differentConstraitns.put(id, l);
+                    }
+                    l.add((DifferentConstraint)c);
+                }
+            }
+        }
         
-        if (singlePatternCosntraintsDFS(possibilities, constraints, res, 0)) return res;
+        if (singlePatternCosntraintsDFS(possibilities, constraints, res, 0, differentConstraitns)) return res;
         return null;
     }
 
 
     public boolean singlePatternCosntraintsDFS(List<TilePattern> [][]possibilities, List<Constraint> constraints,
-                                               HashMap<String, Pair<Integer, Integer>> res, int idx)
+                                               HashMap<String, Pair<Integer, Integer>> res, int idx,
+                                               HashMap<String,List<DifferentConstraint>> differentConstraitns)
     {
         if (idx>=constraints.size()) return true;
         
@@ -343,7 +358,27 @@ public class ConstraintSolver {
                 for(int y = 0;y<possibilities[0].length;y++) {
                     if (spc.getY()!=-1 && spc.getY()!=y) continue;
                     
-                    if (satisfiableConstraint(x, y, spc, possibilities)) candidates.add(new Pair<Integer,Integer>(x,y));
+                    if (satisfiableConstraint(x, y, spc, possibilities)) {
+                        boolean alreadyTaken = false;
+                        if (spc.getID()!=null) {
+                            List<DifferentConstraint> l = differentConstraitns.get(spc.getID());
+                            if (l!=null) {
+                                for(DifferentConstraint dc:l) {
+                                    for(String id:dc.getIDs()) {
+                                        if (!id.equals(spc.getID())) {
+                                            Pair<Integer,Integer> v = res.get(id);
+                                            if (v!=null && v.m_a==x && v.m_b==y) {
+                                                alreadyTaken = true;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    if (alreadyTaken) break;
+                                }
+                            }
+                        }
+                        if (!alreadyTaken) candidates.add(new Pair<>(x,y));
+                    }
                 }
             }
             
@@ -354,20 +389,21 @@ public class ConstraintSolver {
             
             for(Pair<Integer,Integer> candidate:candidates) {
                 // select:
-                RestoreStructure r = new RestoreStructure(possibilities, null);
+                RestoreStructure rs = new RestoreStructure(possibilities, null);
                 addConstraint(candidate.m_a, candidate.m_b, spc, possibilities);
                 if (spc.getID()!=null) res.put(spc.getID(), candidate);
                 
-                if (singlePatternCosntraintsDFS(possibilities, constraints, res, idx+1)) {
+                if (singlePatternCosntraintsDFS(possibilities, constraints, res, idx+1, differentConstraitns)) {
                     return true;
                 } else {
                     // undo the selection:
-                    r.restore(possibilities, null);
+                    rs.restore(possibilities, null);
+                    if (spc.getID()!=null) res.remove(spc.getID());
                 }
             }
             return false;
         } else {
-            return singlePatternCosntraintsDFS(possibilities, constraints, res, idx+1);
+            return singlePatternCosntraintsDFS(possibilities, constraints, res, idx+1, differentConstraitns);
         }        
     }    
     
@@ -560,8 +596,8 @@ public class ConstraintSolver {
         // reconstruct the path:
         if (solution_x==-1) throw new Exception("no path could be found to add key point (" + start_x + "," + start_y +")!!!");
 
-        List<Integer> path = new ArrayList<>();
-        path.add(solution_x + solution_y * dx);
+//        List<Integer> path = new ArrayList<>();
+//        path.add(solution_x + solution_y * dx);
         int current_x = solution_x;
         int current_y = solution_y;
         if (DEBUG>=3) System.out.println("Path:");
@@ -600,7 +636,7 @@ public class ConstraintSolver {
                     best_y = current_y+1;
                 }
             }
-            path.add(best_x + best_y * dx);
+//            path.add(best_x + best_y * dx);
             current_x = best_x;
             current_y = best_y;
             paths[current_x][current_y] = 0;
@@ -699,13 +735,13 @@ public class ConstraintSolver {
             possibilities[selectedX][selectedY] = result;
         }
 
-        RestoreStructure r = new RestoreStructure(possibilities, selected);
+        RestoreStructure rs = new RestoreStructure(possibilities, selected);
         for(TilePattern p:possibilities[selectedX][selectedY]) {
             if (setPattern(selectedX, selectedY, p, possibilities, selected)) {
                 TilePattern[][]result = generateDFS(possibilities, selected, randomize, multipliers);
                 if (result!=null) return result;
             }
-            r.restore(possibilities, selected);
+            rs.restore(possibilities, selected);
 //            restore = setPattern(selectedX, selectedY, p, possibilities, selected);
 //            if (restore==null) continue;
 //            TilePattern[][]result = generateDFS(possibilities, selected, randomize, multipliers);
