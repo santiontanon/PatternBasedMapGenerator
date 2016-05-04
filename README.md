@@ -53,3 +53,14 @@ The attributes of a pattern define are:
 - _canrotate_: if this is set to true, four copies of this pattern will be created, each of them rotated 90 degrees.
 
 The layers define the background of the map (e.g., the walls, etc.). You can specify as many layers as desired (the first is numbered "0"), and finally, any additional objects (such as enemies, items, etc.) are defined after the layers. The types of objects and the characters used in the layers must be defined in the symbol definition files.
+
+## Constraints 
+
+In addition to providing a set of patterns, you can provide a set of constraints that the output map will have to satisfy. The set of constraints that can be provided are:
+- `<applyToAllConstraint type="TYPE" tag="TAGS"/>`: this is a constraint that will be enforced for each pattern in the map. Constraints are defined by a TYPE (_type_, _tag_, _north_, _east_, _south_, _west_) and TAGS (a comma-separated list of tags). Any of the TAGS can be negated (with a `~`).
+- `<borderConstraint tag="TAGS"/>`: this will be enforced only in the edges of the map (e.g., in the _north_ tags of the tiles on the top rows, etc.).
+- `<noBorderConstraint tag="TAGS"/>`: the opposite of the previous one (this will be imposed in all directions that are not part of an edge of the map).
+- `<singlePatternConstraint type="TYPE" tag="TAGS" [x="X"] [y="Y"] [id="ID"]/>`: this will be imposed over a single tile. If x and/or y are specified, then those restrict the coordinates of which pattern will be the one chosen to satisfy this constraint. But if no x or y are specified, then as long as one pattern in any position is specified, then the constraint will succeed. An _id_ can be provided to later use the coordinates of the pattern that this constraint matched to in other constraints.
+- `<pathConstraint patterns="IDS"/>`: enforces a patterns between the coordinates represented by the IDS. The IDS is a comma-separated list of IDS from _singlePatternConstraints_. 
+- `<differentConstraint patterns="IDS"/>`: enforces that the patterns that are matched by the _singlePatternConstraints_ specified in IDS have to be different.
+
